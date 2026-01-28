@@ -125,16 +125,35 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.MachineList
                 //chooseClientName.Click(); Thread.Sleep(1000);
 
                 // Click the upload button (which opens the Windows dialog)
-
+               
                 IWebElement uploadBtn = driver.FindElement(By.XPath("//mat-icon[text()='cloud_upload']"));
                 uploadBtn.Click();
                 Thread.Sleep(2000);
 
-                // Simulate typing file path + Enter
-                var sim = new InputSimulator();
-                sim.Keyboard.TextEntry(@"C:\Users\Yogeswari-PC\Downloads\PO-PDF.pdf");
-                sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+                // Locate the actual file input element
+                IWebElement fileInput = driver.FindElement(By.XPath("//input[@type='file']"));
+
+                // Build path dynamically from project folder
+                string filePath = Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    "TestData",
+                    "PO-PDF.pdf"
+                );
+
+                // Upload file
+                fileInput.SendKeys(filePath);
                 Thread.Sleep(2000);
+
+
+                //IWebElement uploadBtn = driver.FindElement(By.XPath("//mat-icon[text()='cloud_upload']"));
+                //uploadBtn.Click();
+                //Thread.Sleep(2000);
+
+                //// Simulate typing file path + Enter
+                //var sim = new InputSimulator();
+                //sim.Keyboard.TextEntry(@"C:\Users\Yogeswari-PC\Downloads\PO-PDF.pdf");
+                //sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+                //Thread.Sleep(2000);
 
                 // Expiry Date
                 IWebElement billDateCalendarIcon = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("drange")));
