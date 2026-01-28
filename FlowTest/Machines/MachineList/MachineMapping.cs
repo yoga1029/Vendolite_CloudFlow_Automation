@@ -133,16 +133,18 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.MachineList
                 // Locate the actual file input element
                 IWebElement fileInput = driver.FindElement(By.XPath("//input[@type='file']"));
 
-                // Build path dynamically from project folder
+                string projectRoot = Directory.GetCurrentDirectory();
+
                 string filePath = Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
+                    projectRoot,
                     "TestData",
                     "PO-PDF.pdf"
                 );
 
-                // Upload file
+                Console.WriteLine("Upload file path: " + filePath);
+                Console.WriteLine("File exists: " + File.Exists(filePath));
+
                 fileInput.SendKeys(filePath);
-                Thread.Sleep(2000);
 
 
                 //IWebElement uploadBtn = driver.FindElement(By.XPath("//mat-icon[text()='cloud_upload']"));
