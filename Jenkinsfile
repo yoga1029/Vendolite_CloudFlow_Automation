@@ -8,9 +8,9 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Run Tests') {
             steps {
-                echo 'Build stage running'
+                bat 'dotnet test'
             }
         }
     }
