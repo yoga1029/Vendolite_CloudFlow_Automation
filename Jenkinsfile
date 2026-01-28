@@ -10,7 +10,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'dotnet test'
+                bat 'dotnet test GIT_VMS-Phase1PortalAT.sln'
             }
         }
     }
