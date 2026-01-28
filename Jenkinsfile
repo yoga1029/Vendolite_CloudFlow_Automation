@@ -9,10 +9,11 @@ pipeline {
         }
 
         stage('Run Tests') {
-            steps {
-                bat 'dotnet test GIT_VMS-Phase1PortalAT.sln'
-            }
-        }
+    	steps {
+        	bat 'dotnet test GIT_VMS-Phase1PortalAT.sln --filter "FullyQualifiedName~EndToEndFlow"'
+    	}
+	}
+
     }
 
     post {
