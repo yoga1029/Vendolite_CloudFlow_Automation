@@ -15,3 +15,13 @@ pipeline {
         }
     }
 }
+
+post {
+    always {
+        emailext(
+            subject: "Jenkins Job: ${env.JOB_NAME} - ${currentBuild.currentResult}",
+            body: "Build Status: ${currentBuild.currentResult}\nJob: ${env.JOB_NAME}\nBuild Number: ${env.BUILD_NUMBER}",
+            to: "yogasubra99@gmail.com"
+        )
+    }
+}
