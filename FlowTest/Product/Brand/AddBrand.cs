@@ -37,11 +37,11 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.Brand
             test = extent.CreateTest("Adding Brand");
             try
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
                 //Locate Product Module
                 IWebElement productModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Products')]")));
                 productModule.Click();
-
+                Thread.Sleep(2000);
                 //Locate brand sub-module
                 IWebElement brandListSubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Brand ')]")));
                 brandListSubModule.Click();

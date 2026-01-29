@@ -226,7 +226,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.MachineList
 
                 IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[.//span[normalize-space(text())='Save']]")));
                 save.Click();
-                Thread.Sleep(3000);
+                Thread.Sleep(4000);
 
                 AddBrand brand = new AddBrand(driver);
                 brand.AddBrandFlow();
