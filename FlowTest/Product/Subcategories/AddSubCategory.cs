@@ -42,7 +42,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.Subcategories
                 //Locate Subategory sub-module
                 IWebElement subCategory = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Sub Categories ')]")));
                 subCategory.Click();
-                Thread.Sleep(3000);
+                Thread.Sleep(5000);
 
 
                 for (int i = 0; i < AddSubCategoryData.SubCategory.GetLength(0); i++)

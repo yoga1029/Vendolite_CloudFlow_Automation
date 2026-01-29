@@ -43,7 +43,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.Categories
                 //Locate Category sub-module
                 IWebElement categorySubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Categories ')]")));
                 categorySubModule.Click();
-                Thread.Sleep(2000);
+                Thread.Sleep(7000);
 
 
                 for (int i = 0; i < AddCategoryData.Categories.GetLength(0); i++)
@@ -52,7 +52,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.Categories
                     IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
                     searchText.Clear();
                     searchText.SendKeys(searchName + Keys.Enter);
-                    Thread.Sleep(5000);
+                    Thread.Sleep(4000);
 
                     // Check if category exists
                     var rows = driver.FindElements(By.XPath("//table//tbody/tr"));

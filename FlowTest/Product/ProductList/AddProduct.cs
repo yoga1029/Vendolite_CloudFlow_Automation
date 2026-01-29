@@ -42,7 +42,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.ProductList
                 //Locate ProductList sub-module
                 IWebElement productList = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Product List ')]")));
                 productList.Click();
-                Thread.Sleep(2000);
+                Thread.Sleep(5000);
 
                 for (int i = 0; i < AddProductData.Products.GetLength(0); i++)
                 {
