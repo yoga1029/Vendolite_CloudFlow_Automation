@@ -23,8 +23,6 @@ pipeline {
                 subject: "Automation Test Report - SUCCESS",
                 mimeType: 'text/html',
                 body: '${SCRIPT, template="groovy-html.template"}',
-                attachLog: true,
-                attachmentsPattern: '**/extentreport.html',
                 to: 'subramanianyoga90@gmail.com'
             )
         }
@@ -36,8 +34,6 @@ pipeline {
                 subject: "Automation Test Report - FAILURE",
                 mimeType: 'text/html',
                 body: '${SCRIPT, template="groovy-html.template"}',
-                attachLog: true,
-                attachmentsPattern: '**/extentreport.html',
                 to: 'subramanianyoga90@gmail.com'
             )
         }

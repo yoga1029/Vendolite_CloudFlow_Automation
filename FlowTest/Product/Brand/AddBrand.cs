@@ -45,7 +45,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.Brand
                 //Locate brand sub-module
                 IWebElement brandListSubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Brand ')]")));
                 brandListSubModule.Click();
-                Thread.Sleep(4000);
+                Thread.Sleep(7000);
 
                 for (int i = 0; i < AddBrandData.Brands.GetLength(0); i++)
                 {
