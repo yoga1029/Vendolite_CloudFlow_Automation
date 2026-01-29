@@ -24,7 +24,7 @@ pipeline {
                 subject: "Cloud Flow Automation Report v8.9.2 - ${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
                 mimeType: 'text/html',
                 body: '${SCRIPT, template="groovy-html.template"}',
-                to: 'subramanianyoga90@gmail.com'
+                to: 'bhavyashree@riota.in'
             )
         }
 
@@ -36,7 +36,7 @@ pipeline {
                 subject: "Cloud Flow Automation Report v8.9.2 - ${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
                 mimeType: 'text/html',
                 body: '${SCRIPT, template="groovy-html.template"}',
-                to: 'subramanianyoga90@gmail.com'
+                to: 'bhavyashree@riota.in'
             )
         }
     }
