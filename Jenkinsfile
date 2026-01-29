@@ -11,14 +11,16 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Generate TRX test result file
-                bat 'dotnet test GIT_VMS-Phase1PortalAT.sln --filter "FullyQualifiedName~EndToEndFlow" --logger "trx"'
+                bat '''
+                dotnet test GIT_VMS-Phase1PortalAT.sln --filter "FullyQualifiedName~EndToEndFlow" --logger "trx;LogFileName=testResults.trx"
+                '''
             }
         }
 
         stage('Publish Test Results') {
             steps {
                 // Jenkins reads TRX and calculates Passed/Failed
-                junit testResults: '**/*.trx', allowEmptyResults: true
+                junit '**/TestResults/*.trx'
             }
         }
     }
@@ -29,7 +31,7 @@ pipeline {
  
             emailext(
                 from: 'yogeswari@riota.in',
-                subject: "Cloud Flow Automation Report v8.9.2 - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+                subject: "Cloud Flow Automation Report v8.9.2 - Build #${BUILD_NUMBER} - SUCCESS",
                 mimeType: 'text/html',
                 body: '${SCRIPT, template="groovy-html.template"}',
                 to: 'subramanianyoga90@gmail.com'
@@ -41,7 +43,7 @@ pipeline {
  
             emailext(
                 from: 'yogeswari@riota.in',
-                subject: "Cloud Flow Automation Report v8.9.2 - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+                subject: "Cloud Flow Automation Report v8.9.2 - Build #${BUILD_NUMBER} - FAILURE",
                 mimeType: 'text/html',
                 body: '${SCRIPT, template="groovy-html.template"}',
                 to: 'subramanianyoga90@gmail.com'
