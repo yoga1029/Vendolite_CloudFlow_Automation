@@ -51,7 +51,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.Subcategories
                     IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
                     searchText.Clear();
                     searchText.SendKeys(searchName + Keys.Enter);
-                    Thread.Sleep(5000);
+                    Thread.Sleep(7000);
                     var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
                     if (rows.Count == 0)
                     {
