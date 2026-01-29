@@ -16,8 +16,8 @@ pipeline {
 
         stage('Publish Results') {
             steps {
-                // publish test results so Jenkins can calculate pass/fail count
-                junit '**/TestResults/*.trx'
+                // allowEmptyResults avoids failure if file path slightly differs
+                junit testResults: '**/*.trx', allowEmptyResults: true
             }
         }
     }
@@ -38,9 +38,8 @@ pipeline {
 
 <tr>
 <td style="padding:10px;">
-<b>URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a><br/>
 <b>Project:</b> ${env.JOB_NAME}<br/>
-<b>Date:</b> ${new Date()}<br/>
+<b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a><br/>
 <b>Duration:</b> ${currentBuild.durationString}
 </td>
 </tr>
@@ -52,9 +51,7 @@ pipeline {
 </tr>
 <tr>
 <td style="padding:10px;color:green;">
-<b>Passed:</b> ${currentBuild.rawBuild.getAction(hudson.tasks.junit.TestResultAction)?.getPassCount()} <br/>
-<b>Failed:</b> ${currentBuild.rawBuild.getAction(hudson.tasks.junit.TestResultAction)?.getFailCount()} <br/>
-<b>Skipped:</b> ${currentBuild.rawBuild.getAction(hudson.tasks.junit.TestResultAction)?.getSkipCount()}
+${TEST_COUNTS}
 </td>
 </tr>
 </table>
@@ -77,9 +74,8 @@ pipeline {
 
 <tr>
 <td style="padding:10px;">
-<b>URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a><br/>
 <b>Project:</b> ${env.JOB_NAME}<br/>
-<b>Date:</b> ${new Date()}<br/>
+<b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a><br/>
 <b>Duration:</b> ${currentBuild.durationString}
 </td>
 </tr>
@@ -91,9 +87,7 @@ pipeline {
 </tr>
 <tr>
 <td style="padding:10px;color:red;">
-<b>Passed:</b> ${currentBuild.rawBuild.getAction(hudson.tasks.junit.TestResultAction)?.getPassCount()} <br/>
-<b>Failed:</b> ${currentBuild.rawBuild.getAction(hudson.tasks.junit.TestResultAction)?.getFailCount()} <br/>
-<b>Skipped:</b> ${currentBuild.rawBuild.getAction(hudson.tasks.junit.TestResultAction)?.getSkipCount()}
+${TEST_COUNTS}
 </td>
 </tr>
 </table>
