@@ -13,6 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Code downloaded from GitHub'
+git branch: 'master', url:'https://github.com/yoga1029/Vendolite_CloudFlow_Automation.git'
             }
         }
  
