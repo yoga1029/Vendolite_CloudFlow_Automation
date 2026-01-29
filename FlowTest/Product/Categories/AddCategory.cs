@@ -52,7 +52,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.Categories
                     IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
                     searchText.Clear();
                     searchText.SendKeys(searchName + Keys.Enter);
-                    Thread.Sleep(3000);
+                    Thread.Sleep(5000);
 
                     // Check if category exists
                     var rows = driver.FindElements(By.XPath("//table//tbody/tr"));

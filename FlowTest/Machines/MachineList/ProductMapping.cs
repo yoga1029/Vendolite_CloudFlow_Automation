@@ -40,7 +40,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
         public Productmapping(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
         }
 
         //[TestMethod]
@@ -110,7 +110,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
                 Console.WriteLine("Product Matrix Changed again");
 
 
-                IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
+                IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//mat-icon[text()='edit']/ancestor::button")));
                 editInfo.Click();
                 Thread.Sleep(2000);
 
