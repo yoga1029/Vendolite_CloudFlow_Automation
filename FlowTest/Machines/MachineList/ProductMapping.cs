@@ -106,13 +106,16 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
                 Thread.Sleep(1000);
                 IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
                 saveSlots.Click();
-                Thread.Sleep(3000);
+                Thread.Sleep(6000);
                 Console.WriteLine("Product Matrix Changed again");
 
 
-                IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//mat-icon[text()='edit']/ancestor::button")));
+                //IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//mat-icon[text()='edit']/ancestor::button")));
+                //editInfo.Click();
+                //Thread.Sleep(2000);
+                IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
                 editInfo.Click();
-                Thread.Sleep(2000);
+
 
                 IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
                 clientLocation.Clear();
