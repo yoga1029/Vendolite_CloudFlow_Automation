@@ -90,7 +90,6 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
                 slotRowCount.Clear();
                 slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
 
-
                 IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
                 slotColumnCount.Clear();
                 slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
@@ -98,7 +97,6 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
                 IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
                 endingRowCount.Clear();
                 endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
-
 
                 IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
                 endingColumnCount.Clear();
@@ -109,57 +107,65 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
                 Thread.Sleep(6000);
                 Console.WriteLine("Product Matrix Changed again");
 
+                //Edit machine info
+                // wait for overlay/loader to disappear
+                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                    By.XPath("//div[contains(@class,'overlay')]")
+                ));
+                IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
+                editInfo.Click();
+                // scroll into view
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
 
-           
-                //IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
-                //editInfo.Click();
+                // click safely
+                editInfo.Click();
 
 
-                //IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
-                //clientLocation.Clear();
-                //clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
-                //Thread.Sleep(2000);
+                IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
+                clientLocation.Clear();
+                clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
+                Thread.Sleep(2000);
 
-                //IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
-                //routeIdentifier.Clear();
-                //routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
-                //Thread.Sleep(2000);
+                IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
+                routeIdentifier.Clear();
+                routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
+                Thread.Sleep(2000);
 
-                //// Direct Refill checkbox
-                //IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
+                // Direct Refill checkbox
+                IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
 
-                //if (directRefillCheckbox.Selected)
-                //{
-                //    Console.WriteLine("Direct Refill is checked. Unchecking now..");
-                //    IWebElement directRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Direct Refill Option')]")));
-                //    directRefillLabel.Click();
-                //    Thread.Sleep(1000); // allow Auto Refill to enable
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Direct Refill is already unchecked. Moving to check the status of Auto Refill...");
-                //}
+                if (directRefillCheckbox.Selected)
+                {
+                    Console.WriteLine("Direct Refill is checked. Unchecking now..");
+                    IWebElement directRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Direct Refill Option')]")));
+                    directRefillLabel.Click();
+                    Thread.Sleep(1000); // allow Auto Refill to enable
+                }
+                else
+                {
+                    Console.WriteLine("Direct Refill is already unchecked. Moving to check the status of Auto Refill...");
+                }
 
-                //// Auto Refill checkbox
-                //IWebElement autoRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name ='disabledAutoRefill']")));
+                // Auto Refill checkbox
+                IWebElement autoRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name ='disabledAutoRefill']")));
 
-                //if (autoRefillCheckbox.Selected)
-                //{
-                //    Console.WriteLine("Disable Auto Refill is checked. Unchecking now..");
-                //    IWebElement autoRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Disable Auto Refill')]")));
-                //    autoRefillLabel.Click();
-                //    Thread.Sleep(1000);
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Disable Auto Refill is already unchecked. Saving..");
-                //}
-                //Thread.Sleep(2000);
+                if (autoRefillCheckbox.Selected)
+                {
+                    Console.WriteLine("Disable Auto Refill is checked. Unchecking now..");
+                    IWebElement autoRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Disable Auto Refill')]")));
+                    autoRefillLabel.Click();
+                    Thread.Sleep(1000);
+                }
+                else
+                {
+                    Console.WriteLine("Disable Auto Refill is already unchecked. Saving..");
+                }
+                Thread.Sleep(2000);
 
-                ////Save
-                //IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
-                //saveButton.Click();
-                //Thread.Sleep(2000);
+                //Save
+                IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
+                saveButton.Click();
+                Thread.Sleep(2000);
 
 
                 //// Edit Single Slot 
@@ -173,12 +179,30 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
                     Thread.Sleep(2000);
                     IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
 
-                    a.MoveToElement(product).Pause(TimeSpan.FromSeconds(2)).Perform();
+                    a.MoveToElement(product).Pause(TimeSpan.FromSeconds(3)).Perform();
 
-                    // String dynamicXPath1 = $"(//mat-card)[{slotIndex}]//button//mat-icon";
-                    IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
+                    //// String dynamicXPath1 = $"(//mat-card)[{slotIndex}]//button//mat-icon";
+                    //IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
+                    //editSlot2.Click();
+                    //Thread.Sleep(2000);
+
+                    // wait for overlay/loader to disappear
+                    wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                        By.XPath("//div[contains(@class,'overlay')]")
+                    ));
+
+                    // locate the EDIT BUTTON (not icon)
+                    IWebElement editSlot2 = wait.Until(
+                        ExpectedConditions.ElementToBeClickable(
+                            By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button[.//mat-icon]")
+                        )
+                    );
+
+                    // scroll into view
+                    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editSlot2);
+
+                    // click safely
                     editSlot2.Click();
-                    Thread.Sleep(2000);
 
                     // Locate the toggle button input
                     IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
@@ -204,7 +228,6 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
                     IWebElement choosingProduct = wait.Until(ExpectedConditions.ElementToBeClickable(
                         By.XPath($"//div[@role='listbox']//div[contains(text(), ' {ProductMappingData.products[i, 1]} ')]")));
                     choosingProduct.Click();
-
 
                     IWebElement purchaseLimitPerUser = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")));
                     purchaseLimitPerUser.Clear();
