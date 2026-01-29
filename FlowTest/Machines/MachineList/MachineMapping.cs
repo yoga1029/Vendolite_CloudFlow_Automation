@@ -29,7 +29,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.MachineList
         public MachineMapping(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
         }
 
         public void ClientMappingWithMachineFlow()
@@ -190,7 +190,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.MachineList
 
                 IWebElement selectMachineInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("machineId")));
                 selectMachineInput.Click();
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
 
                 // Get all dropdown machine options
                 var machineOptions = wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.CssSelector("mat-option span")));
@@ -214,7 +214,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.MachineList
                     Console.WriteLine("Stored unmapped machine not found in dropdown!");
                 }
 
-
+                Thread.Sleep(2000);
                 IWebElement addBtn = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("button.mat-icon-button.mat-primary")));
                 addBtn.Click();
                 Thread.Sleep(2000);

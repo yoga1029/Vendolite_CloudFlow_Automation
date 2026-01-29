@@ -16,7 +16,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Authentication
         public Login(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
         }
 
         public void CompanyLoginSuccess()

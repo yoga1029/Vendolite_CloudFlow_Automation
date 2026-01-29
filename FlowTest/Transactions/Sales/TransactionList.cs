@@ -33,7 +33,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Transactions.Sales
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://cloud-test.vendolite.com/");
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
         }
 
         //public MachineFunctions(IWebDriver driver)

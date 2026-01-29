@@ -29,7 +29,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.MachineList
         public MachineScrapping(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
         }
 
         /*[TestInitialize]

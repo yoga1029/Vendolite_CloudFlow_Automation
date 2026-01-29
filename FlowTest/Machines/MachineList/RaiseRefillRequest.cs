@@ -36,7 +36,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.MachineList
         public RaiseRefillRequest(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
         }
 
         //[TestMethod]

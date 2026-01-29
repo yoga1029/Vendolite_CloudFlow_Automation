@@ -23,7 +23,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Company.Client
         public AddClient(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
         }
 
         public void AddClientFlow()

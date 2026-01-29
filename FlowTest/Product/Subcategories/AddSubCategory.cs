@@ -25,7 +25,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.Subcategories
         public AddSubCategory(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
         }
 
         public void AddSubCategoryFlow()

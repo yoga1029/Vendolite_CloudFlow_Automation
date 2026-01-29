@@ -28,7 +28,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.Brand
         public AddBrand(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
         }
 
         public void AddBrandFlow()

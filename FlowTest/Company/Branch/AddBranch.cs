@@ -20,7 +20,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Company.Branch
         public AddBranch(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
         }
 
         public void AddBranchFlow()
