@@ -1,0 +1,20 @@
+<html>
+  <body>
+    <h2 style="color:green;">Build: ${buildStatus}</h2>
+
+    <p><b>Job:</b> ${projectName}</p>
+    <p><b>Build Number:</b> ${buildNumber}</p>
+    <p><b>Triggered By:</b> ${cause}</p>
+    <p><b>Duration:</b> ${buildTime}</p>
+
+    <p>
+      <a href="${buildUrl}">Click here to view Jenkins build</a>
+    </p>
+
+    <hr/>
+
+   	<h3>Test Summary</h3>
+	${TEST_RESULT_TABLE}
+
+  </body>
+</html>
