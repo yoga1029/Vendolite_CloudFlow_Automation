@@ -39,8 +39,19 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.MachineList
             test = extent.CreateTest("Mapping Machine with Client");
             try
             {
-                Thread.Sleep(4000);
-                IWebElement machineMenu = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines")));
+
+                // wait for overlay to disappear
+                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                    By.XPath("//div[contains(@class,'overlay')]")
+                ));
+
+                IWebElement machineMenu = wait.Until(
+                    ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines"))
+                );
+
+                // scroll into view (safety)
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", machineMenu);
+
                 machineMenu.Click();
                 Thread.Sleep(1000);
 

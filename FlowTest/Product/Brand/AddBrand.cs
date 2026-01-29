@@ -37,11 +37,20 @@ namespace VMS_Phase1PortalAT.FlowTest.Product.Brand
             test = extent.CreateTest("Adding Brand");
             try
             {
-                Thread.Sleep(1000);
-                //Locate Product Module
-                IWebElement productModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Products')]")));
+                // wait for overlay to disappear first
+                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                    By.XPath("//div[contains(@class,'overlay')]")
+                ));
+
+                // Locate Product Module
+                IWebElement productModule = wait.Until(
+                    ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Products')]"))
+                );
+
+                // optional: scroll into view
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", productModule);
+
                 productModule.Click();
-                Thread.Sleep(2000);
                 //Locate brand sub-module
                 IWebElement brandListSubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Brand ')]")));
                 brandListSubModule.Click();

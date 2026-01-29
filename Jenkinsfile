@@ -20,7 +20,8 @@ pipeline {
             echo "EMAIL STEP REACHED - SUCCESS"
  
             emailext(
-                subject: "Automation Test Report - SUCCESS",
+		from: 'yogeswari@riota.in',
+                subject: "Cloud Flow Automation Report v8.9.2 - ${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
                 mimeType: 'text/html',
                 body: '${SCRIPT, template="groovy-html.template"}',
                 to: 'subramanianyoga90@gmail.com'
@@ -31,7 +32,8 @@ pipeline {
             echo "EMAIL STEP REACHED - FAILURE"
  
             emailext(
-                subject: "Automation Test Report - FAILURE",
+		from: 'yogeswari@riota.in',
+                subject: "Cloud Flow Automation Report v8.9.2 - ${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
                 mimeType: 'text/html',
                 body: '${SCRIPT, template="groovy-html.template"}',
                 to: 'subramanianyoga90@gmail.com'
