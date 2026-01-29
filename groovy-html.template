@@ -1,19 +1,22 @@
 <html>
   <body>
-    <h2 style="color:green;">Build: ${BUILD_STATUS}</h2>
+    <h2 style="color:${buildStatus == 'SUCCESS' ? 'green' : 'red'};">
+      Build: ${buildStatus}
+    </h2>
 
-    <p><b>Project:</b> ${PROJECT_NAME}</p>
-    <p><b>Build Number:</b> ${BUILD_NUMBER}</p>
-    <p><b>Triggered By:</b> ${CAUSE}</p>
-    <p><b>Duration:</b> ${BUILD_DURATION}</p>
+    <p><b>Project:</b> ${projectName}</p>
+    <p><b>Build Number:</b> ${buildNumber}</p>
+    <p><b>Triggered By:</b> ${cause}</p>
+    <p><b>Duration:</b> ${buildTime}</p>
 
     <p>
-      <a href="${BUILD_URL}">Click here to view Jenkins build</a>
+      <a href="${buildUrl}">Click here to view Jenkins build</a>
     </p>
 
     <hr/>
 
     <h3>Test Summary</h3>
     ${TEST_COUNTS}
+
   </body>
 </html>
