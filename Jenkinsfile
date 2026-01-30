@@ -9,7 +9,7 @@ pipeline {
         stage('Run Tests') {
     	steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-            bat 'dotnet test GIT_VMS-Phase1PortalAT.sln --filter "FullyQualifiedName~EndToEndFlow"'
+            bat 'dotnet test GIT_VMS-Phase1PortalAT.sln --filter "FullyQualifiedName~EndToEndFlow" --logger "trx;LogFileName=testresults.trx"'
         }
         junit '**/*.trx'
     	}
