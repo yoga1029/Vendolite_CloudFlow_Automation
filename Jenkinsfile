@@ -7,11 +7,13 @@ pipeline {
             }
         }
         stage('Run Tests') {
-            steps {
-                bat 'dotnet test GIT_VMS-Phase1PortalAT.sln --filter "FullyQualifiedName~EndToEndFlow"'
-        junit '**/TestResults/*.trx'
-            }
+    	steps {
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+            bat 'dotnet test GIT_VMS-Phase1PortalAT.sln --filter "FullyQualifiedName~EndToEndFlow"'
         }
+        junit '**/*.trx'
+    	}
+}
     }
     post {
         success {
@@ -21,7 +23,9 @@ pipeline {
                 subject: "Cloud Flow Automation Report v8.9.2 - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
                 mimeType: 'text/html',
                 body: '${SCRIPT, template="groovy-html.template"}',
-                to: 'subramanianyoga90@gmail.com'
+                to: 'subramanianyoga90@gmail.com',
+		attachLog: false
+
             )
         }
  
@@ -32,7 +36,8 @@ pipeline {
                 subject: "Cloud Flow Automation Report v8.9.2 - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
                 mimeType: 'text/html',
                 body: '${SCRIPT, template="groovy-html.template"}',
-                to: 'subramanianyoga90@gmail.com'
+                to: 'subramanianyoga90@gmail.com',
+		attachLog: false
             )
         }
     }
