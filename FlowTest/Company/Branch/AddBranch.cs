@@ -35,10 +35,10 @@ namespace VMS_Phase1PortalAT.FlowTest.Company.Branch
                 IWebElement companyModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Company")));
                 companyModule.Click();
 
-                //Locate branch sub-module
-                IWebElement branchListSubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Branch List')]")));
-                branchListSubModule.Click();
-                Thread.Sleep(2000);
+                ////Locate branch sub-module
+                //IWebElement branchListSubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Branch List')]")));
+                //branchListSubModule.Click();
+                //Thread.Sleep(2000);
 
 
                 string searchName = AddBranchData.addBranchSuccess["searchName"];
