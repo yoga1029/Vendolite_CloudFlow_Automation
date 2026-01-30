@@ -1,22 +1,38 @@
+def result = build.result ?: "SUCCESS"
+def color = result == "SUCCESS" ? "#4CAF50" : "#F44336"
+
+def cause = build.getCauses().collect { it.shortDescription }.join(", ")
+
+def changes = ""
+if (build.changeSets) {
+    build.changeSets.each { cs ->
+        cs.items.each { item ->
+            changes += "<li>${item.msg} by ${item.author}</li>"
+        }
+    }
+}
+
+return """
 <html>
-  <body>
-    <h2 style="color:${buildStatus == 'SUCCESS' ? 'green' : 'red'};">
-      Build: ${buildStatus}
-    </h2>
+  <body style="font-family: Arial, sans-serif;">
 
-    <p><b>Project:</b> ${projectName}</p>
-    <p><b>Build Number:</b> ${buildNumber}</p>
-    <p><b>Triggered By:</b> ${cause}</p>
-    <p><b>Duration:</b> ${buildTime}</p>
+    <div style="background-color:${color};color:white;padding:8px;font-weight:bold;">
+      BUILD ${result}
+    </div>
 
-    <p>
-      <a href="${buildUrl}">Click here to view Jenkins build</a>
-    </p>
+    <p><b>URL:</b> <a href="${build.absoluteUrl}">${build.absoluteUrl}</a></p>
+    <p><b>Project:</b> ${project.name}</p>
+    <p><b>Date:</b> ${new Date(build.startTimeInMillis)}</p>
+    <p><b>Duration:</b> ${build.durationString}</p>
+    <p><b>Cause:</b> ${cause}</p>
 
     <hr/>
 
-    <h3>Test Summary</h3>
-    ${TEST_COUNTS}
+    <h3 style="background-color:#4CAF50;color:white;padding:5px;">CHANGES</h3>
+    <ul>
+      ${changes ?: "<li>No changes</li>"}
+    </ul>
 
   </body>
 </html>
+"""
