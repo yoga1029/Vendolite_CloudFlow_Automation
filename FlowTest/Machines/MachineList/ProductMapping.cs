@@ -80,32 +80,32 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
                 machineDetails.Click();
                 Thread.Sleep(3000);
 
-                //Edit Planogram
-                Thread.Sleep(3000);
-                IWebElement editSlot = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
-                editSlot.Click();
-                Thread.Sleep(1000);
+                ////Edit Planogram
+                //Thread.Sleep(3000);
+                //IWebElement editSlot = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
+                //editSlot.Click();
+                //Thread.Sleep(1000);
 
-                IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
-                slotRowCount.Clear();
-                slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+                //IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
+                //slotRowCount.Clear();
+                //slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
 
-                IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
-                slotColumnCount.Clear();
-                slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+                //IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
+                //slotColumnCount.Clear();
+                //slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
 
-                IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
-                endingRowCount.Clear();
-                endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+                //IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
+                //endingRowCount.Clear();
+                //endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
 
-                IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
-                endingColumnCount.Clear();
-                endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
-                Thread.Sleep(1000);
-                IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-                saveSlots.Click();
-                Thread.Sleep(6000);
-                Console.WriteLine("Product Matrix Changed");
+                //IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
+                //endingColumnCount.Clear();
+                //endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+                //Thread.Sleep(1000);
+                //IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                //saveSlots.Click();
+                //Thread.Sleep(3000);
+                //Console.WriteLine("Product Matrix Changed");
 
                 //Edit machine info
                 IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
