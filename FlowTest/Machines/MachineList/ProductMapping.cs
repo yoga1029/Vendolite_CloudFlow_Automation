@@ -108,17 +108,29 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
                 Console.WriteLine("Product Matrix Changed again");
 
                 //Edit machine info
-                // wait for overlay/loader to disappear
-                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-                    By.XPath("//div[contains(@class,'overlay')]")
-                ));
-                IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
-                editInfo.Click();
-                // scroll into view
-                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
+                // wait for any overlay/loader to disappear
+                wait.Until(driver =>
+                {
+                    var overlays = driver.FindElements(By.XPath("//div[contains(@class,'overlay')]"));
+                    return overlays.Count == 0 || overlays.All(o => !o.Displayed);
+                });
 
-                // click safely
+                // locate the EDIT INFO icon's parent button and click it
+                IWebElement editInfo = wait.Until(
+                    ExpectedConditions.ElementToBeClickable(
+                        By.XPath("//mat-icon[normalize-space()='edit']/parent::button")
+                    )
+                );
+
+                // scroll into view
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView({block:'center'});", editInfo);
+
+                // click once
                 editInfo.Click();
+
+                // wait until Edit Info form is visible (proves click worked)
+                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
+
 
 
                 IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
