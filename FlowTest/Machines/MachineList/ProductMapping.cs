@@ -109,7 +109,6 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
 
                 //Edit machine info
                 IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
-                editInfo.Click();
                 // scroll into view
                 ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
 
