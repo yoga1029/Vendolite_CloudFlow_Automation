@@ -252,7 +252,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.ProductMapping
 
                 //Modify Planogram after Product Mapping
                 IWebElement editSlot1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
-                editSlot.Click();
+                editSlot1.Click();
                 Thread.Sleep(1000);
 
                 IWebElement slotRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
