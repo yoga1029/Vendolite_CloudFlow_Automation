@@ -8,6 +8,8 @@ using System;
 using System.Threading;
 using VMS_Phase1PortalAT.FlowTest.Authentication;
 using VMS_Phase1PortalAT.FlowTest.Machines.MachineList;
+using VMS_Phase1PortalAT.FlowTest.Product.Brand;
+using VMS_Phase1PortalAT.FlowTest.Product.Categories;
 using VMS_Phase1PortalAT.FlowTest.Utilities.Datas;
 
 namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
@@ -118,6 +120,52 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 throw;
             }
         }
+
+
+        [TestMethod]
+        [Priority(5)]
+        public void Step5_AddBrand()
+        {
+            if (previousStepFailed)
+                Assert.Inconclusive("Previous step failed");
+
+            test = extent.CreateTest("Add Brand Flow");
+
+            try
+            {
+                new AddBrand(driver).AddBrandFlow();
+                test.Pass("Brand completed");
+            }
+            catch (Exception ex)
+            {
+                test.Fail(ex);
+                previousStepFailed = true;
+                throw;
+            }
+        }
+
+        [TestMethod]
+        [Priority(6)]
+        public void Step6_AddCategory()
+        {
+            if (previousStepFailed)
+                Assert.Inconclusive("Previous step failed");
+
+            test = extent.CreateTest("Add Category Flow");
+
+            try
+            {
+                new AddCategory(driver).AddCategoryFlow();
+                test.Pass("Category completed");
+            }
+            catch (Exception ex)
+            {
+                test.Fail(ex);
+                previousStepFailed = true;
+                throw;
+            }
+        }
+
 
         [ClassCleanup]
         public static void ClassCleanup()
@@ -410,12 +458,29 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             billDateCalendarIcon.Click();
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//td[.//span[text()='2035']]")).Click();
+            IWebElement yearControl1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='owl-dt-calendar-control']")));
+            yearControl1.Click();
             Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//td[.//span[text()='Sept']]")).Click();
+
+            IWebElement yearToSelect2 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{machinePOData.machineMapping[0, 3]}']]")));
+            yearToSelect2.Click();
             Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//td[.//span[text()='2']]")).Click();
-            Thread.Sleep(3000);
+
+            IWebElement monthToSelect1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{machinePOData.machineMapping[0, 4]}']]")));
+            monthToSelect1.Click();
+            Thread.Sleep(1000);
+
+            IWebElement dayToSelect1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{machinePOData.machineMapping[0, 5]}']]")));
+            dayToSelect1.Click();
+            Thread.Sleep(1000);
+
+
+            //driver.FindElement(By.XPath("//td[.//span[text()='2035']]")).Click();
+            //Thread.Sleep(1000);
+            //driver.FindElement(By.XPath("//td[.//span[text()='Sept']]")).Click();
+            //Thread.Sleep(1000);
+            //driver.FindElement(By.XPath("//td[.//span[text()='2']]")).Click();
+            //Thread.Sleep(3000);
 
             IWebElement selectMachineInput = wait.Until(
                 ExpectedConditions.ElementToBeClickable(By.Name("machineId")));
@@ -450,5 +515,183 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             Thread.Sleep(4000);
         }
     }
+
+
+
+
+
+    public class AddBrand
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public AddBrand(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
+        }
+
+        public void AddBrandFlow()
+        {
+            // wait for overlay to disappear first
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                By.XPath("//div[contains(@class,'overlay')]")
+            ));
+
+            // Locate Product Module
+            By productModuleBy = By.XPath("//div[contains(text(),'Products')]");
+            wait.Until(d => d.FindElement(productModuleBy).Displayed);
+            IWebElement productModule = driver.FindElement(productModuleBy);
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView(true);", productModule);
+
+            productModule.Click();
+
+            // Locate Brand sub-module
+            By brandListBy = By.XPath("//div[contains(text(),' Brand ')]");
+            wait.Until(d => d.FindElement(brandListBy).Displayed);
+            driver.FindElement(brandListBy).Click();
+
+            Thread.Sleep(7000);
+
+            for (int i = 0; i < AddBrandData.Brands.GetLength(0); i++)
+            {
+                string searchName = AddBrandData.Brands[i, 0];
+
+                By searchBoxBy = By.Name("searchText");
+                wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+                IWebElement searchText = driver.FindElement(searchBoxBy);
+                searchText.Clear();
+                searchText.SendKeys(searchName + Keys.Enter);
+
+                Thread.Sleep(3000);
+
+                var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+
+                if (rows.Count == 0)
+                {
+                    Console.WriteLine($"Brand '{searchName}' not found. Adding brand");
+
+                    By addBrandBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
+                    wait.Until(d => d.FindElement(addBrandBtnBy).Displayed);
+                    driver.FindElement(addBrandBtnBy).Click();
+
+                    Thread.Sleep(2000);
+
+                    IWebElement brandName =
+                        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
+                    brandName.SendKeys(AddBrandData.Brands[i, 1]);
+
+                    driver.FindElement(By.Name("branch")).Click();
+                    string branchName = AddBrandData.Brands[i, 2];
+                    string dynamicXPath = $"//span[text()=' {branchName} ']";
+                    driver.FindElement(By.XPath(dynamicXPath)).Click();
+
+                    // Upload Brand Image
+                    IWebElement imageUploadBtn =
+                        wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+                    imageUploadBtn.SendKeys(AddBrandData.Brands[i, 3]);
+
+                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
+                          .Click();
+
+                    Thread.Sleep(3000);
+                }
+                else
+                {
+                    Console.WriteLine($"Brand '{searchName}' already exists.");
+                }
+            }
+        }
+    }
+
+
+
+
+    public class AddCategory
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public AddCategory(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
+        }
+
+        public void AddCategoryFlow()
+        {
+            Thread.Sleep(1000);
+
+            // Locate Product Module
+            By productModuleBy = By.XPath("//div[contains(text(),'Products')]");
+            wait.Until(d => d.FindElement(productModuleBy).Displayed);
+            driver.FindElement(productModuleBy).Click();
+
+            // Locate Category sub-module
+            By categorySubModuleBy = By.XPath("//div[contains(text(),' Categories ')]");
+            wait.Until(d => d.FindElement(categorySubModuleBy).Displayed);
+            driver.FindElement(categorySubModuleBy).Click();
+
+            Thread.Sleep(7000);
+
+            for (int i = 0; i < AddCategoryData.Categories.GetLength(0); i++)
+            {
+                string searchName = AddCategoryData.Categories[i, 0];
+
+                By searchBoxBy = By.Name("searchText");
+                wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+                IWebElement searchText = driver.FindElement(searchBoxBy);
+                searchText.Clear();
+                searchText.SendKeys(searchName + Keys.Enter);
+
+                Thread.Sleep(4000);
+
+                var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+                Thread.Sleep(1000);
+
+                if (rows.Count == 0)
+                {
+                    Console.WriteLine($"Category '{searchName}' not found. Adding category");
+
+                    By addCategoryBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
+                    wait.Until(d => d.FindElement(addCategoryBtnBy).Displayed);
+                    driver.FindElement(addCategoryBtnBy).Click();
+
+                    Thread.Sleep(2000);
+
+                    IWebElement categoryName =
+                        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
+                    categoryName.SendKeys(AddCategoryData.Categories[i, 1]);
+
+                    driver.FindElement(By.Name("branch")).Click();
+                    string branchName = AddCategoryData.Categories[i, 2];
+                    string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
+                    driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
+
+                    driver.FindElement(By.Name("brand")).Click();
+                    string brandName = AddCategoryData.Categories[i, 3];
+                    string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
+                    driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
+
+                    // Upload Category Image
+                    IWebElement imageUploadBtn =
+                        wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+                    imageUploadBtn.SendKeys(AddCategoryData.Categories[i, 4]);
+
+                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
+                          .Click();
+
+                    Thread.Sleep(3000);
+                }
+                else
+                {
+                    Console.WriteLine($"Category '{searchName}' already exists.");
+                }
+            }
+        }
+    }
+
 
 }
