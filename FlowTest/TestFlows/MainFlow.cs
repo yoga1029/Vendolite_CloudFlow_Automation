@@ -360,10 +360,27 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                     By.XPath("//button[contains(@class,'add_fab')]")));
             addClientPurchaseOrderButton.Click();
 
-            //IWebElement billDate = wait.Until(
-            //    ExpectedConditions.ElementToBeClickable(By.Name("drange2")));
-            //billDate.Click();
-            //Thread.Sleep(1000);
+            IWebElement billDate = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Name("drange2")));
+            billDate.Click();
+            Thread.Sleep(1000);
+
+            IWebElement yearControl = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='owl-dt-calendar-control']")));
+            yearControl.Click();
+            Thread.Sleep(1000);
+
+            IWebElement yearToSelect = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{machinePOData.machineMapping[0, 0]}']]")));
+            yearToSelect.Click();
+            Thread.Sleep(1000);
+
+            IWebElement monthToSelect = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{machinePOData.machineMapping[0, 1]}']]")));
+            monthToSelect.Click();
+            Thread.Sleep(1000);
+
+            IWebElement dayToSelect = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{machinePOData.machineMapping[0, 2]}']]")));
+            dayToSelect.Click();
+            Thread.Sleep(1000);
+
 
             //driver.FindElement(By.XPath("//td[.//span[text()='2025']]")).Click();
             //Thread.Sleep(1000);
@@ -372,41 +389,9 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             //driver.FindElement(By.XPath("//td[.//span[text()='3']]")).Click();
             //Thread.Sleep(1000);
 
-            //IWebElement client = wait.Until(
-            //    ExpectedConditions.ElementIsVisible(By.Name("client")));
-            //client.Click();
-
-
-            IWebElement billDate = wait.Until(
-    ExpectedConditions.ElementToBeClickable(By.Name("drange2")));
-            billDate.Click();
-
-            // open month/year picker
-            IWebElement header = wait.Until(
-                ExpectedConditions.ElementToBeClickable(
-                    By.XPath("//button[contains(@class,'MuiPickersCalendarHeader-switchHeader')]")
-                ));
-            header.Click();
-
-            // select year
-            IWebElement yearBtn = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button[text()='2026']")));
-            yearBtn.Click();
-
-            // select month
-            IWebElement monthBtn = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button[text()='Feb']")));
-            monthBtn.Click();
-
-            // select day
-            IWebElement dayBtn = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button[text()='2']")));
-            dayBtn.Click();
-
             IWebElement client = wait.Until(
                 ExpectedConditions.ElementIsVisible(By.Name("client")));
             client.Click();
-
 
             string clientName1 =
                 AddClientPurchaseOrderData.addClientPurchaseOderSuccess["clientName"];
@@ -420,43 +405,17 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             string filePath = Path.Combine(projectRoot, "TestData", "PO-PDF.pdf");
             fileInput.SendKeys(filePath);
 
-            //IWebElement billDateCalendarIcon = wait.Until(
-            //    ExpectedConditions.ElementToBeClickable(By.Name("drange")));
-            //billDateCalendarIcon.Click();
-            //Thread.Sleep(1000);
-
-            //driver.FindElement(By.XPath("//td[.//span[text()='2035']]")).Click();
-            //Thread.Sleep(1000);
-            //driver.FindElement(By.XPath("//td[.//span[text()='Sept']]")).Click();
-            //Thread.Sleep(1000);
-            //driver.FindElement(By.XPath("//td[.//span[text()='2']]")).Click();
-            //Thread.Sleep(3000);
-
             IWebElement billDateCalendarIcon = wait.Until(
-    ExpectedConditions.ElementToBeClickable(By.Name("drange")));
+                ExpectedConditions.ElementToBeClickable(By.Name("drange")));
             billDateCalendarIcon.Click();
+            Thread.Sleep(1000);
 
-            // open month/year selector
-            IWebElement header1 = wait.Until(
-                ExpectedConditions.ElementToBeClickable(
-                    By.XPath("//button[contains(@class,'MuiPickersCalendarHeader-switchHeader')]")
-                ));
-            header1.Click();
-
-            // select year = 2035
-            IWebElement yearBtn1 = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button[text()='2035']")));
-            yearBtn1.Click();
-
-            // select month = Sep
-            IWebElement monthBtn1 = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button[text()='Sep']")));
-            monthBtn1.Click();
-
-            // select day = 2
-            IWebElement dayBtn1 = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button[text()='2']")));
-            dayBtn1.Click();
+            driver.FindElement(By.XPath("//td[.//span[text()='2035']]")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("//td[.//span[text()='Sept']]")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("//td[.//span[text()='2']]")).Click();
+            Thread.Sleep(3000);
 
             IWebElement selectMachineInput = wait.Until(
                 ExpectedConditions.ElementToBeClickable(By.Name("machineId")));

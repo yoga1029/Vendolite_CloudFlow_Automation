@@ -156,5 +156,17 @@ namespace VMS_Phase1PortalAT.FlowTest.Utilities.Datas
 
     }
 
+    internal class machinePOData
+    {
+        public static string[,] machineMapping = new string[,]
+        {
+            {
+                 "2026", "Jan", "31"
+            },
+            //{
+            //    "Pudukkottai Warehouse", "Thirumayam", "Lavender - Id: 101LAV0001728", "15", "1", "Lavender", "2035", "Dec", "31", "2025", "Nov", "13",
+            //},
+        };
+    }
 
 }
