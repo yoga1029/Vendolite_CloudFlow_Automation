@@ -7,6 +7,7 @@ using SeleniumExtras.WaitHelpers;
 using System;
 using System.Threading;
 using VMS_Phase1PortalAT.FlowTest.Authentication;
+using VMS_Phase1PortalAT.FlowTest.Machines.MachineList;
 using VMS_Phase1PortalAT.FlowTest.Utilities.Datas;
 
 namespace VMS_Phase1PortalAT.FlowTest.TestFlows   // ✅ SAME NAMESPACE
@@ -87,6 +88,28 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   // ✅ SAME NAMESPACE
             {
                 new AddClient(driver).AddClientFlow();
                 test.Pass("Client completed");
+            }
+            catch (Exception ex)
+            {
+                test.Fail(ex);
+                previousStepFailed = true;
+                throw;
+            }
+        }
+
+        [TestMethod]
+        [Priority(4)]
+        public void Step4_MachineMapping()
+        {
+            if (previousStepFailed)
+                Assert.Inconclusive("Previous step failed");
+
+            test = extent.CreateTest("Machine Mapping Flow");
+
+            try
+            {
+                new MachineMapping(driver).ClientMappingWithMachineFlow();
+                test.Pass("Machine mapping completed");
             }
             catch (Exception ex)
             {
@@ -253,4 +276,162 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   // ✅ SAME NAMESPACE
             }
         }
     }
+
+
+
+    // ================= Machine Mapping CLASS (SAME FILE, SAME NAMESPACE) =================
+
+    public class MachineMapping
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+        public static string unmappedMachineForMapping;
+
+        public MachineMapping(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
+        }
+
+        public void ClientMappingWithMachineFlow()
+        {
+            // wait for overlay to disappear
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                By.XPath("//div[contains(@class,'overlay')]")
+            ));
+
+            IWebElement machineMenu = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines"))
+            );
+
+            ((IJavaScriptExecutor)driver).ExecuteScript(
+                "arguments[0].scrollIntoView(true);", machineMenu);
+
+            machineMenu.Click();
+            Thread.Sleep(1000);
+
+            IWebElement machineList = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines0")));
+            machineList.Click();
+            Thread.Sleep(6000);
+
+            var machineRows = wait.Until(
+                ExpectedConditions.PresenceOfAllElementsLocatedBy(
+                    By.CssSelector("table tbody tr")));
+
+            List<IWebElement> unmappedMachines = new List<IWebElement>();
+
+            foreach (var row in machineRows)
+            {
+                var cells = row.FindElements(By.TagName("td"));
+                string clientName = cells[2].Text.Trim();
+                if (clientName.Equals("N/A", StringComparison.OrdinalIgnoreCase))
+                {
+                    unmappedMachines.Add(row);
+                }
+            }
+
+            if (unmappedMachines.Count > 0)
+            {
+                var firstUnmappedRow = unmappedMachines.First();
+                unmappedMachineForMapping =
+                    firstUnmappedRow.FindElements(By.TagName("td"))[0].Text;
+            }
+            else
+            {
+                Console.WriteLine("No unmapped machines found.");
+                return;
+            }
+
+            IWebElement purchaseOrderButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.XPath("//div[contains(text(),'Purchase Order')]")));
+            purchaseOrderButton.Click();
+            Thread.Sleep(2000);
+
+            IWebElement currentPurchaseOrderMenu = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.XPath("//div[contains(text(),'Current Purchase Order')]")));
+            currentPurchaseOrderMenu.Click();
+            Thread.Sleep(2000);
+
+            IWebElement addClientPurchaseOrderButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.XPath("//button[contains(@class,'add_fab')]")));
+            addClientPurchaseOrderButton.Click();
+
+            IWebElement billDate = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Name("drange2")));
+            billDate.Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("//td[.//span[text()='2025']]")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("//td[.//span[text()='Sept']]")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("//td[.//span[text()='3']]")).Click();
+            Thread.Sleep(1000);
+
+            IWebElement client = wait.Until(
+                ExpectedConditions.ElementIsVisible(By.Name("client")));
+            client.Click();
+
+            string clientName1 =
+                AddClientPurchaseOrderData.addClientPurchaseOderSuccess["clientName"];
+            string dynamicXPath = $"//span[text()=' {clientName1} ']";
+            driver.FindElement(By.XPath(dynamicXPath)).Click();
+
+            IWebElement fileInput = driver.FindElement(
+                By.XPath("//input[@type='file']"));
+
+            string projectRoot = Directory.GetCurrentDirectory();
+            string filePath = Path.Combine(projectRoot, "TestData", "PO-PDF.pdf");
+            fileInput.SendKeys(filePath);
+
+            IWebElement billDateCalendarIcon = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Name("drange")));
+            billDateCalendarIcon.Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("//td[.//span[text()='2035']]")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("//td[.//span[text()='Sept']]")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("//td[.//span[text()='2']]")).Click();
+            Thread.Sleep(3000);
+
+            IWebElement selectMachineInput = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Name("machineId")));
+            selectMachineInput.Click();
+            Thread.Sleep(2000);
+
+            var machineOptions = wait.Until(
+                ExpectedConditions.PresenceOfAllElementsLocatedBy(
+                    By.CssSelector("mat-option span")));
+
+            foreach (var option in machineOptions)
+            {
+                if (option.Text.Trim()
+                    .Equals(unmappedMachineForMapping,
+                            StringComparison.OrdinalIgnoreCase))
+                {
+                    option.Click();
+                    break;
+                }
+            }
+
+            IWebElement addBtn = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.CssSelector("button.mat-icon-button.mat-primary")));
+            addBtn.Click();
+            Thread.Sleep(2000);
+
+            IWebElement save = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.XPath("//button[.//span[normalize-space(text())='Save']]")));
+            save.Click();
+            Thread.Sleep(4000);
+        }
+    }
+
 }

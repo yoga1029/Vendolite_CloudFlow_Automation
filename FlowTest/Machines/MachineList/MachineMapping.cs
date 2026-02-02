@@ -132,8 +132,6 @@ namespace VMS_Phase1PortalAT.FlowTest.Machines.MachineList
                 string dynamicXPath = $"//span[text()=' {clientName1} ']";
                 driver.FindElement(By.XPath(dynamicXPath)).Click();
 
-                //IWebElement chooseClientName = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[text() = ' YogeswariiS ']")));
-                //chooseClientName.Click(); Thread.Sleep(1000);
 
                 // Click the upload button (which opens the Windows dialog)
                
