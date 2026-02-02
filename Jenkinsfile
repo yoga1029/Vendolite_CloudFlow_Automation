@@ -17,33 +17,24 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo "Running MSTest tests on solution ${env.DOTNET_SOLUTION}"
-                bat "dotnet test ${env.DOTNET_SOLUTION} --logger \"trx;LogFileName=test_results.trx\""
-            }
-        }
 
-        stage('Publish Test Results') {
-            steps {
-                echo 'Publishing MSTest results to Jenkins'
-                mstest testResultsFile: '**/test_results.trx', failOnError: false
+                // Allow pipeline to continue even if tests fail
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    bat "dotnet test ${env.DOTNET_SOLUTION} --logger \"trx;LogFileName=test_results.trx\""
+                }
             }
         }
     }
 
     post {
-        success {
-            echo "EMAIL STEP REACHED - SUCCESS"
-            emailext(
-                from: "${env.EMAIL_FROM}",
-                subject: "Cloud Flow Automation Report - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
-                mimeType: 'text/html',
-                body: '${SCRIPT, template="groovy-html.template"}',
-                to: "${env.EMAIL_TO}",
-                attachLog: false
-            )
-        }
+        always {
+            echo 'Publishing MSTest results to Jenkins'
 
-        failure {
-            echo "EMAIL STEP REACHED - FAILURE"
+            // Always publish results (pass or fail)
+            mstest testResultsFile: '**/test_results.trx', keepLongStdio: true
+
+            echo "Sending email with test counts"
+
             emailext(
                 from: "${env.EMAIL_FROM}",
                 subject: "Cloud Flow Automation Report - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
