@@ -161,7 +161,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Utilities.Datas
         public static string[,] machineMapping = new string[,]
         {
             {
-                 "2026", "Jan", "31","2030", "Jan", "31"
+                 "2026", "Jan", "31", "2030", "Jan", "31"
             },
         };
     }
