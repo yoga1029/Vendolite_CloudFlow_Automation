@@ -10,7 +10,7 @@ using VMS_Phase1PortalAT.FlowTest.Authentication;
 using VMS_Phase1PortalAT.FlowTest.Machines.MachineList;
 using VMS_Phase1PortalAT.FlowTest.Utilities.Datas;
 
-namespace VMS_Phase1PortalAT.FlowTest.TestFlows   // ✅ SAME NAMESPACE
+namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 {
     [TestClass]
     [DoNotParallelize]
@@ -127,7 +127,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   // ✅ SAME NAMESPACE
         }
     }
 
-    // ================= BRANCH CLASS (SAME FILE, SAME NAMESPACE) =================
+    // ================= BRANCH CLASS =================
 
     public class AddBranch
     {
@@ -197,7 +197,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   // ✅ SAME NAMESPACE
         }
     }
 
-    // ================= CLIENT CLASS (SAME FILE, SAME NAMESPACE) =================
+    // ================= CLIENT CLASS =================
 
     public class AddClient
     {
@@ -279,7 +279,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   // ✅ SAME NAMESPACE
 
 
 
-    // ================= Machine Mapping CLASS (SAME FILE, SAME NAMESPACE) =================
+    // ================= Machine Mapping CLASS =================
 
     public class MachineMapping
     {
