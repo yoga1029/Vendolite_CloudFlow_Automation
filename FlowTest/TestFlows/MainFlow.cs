@@ -1427,12 +1427,27 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             saveSlots.Click();
             Thread.Sleep(5000);
 
-            IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
-            editInfo.Click();
-            Thread.Sleep(2000);
+            //IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
+            //editInfo.Click();
+            //Thread.Sleep(2000);
+            Console.WriteLine("Editing Machine Details...");
+            Actions b = new Actions(driver);
 
-   
-      
+            IWebElement product1 = wait.Until(ExpectedConditions.ElementIsVisible(
+    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")));
+
+            b.MoveToElement(product1).Pause(TimeSpan.FromSeconds(1)).Perform();
+
+            IWebElement editInfo = wait.Until(ExpectedConditions.ElementIsVisible(
+                By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", editInfo);
+
+
+
+
+
             //// wait until overlay/backdrop is fully gone
             //wait.Until(driver =>
             //    driver.FindElements(By.CssSelector("mat-dialog-container, .cdk-overlay-backdrop")).Count == 0
