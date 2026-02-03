@@ -1423,21 +1423,32 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             endingColumnCount.Clear();
             endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
 
-            IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-            saveSlots.Click();
-            Thread.Sleep(3000);
+            //IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+            //saveSlots.Click();
+            //Thread.Sleep(3000);
 
             //IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
             //editInfo.Click();
             //Thread.Sleep(2000);
-            By editInfoBtn = By.XPath("//button[@mattooltip='Edit Info' and contains(@class,'mat-icon-button')]");
 
-            IWebElement editInfo = wait.Until(d =>
+            IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(
+    By.XPath("//span[contains(text(), ' Save ')]")));
+            saveSlots.Click();
+
+            // wait for slot save dialog/overlay to disappear
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                By.XPath("//mat-dialog-container | //div[contains(@class,'cdk-overlay-backdrop')]")
+            ));
+
+            // click Edit Info (pink)
+            By editInfoBtn = By.XPath("//button[.//mat-icon[text()='edit']]");
+
+            IWebElement editInfo = wait.Until(driver =>
             {
                 try
                 {
-                    var el = d.FindElement(editInfoBtn);
-                    return (el.Displayed && el.Enabled) ? el : null;
+                    var el = driver.FindElement(editInfoBtn);
+                    return el.Displayed ? el : null;
                 }
                 catch (NoSuchElementException)
                 {
@@ -1452,7 +1463,6 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
             ((IJavaScriptExecutor)driver)
                 .ExecuteScript("arguments[0].click();", editInfo);
-
 
 
             IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
