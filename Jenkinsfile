@@ -42,8 +42,17 @@ pipeline {
                 body: '${SCRIPT, template="groovy-html.template"}',
                 to: "${env.EMAIL_TO}",
                 attachLog: false,
-                includeTestSummary: false,
-                includeFailedTests: false
+                presendScript: '''
+                    def body = msg.getBody()
+
+                    // remove CONSOLE OUTPUT section
+                    body = body.replaceAll("(?s)CONSOLE OUTPUT.*", "")
+
+                    // remove failed test name lines like: VMS_...(Age: 9)
+                    body = body.replaceAll("VMS_.*\\(Age:.*?\\)", "")
+
+                    msg.setContent(body, "text/html")
+                '''
             )
         }
     }
