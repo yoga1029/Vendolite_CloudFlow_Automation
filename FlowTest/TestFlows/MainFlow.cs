@@ -1425,24 +1425,42 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
             IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
             saveSlots.Click();
-            Thread.Sleep(5000);
+
 
             //IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
             //editInfo.Click();
             //Thread.Sleep(2000);
+
+
+
+            // wait for old Information card to disappear
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
+            ));
+
+            // wait for new Information card to appear
+            wait.Until(ExpectedConditions.ElementIsVisible(
+                By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
+            ));
+
             Console.WriteLine("Editing Machine Details...");
+
             Actions b = new Actions(driver);
 
+            // get Information card
             IWebElement product1 = wait.Until(ExpectedConditions.ElementIsVisible(
-    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")));
+                By.XPath("//mat-card[.//h5[normalize-space()='Information']]")));
 
             b.MoveToElement(product1).Pause(TimeSpan.FromSeconds(1)).Perform();
 
-            IWebElement editInfo = wait.Until(ExpectedConditions.ElementIsVisible(
+            // get edit button inside it
+            IWebElement editInfo = wait.Until(ExpectedConditions.ElementExists(
                 By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
 
+            // JS click (CI safe)
             ((IJavaScriptExecutor)driver)
                 .ExecuteScript("arguments[0].click();", editInfo);
+
 
 
 
