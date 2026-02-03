@@ -1427,7 +1427,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             saveSlots.Click();
             Thread.Sleep(3000);
 
-            IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info' and .//mat-icon[normalize-space()='edit']]")));
+            IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//button[.//mat-icon[normalize-space()='edit']])[1]")));
             editInfo.Click();
             Thread.Sleep(2000);
 
