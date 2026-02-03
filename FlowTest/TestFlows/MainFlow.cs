@@ -1399,13 +1399,11 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             IWebElement machineDetails = wait.Until(
                 ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
             machineDetails.Click();
-            Thread.Sleep(3000);
 
             // Edit Slot
             IWebElement editSlot = wait.Until(
                 ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
             editSlot.Click();
-            Thread.Sleep(1000);
 
             IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
             slotRowCount.Clear();
