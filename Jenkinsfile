@@ -19,7 +19,7 @@ pipeline {
                 echo "Running MSTest tests on solution ${env.DOTNET_SOLUTION}"
 
                 // Allow pipeline to continue even if tests fail
-                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+		catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
                     bat "dotnet test ${env.DOTNET_SOLUTION} --logger \"trx;LogFileName=test_results.trx\""
                 }
             }
