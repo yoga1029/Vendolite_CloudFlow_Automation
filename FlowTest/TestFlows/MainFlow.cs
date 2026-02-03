@@ -1476,6 +1476,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             //saveButton.Click();
             //Thread.Sleep(2000);
 
+
             Console.WriteLine("Product Mapping in to slots...");
             Actions a = new Actions(driver);
 
