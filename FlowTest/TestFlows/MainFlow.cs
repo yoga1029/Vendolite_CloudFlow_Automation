@@ -1441,7 +1441,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             ));
 
             // click Edit Info (pink)
-            By editInfoBtn = By.XPath("//button[.//mat-icon[text()='edit']]");
+            By editInfoBtn = By.XPath("//button[@mattooltip='Edit Info']");
 
             IWebElement editInfo = wait.Until(driver =>
             {
