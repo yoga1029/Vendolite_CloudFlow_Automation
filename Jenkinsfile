@@ -19,7 +19,7 @@ pipeline {
                 echo "Running MSTest tests on solution ${env.DOTNET_SOLUTION}"
 
                 // Allow pipeline to continue even if tests fail
-		catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
+                catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
                     bat "dotnet test ${env.DOTNET_SOLUTION} --logger \"trx;LogFileName=test_results.trx\""
                 }
             }
@@ -42,12 +42,8 @@ pipeline {
                 body: '${SCRIPT, template="groovy-html.template"}',
                 to: "${env.EMAIL_TO}",
                 attachLog: false,
-                presendScript: '''
-                    msg.setContent(
-                        msg.getBody().replaceAll("(?s)CONSOLE OUTPUT.*", ""),
-                        "text/html"
-                    )
-                '''
+                includeTestSummary: false,
+                includeFailedTests: false
             )
         }
     }
