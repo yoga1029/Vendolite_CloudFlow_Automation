@@ -1427,9 +1427,33 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             saveSlots.Click();
             Thread.Sleep(3000);
 
-            IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
-            editInfo.Click();
-            Thread.Sleep(2000);
+            //IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
+            //editInfo.Click();
+            //Thread.Sleep(2000);
+            By editInfoBtn = By.XPath("//button[@mattooltip='Edit Info' and contains(@class,'mat-icon-button')]");
+
+            IWebElement editInfo = wait.Until(d =>
+            {
+                try
+                {
+                    var el = d.FindElement(editInfoBtn);
+                    return (el.Displayed && el.Enabled) ? el : null;
+                }
+                catch (NoSuchElementException)
+                {
+                    return null;
+                }
+            });
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", editInfo);
+
+            Thread.Sleep(500);
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", editInfo);
+
+
 
             IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
             clientLocation.Clear();

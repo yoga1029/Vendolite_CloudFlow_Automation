@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOTNET_SOLUTION = 'GIT_VMS-Phase1PortalAT.sln'
         EMAIL_FROM = 'yogeswari@riota.in'
-        EMAIL_TO = 'bhavyashree@riota.in'
+        EMAIL_TO = 'yogeswari@riota.in'
     }
 
     stages {
