@@ -1425,50 +1425,14 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
             IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
             saveSlots.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
 
-            IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//button[.//mat-icon[normalize-space()='edit']])[1]")));
+            IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
             editInfo.Click();
             Thread.Sleep(2000);
 
    
-            //// wait for slot save dialog/overlay to disappear
-            //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-            //    By.XPath("//mat-dialog-container | //div[contains(@class,'cdk-overlay-backdrop')]")
-            //));
-
-            //// ===== PASTE DEBUG CODE HERE =====
-            //Console.WriteLine("DEBUG: URL = " + driver.Url);
-
-            //var editInfoCount = driver.FindElements(By.XPath("//button[@mattooltip='Edit Info']")).Count;
-            //Console.WriteLine("DEBUG: Edit Info button count = " + editInfoCount);
-
-            //var pageText = driver.PageSource.Contains("Edit Info");
-            //Console.WriteLine("DEBUG: PageSource contains 'Edit Info' = " + pageText);
-            //// ===== END DEBUG CODE =====
-
-            //// now try to locate Edit Info
-            //By editInfoBtn = By.XPath("//button[@mattooltip='Edit Info']");
-
-            //IWebElement editInfo = wait.Until(driver =>
-            //{
-            //    try
-            //    {
-            //        var el = driver.FindElement(editInfoBtn);
-            //        return el.Displayed ? el : null;
-            //    }
-            //    catch (NoSuchElementException)
-            //    {
-            //        return null;
-            //    }
-            //});
-
-            //((IJavaScriptExecutor)driver)
-            //    .ExecuteScript("arguments[0].click();", editInfo);
-
-
-
-
+      
             //// wait until overlay/backdrop is fully gone
             //wait.Until(driver =>
             //    driver.FindElements(By.CssSelector("mat-dialog-container, .cdk-overlay-backdrop")).Count == 0
