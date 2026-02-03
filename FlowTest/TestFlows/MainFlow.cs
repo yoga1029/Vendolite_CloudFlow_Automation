@@ -1423,18 +1423,15 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             endingColumnCount.Clear();
             endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
 
-            //IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-            //saveSlots.Click();
-            //Thread.Sleep(3000);
-
-            //IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
-            //editInfo.Click();
-            //Thread.Sleep(2000);
-
-            IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(
-    By.XPath("//span[contains(text(), ' Save ')]")));
+            IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
             saveSlots.Click();
+            Thread.Sleep(3000);
 
+            IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info' and .//mat-icon[normalize-space()='edit']]")));
+            editInfo.Click();
+            Thread.Sleep(2000);
+
+   
             //// wait for slot save dialog/overlay to disappear
             //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
             //    By.XPath("//mat-dialog-container | //div[contains(@class,'cdk-overlay-backdrop')]")
@@ -1472,52 +1469,52 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
 
 
-            // wait until overlay/backdrop is fully gone
-            wait.Until(driver =>
-                driver.FindElements(By.CssSelector("mat-dialog-container, .cdk-overlay-backdrop")).Count == 0
-            );
+            //// wait until overlay/backdrop is fully gone
+            //wait.Until(driver =>
+            //    driver.FindElements(By.CssSelector("mat-dialog-container, .cdk-overlay-backdrop")).Count == 0
+            //);
 
-            // ===== PASTE DEBUG CODE HERE =====
-            Console.WriteLine("DEBUG: URL = " + driver.Url);
+            //// ===== PASTE DEBUG CODE HERE =====
+            //Console.WriteLine("DEBUG: URL = " + driver.Url);
 
-            var editInfoCount = driver.FindElements(By.XPath("//button[@mattooltip='Edit Info']")).Count;
-            Console.WriteLine("DEBUG: Edit Info button count = " + editInfoCount);
+            //var editInfoCount = driver.FindElements(By.XPath("//button[@mattooltip='Edit Info']")).Count;
+            //Console.WriteLine("DEBUG: Edit Info button count = " + editInfoCount);
 
-            var pageText = driver.PageSource.Contains("Edit Info");
-            Console.WriteLine("DEBUG: PageSource contains 'Edit Info' = " + pageText);
-            // ===== END DEBUG CODE =====
-            // locator
-            By editInfoBtn = By.XPath("//button[@mattooltip='Edit Info']");
+            //var pageText = driver.PageSource.Contains("Edit Info");
+            //Console.WriteLine("DEBUG: PageSource contains 'Edit Info' = " + pageText);
+            //// ===== END DEBUG CODE =====
+            //// locator
+            //By editInfoBtn = By.XPath("//button[@mattooltip='Edit Info']");
 
-            // wait until button is present AND enabled (not disabled)
-            IWebElement editInfo = wait.Until(driver =>
-            {
-                try
-                {
-                    var el = driver.FindElement(editInfoBtn);
+            //// wait until button is present AND enabled (not disabled)
+            //IWebElement editInfo = wait.Until(driver =>
+            //{
+            //    try
+            //    {
+            //        var el = driver.FindElement(editInfoBtn);
 
-                    // check enabled via attribute (Angular sometimes keeps disabled attr)
-                    bool isDisabled = el.GetAttribute("disabled") == "true";
+            //        // check enabled via attribute (Angular sometimes keeps disabled attr)
+            //        bool isDisabled = el.GetAttribute("disabled") != null;
 
-                    return (!isDisabled && el.Displayed) ? el : null;
-                }
-                catch (NoSuchElementException)
-                {
-                    return null;
-                }
-            });
+            //        return (!isDisabled && el.Displayed) ? el : null;
+            //    }
+            //    catch (NoSuchElementException)
+            //    {
+            //        return null;
+            //    }
+            //});
 
-            Console.WriteLine("EditInfo disabled attr = " + editInfo.GetAttribute("disabled"));
-            // scroll into view
-            ((IJavaScriptExecutor)driver)
-                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", editInfo);
+            //Console.WriteLine("EditInfo disabled attr = " + editInfo.GetAttribute("disabled"));
+            //// scroll into view
+            //((IJavaScriptExecutor)driver)
+            //    .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", editInfo);
 
-            // wait a bit for Angular animation
-            Thread.Sleep(500);
+            //// wait a bit for Angular animation
+            //Thread.Sleep(500);
 
-            // force JS click
-            ((IJavaScriptExecutor)driver)
-                .ExecuteScript("arguments[0].click();", editInfo);
+            //// force JS click
+            //((IJavaScriptExecutor)driver)
+            //    .ExecuteScript("arguments[0].click();", editInfo);
 
 
 
