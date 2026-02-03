@@ -1477,6 +1477,15 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 driver.FindElements(By.CssSelector("mat-dialog-container, .cdk-overlay-backdrop")).Count == 0
             );
 
+            // ===== PASTE DEBUG CODE HERE =====
+            Console.WriteLine("DEBUG: URL = " + driver.Url);
+
+            var editInfoCount = driver.FindElements(By.XPath("//button[@mattooltip='Edit Info']")).Count;
+            Console.WriteLine("DEBUG: Edit Info button count = " + editInfoCount);
+
+            var pageText = driver.PageSource.Contains("Edit Info");
+            Console.WriteLine("DEBUG: PageSource contains 'Edit Info' = " + pageText);
+            // ===== END DEBUG CODE =====
             // locator
             By editInfoBtn = By.XPath("//button[@mattooltip='Edit Info']");
 
@@ -1488,7 +1497,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                     var el = driver.FindElement(editInfoBtn);
 
                     // check enabled via attribute (Angular sometimes keeps disabled attr)
-                    bool isDisabled = el.GetAttribute("disabled") != null;
+                    bool isDisabled = el.GetAttribute("disabled") == "true";
 
                     return (!isDisabled && el.Displayed) ? el : null;
                 }
