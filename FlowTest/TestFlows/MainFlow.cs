@@ -1428,53 +1428,53 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             
 
 
-            IWebElement editInformation = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//h5[contains(text(),'Information')]/following::mat-icon[1]")));
-            editInformation.Click();
-            Thread.Sleep(2000);
+            //IWebElement editInformation = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//h5[contains(text(),'Information')]/following::mat-icon[1]")));
+            //editInformation.Click();
+            //Thread.Sleep(2000);
 
 
-            ////needed info
-            //// wait for old Information card to disappear
-            //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-            //    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
-            //));
+            //////needed info
+            ////// wait for old Information card to disappear
+            ////wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+            ////    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
+            ////));
 
-            //// wait for new Information card to appear
-            //wait.Until(ExpectedConditions.ElementIsVisible(
-            //    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
-            //));
+            ////// wait for new Information card to appear
+            ////wait.Until(ExpectedConditions.ElementIsVisible(
+            ////    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
+            ////));
 
-            //Console.WriteLine("Editing Machine Details...");
+            ////Console.WriteLine("Editing Machine Details...");
 
-            //Actions b = new Actions(driver);
+            ////Actions b = new Actions(driver);
 
-            //// get Information card
-            //IWebElement product1 = wait.Until(ExpectedConditions.ElementIsVisible(
-            //    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")));
+            ////// get Information card
+            ////IWebElement product1 = wait.Until(ExpectedConditions.ElementIsVisible(
+            ////    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")));
 
-            //b.MoveToElement(product1).Pause(TimeSpan.FromSeconds(1)).Perform();
+            ////b.MoveToElement(product1).Pause(TimeSpan.FromSeconds(1)).Perform();
 
-            //// get edit button inside it
-            //IWebElement editInfo = wait.Until(ExpectedConditions.ElementExists(
-            //    By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
+            ////// get edit button inside it
+            ////IWebElement editInfo = wait.Until(ExpectedConditions.ElementExists(
+            ////    By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
 
-            //// JS click (CI safe)
-            //((IJavaScriptExecutor)driver)
-            //    .ExecuteScript("arguments[0].click();", editInfo);
+            ////// JS click (CI safe)
+            ////((IJavaScriptExecutor)driver)
+            ////    .ExecuteScript("arguments[0].click();", editInfo);
 
 
 
-            IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
-            clientLocation.Clear();
-            clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
+            //IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
+            //clientLocation.Clear();
+            //clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
 
-            IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
-            routeIdentifier.Clear();
-            routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
+            //IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
+            //routeIdentifier.Clear();
+            //routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
 
-            IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
-            saveButton.Click();
-            Thread.Sleep(2000);
+            //IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
+            //saveButton.Click();
+            //Thread.Sleep(2000);
 
             Console.WriteLine("Product Mapping in to slots...");
             Actions a = new Actions(driver);
