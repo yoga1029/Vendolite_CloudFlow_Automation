@@ -42,13 +42,6 @@ pipeline {
                 body: '${SCRIPT, template="groovy-html.template"}',
                 to: "${env.EMAIL_TO}",
                 attachLog: false
- 		presendScript: '''
-                    msg.setContent(
-                        msg.getBody().replaceAll("(?s)CONSOLE OUTPUT.*", ""),
-                        "text/html"
-                    )
-                '''
-
             )
         }
     }
