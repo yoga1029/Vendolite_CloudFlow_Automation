@@ -1401,119 +1401,65 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             machineDetails.Click();
             Thread.Sleep(3000);
 
-            // Edit Slot
-            IWebElement editSlot = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
-            editSlot.Click();
-            Thread.Sleep(1000);
+            //// Edit Slot
+            //IWebElement editSlot = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
+            //editSlot.Click();
+            //Thread.Sleep(1000);
 
-            IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
-            slotRowCount.Clear();
-            slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+            //IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
+            //slotRowCount.Clear();
+            //slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
 
-            IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
-            slotColumnCount.Clear();
-            slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+            //IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
+            //slotColumnCount.Clear();
+            //slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
 
-            IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
-            endingRowCount.Clear();
-            endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+            //IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
+            //endingRowCount.Clear();
+            //endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
 
-            IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
-            endingColumnCount.Clear();
-            endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+            //IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
+            //endingColumnCount.Clear();
+            //endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
 
-            IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-            saveSlots.Click();
-
-
-            //IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
-            //editInfo.Click();
+            //IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+            //saveSlots.Click();
             //Thread.Sleep(2000);
 
+            IWebElement editInfo = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
+            editInfo.Click();
+            Thread.Sleep(2000);
 
 
-            // wait for old Information card to disappear
-            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-                By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
-            ));
+            ////needed info
+            //// wait for old Information card to disappear
+            //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+            //    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
+            //));
 
-            // wait for new Information card to appear
-            wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
-            ));
+            //// wait for new Information card to appear
+            //wait.Until(ExpectedConditions.ElementIsVisible(
+            //    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
+            //));
 
-            Console.WriteLine("Editing Machine Details...");
+            //Console.WriteLine("Editing Machine Details...");
 
-            Actions b = new Actions(driver);
+            //Actions b = new Actions(driver);
 
-            // get Information card
-            IWebElement product1 = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//mat-card[.//h5[normalize-space()='Information']]")));
+            //// get Information card
+            //IWebElement product1 = wait.Until(ExpectedConditions.ElementIsVisible(
+            //    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")));
 
-            b.MoveToElement(product1).Pause(TimeSpan.FromSeconds(1)).Perform();
+            //b.MoveToElement(product1).Pause(TimeSpan.FromSeconds(1)).Perform();
 
-            // get edit button inside it
-            IWebElement editInfo = wait.Until(ExpectedConditions.ElementExists(
-                By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
+            //// get edit button inside it
+            //IWebElement editInfo = wait.Until(ExpectedConditions.ElementExists(
+            //    By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
 
-            // JS click (CI safe)
-            ((IJavaScriptExecutor)driver)
-                .ExecuteScript("arguments[0].click();", editInfo);
-
-
-
-
-
-
-            //// wait until overlay/backdrop is fully gone
-            //wait.Until(driver =>
-            //    driver.FindElements(By.CssSelector("mat-dialog-container, .cdk-overlay-backdrop")).Count == 0
-            //);
-
-            //// ===== PASTE DEBUG CODE HERE =====
-            //Console.WriteLine("DEBUG: URL = " + driver.Url);
-
-            //var editInfoCount = driver.FindElements(By.XPath("//button[@mattooltip='Edit Info']")).Count;
-            //Console.WriteLine("DEBUG: Edit Info button count = " + editInfoCount);
-
-            //var pageText = driver.PageSource.Contains("Edit Info");
-            //Console.WriteLine("DEBUG: PageSource contains 'Edit Info' = " + pageText);
-            //// ===== END DEBUG CODE =====
-            //// locator
-            //By editInfoBtn = By.XPath("//button[@mattooltip='Edit Info']");
-
-            //// wait until button is present AND enabled (not disabled)
-            //IWebElement editInfo = wait.Until(driver =>
-            //{
-            //    try
-            //    {
-            //        var el = driver.FindElement(editInfoBtn);
-
-            //        // check enabled via attribute (Angular sometimes keeps disabled attr)
-            //        bool isDisabled = el.GetAttribute("disabled") != null;
-
-            //        return (!isDisabled && el.Displayed) ? el : null;
-            //    }
-            //    catch (NoSuchElementException)
-            //    {
-            //        return null;
-            //    }
-            //});
-
-            //Console.WriteLine("EditInfo disabled attr = " + editInfo.GetAttribute("disabled"));
-            //// scroll into view
-            //((IJavaScriptExecutor)driver)
-            //    .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", editInfo);
-
-            //// wait a bit for Angular animation
-            //Thread.Sleep(500);
-
-            //// force JS click
+            //// JS click (CI safe)
             //((IJavaScriptExecutor)driver)
             //    .ExecuteScript("arguments[0].click();", editInfo);
-
-
 
 
 
