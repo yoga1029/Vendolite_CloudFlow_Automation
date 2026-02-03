@@ -1435,8 +1435,6 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
     By.XPath("//span[contains(text(), ' Save ')]")));
             saveSlots.Click();
 
-            saveSlots.Click();
-
             // wait for slot save dialog/overlay to disappear
             wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
                 By.XPath("//mat-dialog-container | //div[contains(@class,'cdk-overlay-backdrop')]")
