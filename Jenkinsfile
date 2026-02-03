@@ -14,7 +14,7 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+           stage('Run Tests') {
             steps {
                 echo "Running MSTest tests on solution ${env.DOTNET_SOLUTION}"
 
@@ -46,4 +46,3 @@ pipeline {
         }
     }
 }
-
