@@ -1467,8 +1467,8 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
                 a.MoveToElement(product).Pause(TimeSpan.FromSeconds(2)).Perform();
 
-                IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(
-                    By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
+                IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementToBeClickable(
+                    By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button[.//mat-icon")));
                 editSlot2.Click();
                 Thread.Sleep(2000);
 
@@ -2029,10 +2029,28 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             Thread.Sleep(2000);
 
             // Search Machine to Scrap
+            //IWebElement searchTypeButton = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
+            //searchTypeButton.Click();
+            //Thread.Sleep(2000);
+
+            // wait for any Angular overlay/backdrop to disappear
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                By.ClassName("cdk-overlay-backdrop")));
+
+            // wait for the mat-select to be visible (not clickable yet)
             IWebElement searchTypeButton = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
+                ExpectedConditions.ElementIsVisible(By.XPath("(//mat-select[@role='listbox'])[2]")));
+
+            // scroll into view
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView(true);", searchTypeButton);
+
+            // small pause for animation (optional but useful for Angular)
+            Thread.Sleep(500);
+
+            // now click
             searchTypeButton.Click();
-            Thread.Sleep(2000);
 
             IWebElement selectMachineId = wait.Until(
                 ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(normalize-space(),'Machine Id')]")));
