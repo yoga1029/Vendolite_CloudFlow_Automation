@@ -1427,14 +1427,21 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             Console.WriteLine("Product Matrix Changed again");
 
             //EDIT MACHINE INFO
-            /* wait for Angular overlay/backdrop to disappear */
-            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-                By.ClassName("cdk-overlay-backdrop")));
+            ///* wait for Angular overlay/backdrop to disappear */
+            //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+            //    By.ClassName("cdk-overlay-backdrop")));
 
-            /* now safely click Edit Info */
-            IWebElement editInfo = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
-            editInfo.Click();
+            ///* now safely click Edit Info */
+            //IWebElement editInfo = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
+            //editInfo.Click();
+
+            Thread.Sleep(3000);
+            IWebElement editInfo = driver.FindElement(By.XPath("//button[@mattooltip='Edit Info']"));
+       
+            // scroll into view
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", editInfo);
 
 
             IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
