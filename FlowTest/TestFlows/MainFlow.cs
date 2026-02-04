@@ -1470,7 +1470,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(
                     By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
 
-                a.MoveToElement(product).Pause(TimeSpan.FromSeconds(2)).Perform();
+                a.MoveToElement(product).Pause(TimeSpan.FromSeconds(3)).Perform();
 
                 IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(
                     By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
