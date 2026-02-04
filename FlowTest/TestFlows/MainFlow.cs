@@ -1421,109 +1421,84 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             endingColumnCount.Clear();
             endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
 
-            IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+            IWebElement saveSlots = wait.Until(
+          ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
             saveSlots.Click();
+            Console.WriteLine("Product Matrix Changed again");
+
+            //EDIT MACHINE INFO
+            /* wait for Angular overlay/backdrop to disappear */
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                By.ClassName("cdk-overlay-backdrop")));
+
+            /* now safely click Edit Info */
+            IWebElement editInfo = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
+            editInfo.Click();
 
 
+            IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
+            clientLocation.Clear();
+            clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
 
-            //IWebElement editInformation = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//h5[contains(text(),'Information')]/following::mat-icon[1]")));
-            //editInformation.Click();
-            //Thread.Sleep(2000);
+            IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
+            routeIdentifier.Clear();
+            routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
 
-
-            //////needed info
-            ////// wait for old Information card to disappear
-            ////wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-            ////    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
-            ////));
-
-            ////// wait for new Information card to appear
-            ////wait.Until(ExpectedConditions.ElementIsVisible(
-            ////    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")
-            ////));
-
-            ////Console.WriteLine("Editing Machine Details...");
-
-            ////Actions b = new Actions(driver);
-
-            ////// get Information card
-            ////IWebElement product1 = wait.Until(ExpectedConditions.ElementIsVisible(
-            ////    By.XPath("//mat-card[.//h5[normalize-space()='Information']]")));
-
-            ////b.MoveToElement(product1).Pause(TimeSpan.FromSeconds(1)).Perform();
-
-            ////// get edit button inside it
-            ////IWebElement editInfo = wait.Until(ExpectedConditions.ElementExists(
-            ////    By.XPath("//mat-card[.//h5[normalize-space()='Information']]//button[.//mat-icon[normalize-space()='edit']]")));
-
-            ////// JS click (CI safe)
-            ////((IJavaScriptExecutor)driver)
-            ////    .ExecuteScript("arguments[0].click();", editInfo);
+            IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
+            saveButton.Click();
+            Thread.Sleep(2000);
 
 
+            Console.WriteLine("Product Mapping in to slots...");
+            Actions a = new Actions(driver);
 
-            //IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
-            //clientLocation.Clear();
-            //clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
+            for (int i = 0; i < ProductMappingData.products.GetLength(0); i++)
+            {
+                IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(
+                    By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
 
-            //IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
-            //routeIdentifier.Clear();
-            //routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
+                a.MoveToElement(product).Pause(TimeSpan.FromSeconds(2)).Perform();
 
-            //IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
-            //saveButton.Click();
-            //Thread.Sleep(2000);
+                IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(
+                    By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
+                editSlot2.Click();
+                Thread.Sleep(2000);
 
+                IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
+                foreach (IWebElement toggleButton in toggleButtons)
+                {
+                    if (!toggleButton.Selected)
+                    {
+                        ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", toggleButton);
+                        Thread.Sleep(1000);
+                    }
+                }
 
-            //Console.WriteLine("Product Mapping in to slots...");
-            //Actions a = new Actions(driver);
+                IWebElement selectProduct = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("product")));
+                selectProduct.Click();
 
-            //for (int i = 0; i < ProductMappingData.products.GetLength(0); i++)
-            //{
-            //    IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(
-            //        By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
+                IWebElement choosingProduct = wait.Until(ExpectedConditions.ElementToBeClickable(
+                    By.XPath($"//div[@role='listbox']//div[contains(text(), ' {ProductMappingData.products[i, 1]} ')]")));
+                choosingProduct.Click();
 
-            //    a.MoveToElement(product).Pause(TimeSpan.FromSeconds(2)).Perform();
+                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")))
+                    .SendKeys(ProductMappingData.products[i, 2]);
 
-            //    IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(
-            //        By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
-            //    editSlot2.Click();
-            //    Thread.Sleep(2000);
+                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerTransaction")))
+                    .SendKeys(ProductMappingData.products[i, 3]);
 
-            //    IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
-            //    foreach (IWebElement toggleButton in toggleButtons)
-            //    {
-            //        if (!toggleButton.Selected)
-            //        {
-            //            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", toggleButton);
-            //            Thread.Sleep(1000);
-            //        }
-            //    }
+                IWebElement reset = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("purchaseLimitResetPerUser")));
+                reset.Click();
+                driver.FindElement(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 4]} ')]")).Click();
 
-            //    IWebElement selectProduct = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("product")));
-            //    selectProduct.Click();
+                IWebElement stockLimitInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("stockLimit")));
+                stockLimitInput.Click();
+                driver.FindElement(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]")).Click();
 
-            //    IWebElement choosingProduct = wait.Until(ExpectedConditions.ElementToBeClickable(
-            //        By.XPath($"//div[@role='listbox']//div[contains(text(), ' {ProductMappingData.products[i, 1]} ')]")));
-            //    choosingProduct.Click();
-
-            //    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")))
-            //        .SendKeys(ProductMappingData.products[i, 2]);
-
-            //    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerTransaction")))
-            //        .SendKeys(ProductMappingData.products[i, 3]);
-
-            //    IWebElement reset = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("purchaseLimitResetPerUser")));
-            //    reset.Click();
-            //    driver.FindElement(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 4]} ')]")).Click();
-
-            //    IWebElement stockLimitInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("stockLimit")));
-            //    stockLimitInput.Click();
-            //    driver.FindElement(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]")).Click();
-
-            //    IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-            //    save.Click();
-            //}
+                IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                save.Click();
+            }
         }
     }
 
