@@ -1516,21 +1516,33 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
         public void SafeClick(By locator)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
 
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(
-                By.ClassName("cdk-overlay-backdrop")
-            ));
-
+            // Wait for element to exist in DOM
             IWebElement element = wait.Until(
+                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator)
+            );
+
+            // Wait until element is visible
+            element = wait.Until(
                 SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator)
             );
 
+            // Scroll into view
             ((IJavaScriptExecutor)driver)
                 .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", element);
 
-            ((IJavaScriptExecutor)driver)
-                .ExecuteScript("arguments[0].click();", element);
+            try
+            {
+                // Try normal click first
+                element.Click();
+            }
+            catch (ElementClickInterceptedException)
+            {
+                // If intercepted, use JS click
+                ((IJavaScriptExecutor)driver)
+                    .ExecuteScript("arguments[0].click();", element);
+            }
         }
 
 
