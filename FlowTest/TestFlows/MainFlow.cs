@@ -6,6 +6,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
+using System.Reflection.PortableExecutable;
 using System.Threading;
 using VMS_Phase1PortalAT.FlowTest.Authentication;
 using VMS_Phase1PortalAT.FlowTest.Machines.MachineList;
@@ -2039,43 +2040,14 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             //selectMachineId.Click();
             //Thread.Sleep(2000);
 
-            // ---------- Open Search Type dropdown safely ----------
+            //string machineId = MachineMapping.unmappedMachineForMapping;
+            //Console.WriteLine("Selecting machine for scrap: " + machineId);
 
-            // Wait until blocking overlay (z-index div) disappears
-            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-                By.XPath("//div[contains(@style,'z-index')]")
-            ));
-
-            // Locate the dropdown (2nd mat-select)
-            IWebElement searchTypeButton = wait.Until(
-                ExpectedConditions.ElementIsVisible(By.XPath("(//mat-select)[2]"))
-            );
-
-            // Bring it into view
-            ((IJavaScriptExecutor)driver)
-                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", searchTypeButton);
-
-            // Force click using JavaScript (avoids overlay interception)
-            ((IJavaScriptExecutor)driver)
-                .ExecuteScript("arguments[0].click();", searchTypeButton);
-
-            // ---------- Select "Machine Id" option ----------
-
-            IWebElement selectMachineId = wait.Until(
-                ExpectedConditions.ElementToBeClickable(
-                    By.XPath("//mat-option//span[normalize-space()='Machine Id']"))
-            );
-
-            selectMachineId.Click();
-
-            string machineId = MachineMapping.unmappedMachineForMapping;
-            Console.WriteLine("Selecting machine for scrap: " + machineId);
-
-            IWebElement searchMachine = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
-            searchMachine.Clear();
-            searchMachine.SendKeys(machineId + Keys.Enter);
-            Thread.Sleep(2000);
+            //IWebElement searchMachine = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
+            //searchMachine.Clear();
+            //searchMachine.SendKeys(machineId + Keys.Enter);
+            //Thread.Sleep(2000);
 
             IWebElement actionButton = wait.Until(
                 ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
@@ -2092,7 +2064,8 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             confirmScrapping.Click();
             Thread.Sleep(2000);
 
-            Console.WriteLine("Machine scrapped successfully: " + machineId);
+            //Console.WriteLine("Machine scrapped successfully: " + machineId);
+            Console.WriteLine("Machine scrapped successfully: ");
         }
     }
 
