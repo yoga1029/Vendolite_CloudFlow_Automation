@@ -1462,17 +1462,14 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
             for (int i = 0; i < ProductMappingData.products.GetLength(0); i++)
             {
-                IWebElement product = driver.FindElement(
-                    By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]"));
+                IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(
+                    By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
 
-                a.MoveToElement(product).Pause(TimeSpan.FromSeconds(5)).Perform();
+                a.MoveToElement(product).Pause(TimeSpan.FromSeconds(2)).Perform();
 
-                //IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(
-                //    By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
-                //Thread.Sleep(2000);
-
-                IWebElement editSlot2 = driver.FindElement(
-                   By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon"));
+                IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(
+                    By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
+                editSlot2.Click();
                 Thread.Sleep(2000);
 
                 IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
