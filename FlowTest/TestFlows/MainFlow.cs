@@ -2039,19 +2039,34 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             //selectMachineId.Click();
             //Thread.Sleep(2000);
 
-            // Open dropdown
-            IWebElement searchTypeButton = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select)[2]"))
-            );
-            searchTypeButton.Click();
+            // ---------- Open Search Type dropdown safely ----------
 
-            // Select Machine Id
+            // Wait until blocking overlay (z-index div) disappears
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                By.XPath("//div[contains(@style,'z-index')]")
+            ));
+
+            // Locate the dropdown (2nd mat-select)
+            IWebElement searchTypeButton = wait.Until(
+                ExpectedConditions.ElementIsVisible(By.XPath("(//mat-select)[2]"))
+            );
+
+            // Bring it into view
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", searchTypeButton);
+
+            // Force click using JavaScript (avoids overlay interception)
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", searchTypeButton);
+
+            // ---------- Select "Machine Id" option ----------
+
             IWebElement selectMachineId = wait.Until(
                 ExpectedConditions.ElementToBeClickable(
                     By.XPath("//mat-option//span[normalize-space()='Machine Id']"))
             );
-            selectMachineId.Click();
 
+            selectMachineId.Click();
 
             string machineId = MachineMapping.unmappedMachineForMapping;
             Console.WriteLine("Selecting machine for scrap: " + machineId);
