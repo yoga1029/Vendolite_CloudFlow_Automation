@@ -2049,23 +2049,75 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             //searchMachine.SendKeys(machineId + Keys.Enter);
             //Thread.Sleep(2000);
 
+            //IWebElement actionButton = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
+            //actionButton.Click();
+            //Thread.Sleep(1000);
+
+            //IWebElement scrapButton = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Move to scrap ')]")));
+            //scrapButton.Click();
+            //Thread.Sleep(2000);
+
+            //IWebElement confirmScrapping = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[contains(text(),' Confirm ')]")));
+            //confirmScrapping.Click();
+            //Thread.Sleep(2000);
+
+            ////Console.WriteLine("Machine scrapped successfully: " + machineId);
+            //Console.WriteLine("Machine scrapped successfully: ");
+
+
+            // ---------- Click Action button safely ----------
+
+            // Wait until overlay backdrop disappears
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                By.ClassName("cdk-overlay-backdrop")
+            ));
+
+            // Locate Action cell
             IWebElement actionButton = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
-            actionButton.Click();
-            Thread.Sleep(1000);
+                ExpectedConditions.ElementIsVisible(By.XPath("(//td)[13]"))
+            );
+
+            // Scroll into view
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", actionButton);
+
+            // Click using JS (avoids interception)
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", actionButton);
+
+
+            // ---------- Click Move to scrap ----------
 
             IWebElement scrapButton = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Move to scrap ')]")));
-            scrapButton.Click();
-            Thread.Sleep(2000);
+                ExpectedConditions.ElementIsVisible(
+                    By.XPath("//button[normalize-space()='Move to scrap']"))
+            );
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", scrapButton);
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", scrapButton);
+
+
+            // ---------- Click Confirm ----------
 
             IWebElement confirmScrapping = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[contains(text(),' Confirm ')]")));
-            confirmScrapping.Click();
-            Thread.Sleep(2000);
+                ExpectedConditions.ElementIsVisible(
+                    By.XPath("//span[normalize-space()='Confirm']"))
+            );
 
-            //Console.WriteLine("Machine scrapped successfully: " + machineId);
-            Console.WriteLine("Machine scrapped successfully: ");
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", confirmScrapping);
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", confirmScrapping);
+
+            Console.WriteLine("Machine scrapped successfully");
+
         }
     }
 
