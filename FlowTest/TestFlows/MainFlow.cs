@@ -1453,9 +1453,13 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             routeIdentifier.Clear();
             routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
 
-            IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
-            saveButton.Click();
-            Thread.Sleep(2000);
+
+
+            SafeClick(By.XPath("//span[contains(text(),'Save')]"));
+
+            //IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
+            //saveButton.Click();
+            //Thread.Sleep(2000);
 
 
             Console.WriteLine("Product Mapping in to slots...");
@@ -1507,7 +1511,28 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
                 save.Click();
             }
+
         }
+
+        public void SafeClick(By locator)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(
+                By.ClassName("cdk-overlay-backdrop")
+            ));
+
+            IWebElement element = wait.Until(
+                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator)
+            );
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", element);
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", element);
+        }
+
     }
 
 
