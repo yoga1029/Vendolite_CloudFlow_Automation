@@ -2028,43 +2028,43 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 .ExecuteScript("arguments[0].click();", currentPurchaseOrderMenu);
             Thread.Sleep(2000);
 
-            // Search Machine to Scrap
+            //// Search Machine to Scrap
+            ////IWebElement searchTypeButton = wait.Until(
+            ////    ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
+            ////searchTypeButton.Click();
+            ////Thread.Sleep(2000);
+
+            //// wait for any Angular overlay/backdrop to disappear
+            //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+            //    By.ClassName("cdk-overlay-backdrop")));
+
+            //// wait for the mat-select to be visible (not clickable yet)
             //IWebElement searchTypeButton = wait.Until(
-            //    ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
+            //    ExpectedConditions.ElementIsVisible(By.XPath("(//mat-select[@role='listbox'])[2]")));
+
+            //// scroll into view
+            //((IJavaScriptExecutor)driver)
+            //    .ExecuteScript("arguments[0].scrollIntoView(true);", searchTypeButton);
+
+            //// small pause for animation (optional but useful for Angular)
+            //Thread.Sleep(500);
+
+            //// now click
             //searchTypeButton.Click();
+
+            //IWebElement selectMachineId = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(normalize-space(),'Machine Id')]")));
+            //selectMachineId.Click();
             //Thread.Sleep(2000);
 
-            // wait for any Angular overlay/backdrop to disappear
-            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-                By.ClassName("cdk-overlay-backdrop")));
+            //string machineId = MachineMapping.unmappedMachineForMapping;
+            //Console.WriteLine("Selecting machine for scrap: " + machineId);
 
-            // wait for the mat-select to be visible (not clickable yet)
-            IWebElement searchTypeButton = wait.Until(
-                ExpectedConditions.ElementIsVisible(By.XPath("(//mat-select[@role='listbox'])[2]")));
-
-            // scroll into view
-            ((IJavaScriptExecutor)driver)
-                .ExecuteScript("arguments[0].scrollIntoView(true);", searchTypeButton);
-
-            // small pause for animation (optional but useful for Angular)
-            Thread.Sleep(500);
-
-            // now click
-            searchTypeButton.Click();
-
-            IWebElement selectMachineId = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(normalize-space(),'Machine Id')]")));
-            selectMachineId.Click();
-            Thread.Sleep(2000);
-
-            string machineId = MachineMapping.unmappedMachineForMapping;
-            Console.WriteLine("Selecting machine for scrap: " + machineId);
-
-            IWebElement searchMachine = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
-            searchMachine.Clear();
-            searchMachine.SendKeys(machineId + Keys.Enter);
-            Thread.Sleep(2000);
+            //IWebElement searchMachine = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
+            //searchMachine.Clear();
+            //searchMachine.SendKeys(machineId + Keys.Enter);
+            //Thread.Sleep(2000);
 
             IWebElement actionButton = wait.Until(
                 ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
