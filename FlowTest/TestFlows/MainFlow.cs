@@ -1359,6 +1359,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
     {
         private IWebDriver driver;
         private WebDriverWait wait;
+        static ITakesScreenshot screenshotDriver;
 
         public Productmapping(IWebDriver driver)
         {
@@ -1368,150 +1369,176 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
         public void ProductMappingFlow()
         {
-            // Fetching Machine menu
-            By machineMenuBy = By.Id("menuItem-Machines");
-            wait.Until(d => d.FindElement(machineMenuBy).Displayed);
-            driver.FindElement(machineMenuBy).Click();
-
-            // Fetching Machine List
-            By machineListBy = By.Id("menuItem-Machines0");
-            wait.Until(d => d.FindElement(machineListBy).Displayed);
-            driver.FindElement(machineListBy).Click();
-            Thread.Sleep(1000);
-
-            string machineId = MachineMapping.unmappedMachineForMapping;
-            Console.WriteLine("Selecting machine: " + machineId);
-
-            By searchBoxBy = By.Name("searchText");
-            wait.Until(d => d.FindElement(searchBoxBy).Displayed);
-            IWebElement searchText = driver.FindElement(searchBoxBy);
-            searchText.Clear();
-            searchText.SendKeys(machineId + Keys.Enter);
-            Thread.Sleep(3000);
-
-            // Action Button
-            IWebElement actionButton = wait.Until(
-                ExpectedConditions.ElementToBeClickable(
-                    By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
-            actionButton.Click();
-            Thread.Sleep(1000);
-
-            // Machine details
-            IWebElement machineDetails = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
-            machineDetails.Click();
-
-            // Edit Slot
-            IWebElement editSlot = wait.Until(
-                ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
-            editSlot.Click();
-
-            IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
-            slotRowCount.Clear();
-            slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
-
-            IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
-            slotColumnCount.Clear();
-            slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
-
-            IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
-            endingRowCount.Clear();
-            endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
-
-            IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
-            endingColumnCount.Clear();
-            endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
-
-            IWebElement saveSlots = wait.Until(
-          ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-            saveSlots.Click();
-            Console.WriteLine("Product Matrix Changed again");
-
-            //EDIT MACHINE INFO
-            ///* wait for Angular overlay/backdrop to disappear */
-            //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-            //    By.ClassName("cdk-overlay-backdrop")));
-
-            ///* now safely click Edit Info */
-            //IWebElement editInfo = wait.Until(
-            //    ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
-            //editInfo.Click();
-
-            Thread.Sleep(3000);
-            IWebElement editInfo = driver.FindElement(By.XPath("//button[@mattooltip='Edit Info']"));
-       
-            // scroll into view
-            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
-            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", editInfo);
-
-
-            IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
-            clientLocation.Clear();
-            clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
-
-            IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
-            routeIdentifier.Clear();
-            routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
-
-
-
-            SafeClick(By.XPath("//span[contains(text(),'Save')]"));
-
-            //IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
-            //saveButton.Click();
-            //Thread.Sleep(2000);
-
-
-            Console.WriteLine("Product Mapping in to slots...");
-            Actions a = new Actions(driver);
-
-            for (int i = 0; i < ProductMappingData.products.GetLength(0); i++)
+            try
             {
-                IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(
-                    By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
+                // Fetching Machine menu
+                By machineMenuBy = By.Id("menuItem-Machines");
+                wait.Until(d => d.FindElement(machineMenuBy).Displayed);
+                driver.FindElement(machineMenuBy).Click();
 
-                a.MoveToElement(product).Pause(TimeSpan.FromSeconds(3)).Perform();
+                // Fetching Machine List
+                By machineListBy = By.Id("menuItem-Machines0");
+                wait.Until(d => d.FindElement(machineListBy).Displayed);
+                driver.FindElement(machineListBy).Click();
+                Thread.Sleep(1000);
 
-                IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(
-                    By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
-                editSlot2.Click();
-                Thread.Sleep(2000);
+                string machineId = MachineMapping.unmappedMachineForMapping;
+                Console.WriteLine("Selecting machine: " + machineId);
 
-                IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
-                foreach (IWebElement toggleButton in toggleButtons)
+                By searchBoxBy = By.Name("searchText");
+                wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+                IWebElement searchText = driver.FindElement(searchBoxBy);
+                searchText.Clear();
+                searchText.SendKeys(machineId + Keys.Enter);
+                Thread.Sleep(3000);
+
+                // Action Button
+                IWebElement actionButton = wait.Until(
+                    ExpectedConditions.ElementToBeClickable(
+                        By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
+                actionButton.Click();
+                Thread.Sleep(1000);
+
+                // Machine details
+                IWebElement machineDetails = wait.Until(
+                    ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
+                machineDetails.Click();
+
+                // Edit Slot
+                IWebElement editSlot = wait.Until(
+                    ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
+                editSlot.Click();
+
+                IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
+                slotRowCount.Clear();
+                slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+
+                IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
+                slotColumnCount.Clear();
+                slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+
+                IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
+                endingRowCount.Clear();
+                endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+
+                IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
+                endingColumnCount.Clear();
+                endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+
+                IWebElement saveSlots = wait.Until(
+              ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                saveSlots.Click();
+                Console.WriteLine("Product Matrix Changed again");
+
+                //EDIT MACHINE INFO
+                ///* wait for Angular overlay/backdrop to disappear */
+                //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                //    By.ClassName("cdk-overlay-backdrop")));
+
+                ///* now safely click Edit Info */
+                //IWebElement editInfo = wait.Until(
+                //    ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
+                //editInfo.Click();
+
+                Thread.Sleep(3000);
+                IWebElement editInfo = driver.FindElement(By.XPath("//button[@mattooltip='Edit Info']"));
+
+                // scroll into view
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", editInfo);
+
+
+                IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
+                clientLocation.Clear();
+                clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
+
+                IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
+                routeIdentifier.Clear();
+                routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
+
+
+
+                SafeClick(By.XPath("//span[contains(text(),'Save')]"));
+
+                //IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
+                //saveButton.Click();
+                //Thread.Sleep(2000);
+
+
+                Console.WriteLine("Product Mapping in to slots...");
+                Actions a = new Actions(driver);
+
+                for (int i = 0; i < ProductMappingData.products.GetLength(0); i++)
                 {
-                    if (!toggleButton.Selected)
+                    IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(
+                        By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
+
+                    a.MoveToElement(product).Pause(TimeSpan.FromSeconds(3)).Perform();
+
+                    IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(
+                        By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
+                    editSlot2.Click();
+                    Thread.Sleep(2000);
+
+                    IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
+                    foreach (IWebElement toggleButton in toggleButtons)
                     {
-                        ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", toggleButton);
-                        Thread.Sleep(1000);
+                        if (!toggleButton.Selected)
+                        {
+                            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", toggleButton);
+                            Thread.Sleep(1000);
+                        }
                     }
+
+                    IWebElement selectProduct = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("product")));
+                    selectProduct.Click();
+
+                    IWebElement choosingProduct = wait.Until(ExpectedConditions.ElementToBeClickable(
+                        By.XPath($"//div[@role='listbox']//div[contains(text(), ' {ProductMappingData.products[i, 1]} ')]")));
+                    choosingProduct.Click();
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")))
+                        .SendKeys(ProductMappingData.products[i, 2]);
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerTransaction")))
+                        .SendKeys(ProductMappingData.products[i, 3]);
+
+                    IWebElement reset = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("purchaseLimitResetPerUser")));
+                    reset.Click();
+                    driver.FindElement(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 4]} ')]")).Click();
+
+                    IWebElement stockLimitInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("stockLimit")));
+                    stockLimitInput.Click();
+                    driver.FindElement(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]")).Click();
+
+                    IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                    save.Click();
                 }
-
-                IWebElement selectProduct = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("product")));
-                selectProduct.Click();
-
-                IWebElement choosingProduct = wait.Until(ExpectedConditions.ElementToBeClickable(
-                    By.XPath($"//div[@role='listbox']//div[contains(text(), ' {ProductMappingData.products[i, 1]} ')]")));
-                choosingProduct.Click();
-
-                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")))
-                    .SendKeys(ProductMappingData.products[i, 2]);
-
-                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerTransaction")))
-                    .SendKeys(ProductMappingData.products[i, 3]);
-
-                IWebElement reset = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("purchaseLimitResetPerUser")));
-                reset.Click();
-                driver.FindElement(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 4]} ')]")).Click();
-
-                IWebElement stockLimitInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("stockLimit")));
-                stockLimitInput.Click();
-                driver.FindElement(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]")).Click();
-
-                IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-                save.Click();
             }
+            catch
+            {
+                // Take screenshot
+                screenshotDriver = (ITakesScreenshot)driver;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
 
+                // Jenkins workspace / project root
+                string projectPath3 = Directory.GetCurrentDirectory();
+
+                // Create Screenshots folder
+                string screenshotDir3 = Path.Combine(projectPath3, "Screenshots");
+                Directory.CreateDirectory(screenshotDir3);
+
+                // FIX: remove invalid characters from filename
+                string filePath2 = Path.Combine(
+                    screenshotDir3,
+                    $"Screenshot_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.png"
+                );
+
+                // Save screenshot
+                screenshot.SaveAsFile(filePath2);
+
+                Console.WriteLine($"Screenshot saved at: {filePath2}");
+            }
         }
 
         public void SafeClick(By locator)
