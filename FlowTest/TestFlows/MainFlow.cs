@@ -1430,15 +1430,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 saveSlots.Click();
                 Console.WriteLine("Product Matrix Changed again");
 
-                //EDIT MACHINE INFO
-                ///* wait for Angular overlay/backdrop to disappear */
-                //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-                //    By.ClassName("cdk-overlay-backdrop")));
-
-                ///* now safely click Edit Info */
-                //IWebElement editInfo = wait.Until(
-                //    ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
-                //editInfo.Click();
+               
 
                 Thread.Sleep(3000);
                 IWebElement editInfo = driver.FindElement(By.XPath("//button[@mattooltip='Edit Info']"));
@@ -1447,14 +1439,15 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
                 ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", editInfo);
 
-                wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("clientLocation")));
-                IWebElement clientLocation = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("clientLocation")));
-                clientLocation.Clear();
-                clientLocation.SendKeys(machineInfoData.machineDetails[0, 0] + new Random().Next(1,9));
+                
+                //wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("clientLocation")));
+                //IWebElement clientLocation = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("clientLocation")));
+                //clientLocation.Clear();
+                //clientLocation.SendKeys(machineInfoData.machineDetails[0, 0] + new Random().Next(1,9));
 
-                IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("routeIdentifier")));
-                routeIdentifier.Clear();
-                routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1] + new Random().Next(1, 9));
+                //IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("routeIdentifier")));
+                //routeIdentifier.Clear();
+                //routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1] + new Random().Next(1, 9));
 
                 // Direct Refill checkbox
                 IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
