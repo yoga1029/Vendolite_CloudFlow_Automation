@@ -765,20 +765,22 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             string dynamicXPath = $"//span[text()=' {clientName1} ']";
             driver.FindElement(By.XPath(dynamicXPath)).Click();
 
-            //IWebElement chooseClientName = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[text() = ' YogeswariiS ']")));
-            //chooseClientName.Click(); Thread.Sleep(1000);
+            //IWebElement uploadBtn = driver.FindElement(By.XPath("//mat-icon[text()='cloud_upload']"));
+            //uploadBtn.Click();
+            //Thread.Sleep(2000);
 
-            // Click the upload button (which opens the Windows dialog)
+            IWebElement fileInput = driver.FindElement(
+                By.XPath("//input[@type='file']"));
 
-            IWebElement uploadBtn = driver.FindElement(By.XPath("//mat-icon[text()='cloud_upload']"));
-            uploadBtn.Click();
-            Thread.Sleep(2000);
+            string projectRoot = Directory.GetCurrentDirectory();
+            string filePath = Path.Combine(projectRoot, "TestData", "PO-PDF.pdf");
+            fileInput.SendKeys(filePath);
 
-            // Simulate typing file path + Enter
-            var sim = new InputSimulator();
-            sim.Keyboard.TextEntry(@"C:\Users\Yogeswari-PC\Downloads\PO-PDF.pdf");
-            sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-            Thread.Sleep(2000);
+            //// Simulate typing file path + Enter
+            //var sim = new InputSimulator();
+            //sim.Keyboard.TextEntry(@"C:\Users\Yogeswari-PC\Downloads\PO-PDF.pdf");
+            //sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+            //Thread.Sleep(2000);
 
             // Expiry Date
             IWebElement billDateCalendarIcon = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("drange")));
