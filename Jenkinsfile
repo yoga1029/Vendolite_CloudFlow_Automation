@@ -20,7 +20,7 @@ pipeline {
 
                 // Allow pipeline to continue even if tests fail
                 catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
-                    bat "dotnet test ${env.DOTNET_SOLUTION} --logger \"trx;LogFileName=test_results.trx\""
+                    bat "dotnet test ${env.DOTNET_SOLUTION} --logger "console;verbosity=detailed""
                 }
             }
         }
