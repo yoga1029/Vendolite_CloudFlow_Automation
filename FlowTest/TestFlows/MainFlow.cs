@@ -1089,2297 +1089,2342 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
                     driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
                     Thread.Sleep(3000);
-
-
-
-                    //// wait for overlay to disappear first
-                    //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-                    //    By.XPath("//div[contains(@class,'overlay')]")
-                    //));
-
-                    //// Locate Product Module
-                    //By productModuleBy = By.XPath("//div[contains(text(),'Products')]");
-                    //wait.Until(d => d.FindElement(productModuleBy).Displayed);
-                    //IWebElement productModule = driver.FindElement(productModuleBy);
-
-                    //((IJavaScriptExecutor)driver)
-                    //    .ExecuteScript("arguments[0].scrollIntoView(true);", productModule);
-
-                    //productModule.Click();
-
-                    //// Locate Brand sub-module
-                    //By brandListBy = By.XPath("//div[contains(text(),' Brand ')]");
-                    //wait.Until(d => d.FindElement(brandListBy).Displayed);
-                    //driver.FindElement(brandListBy).Click();
-
-                    //Thread.Sleep(7000);
-
-                    //for (int i = 0; i < AddBrandData.Brands.GetLength(0); i++)
-                    //{
-                    //    string searchName = AddBrandData.Brands[i, 0];
-
-                    //    By searchBoxBy = By.Name("searchText");
-                    //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
-                    //    IWebElement searchText = driver.FindElement(searchBoxBy);
-                    //    searchText.Clear();
-                    //    searchText.SendKeys(searchName + Keys.Enter);
-
-                    //    Thread.Sleep(3000);
-
-                    //    var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
-
-                    //    if (rows.Count == 0)
-                    //    {
-                    //        Console.WriteLine($"Brand '{searchName}' not found. Adding brand");
-
-                    //        By addBrandBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
-                    //        wait.Until(d => d.FindElement(addBrandBtnBy).Displayed);
-                    //        driver.FindElement(addBrandBtnBy).Click();
-
-                    //        Thread.Sleep(2000);
-
-                    //        IWebElement brandName =
-                    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
-                    //        brandName.SendKeys(AddBrandData.Brands[i, 1]);
-
-                    //        driver.FindElement(By.Name("branch")).Click();
-                    //        string branchName = AddBrandData.Brands[i, 2];
-                    //        string dynamicXPath = $"//span[text()=' {branchName} ']";
-                    //        driver.FindElement(By.XPath(dynamicXPath)).Click();
-
-                    //        // Upload Brand Image
-                    //        IWebElement imageUploadBtn =
-                    //            wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
-                    //        imageUploadBtn.SendKeys(AddBrandData.Brands[i, 3]);
-
-                    //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
-                    //              .Click();
-
-                    //        Thread.Sleep(3000);
-                    //    }
-                    //    else
-                    //    {
-                    //        Console.WriteLine($"Brand '{searchName}' already exists.");
-                    //    }
                 }
+                else
+                {
+                    Console.WriteLine($"Brand '{searchName}' already exists.");
+                }
+
+
+                //// wait for overlay to disappear first
+                //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                //    By.XPath("//div[contains(@class,'overlay')]")
+                //));
+
+                //// Locate Product Module
+                //By productModuleBy = By.XPath("//div[contains(text(),'Products')]");
+                //wait.Until(d => d.FindElement(productModuleBy).Displayed);
+                //IWebElement productModule = driver.FindElement(productModuleBy);
+
+                //((IJavaScriptExecutor)driver)
+                //    .ExecuteScript("arguments[0].scrollIntoView(true);", productModule);
+
+                //productModule.Click();
+
+                //// Locate Brand sub-module
+                //By brandListBy = By.XPath("//div[contains(text(),' Brand ')]");
+                //wait.Until(d => d.FindElement(brandListBy).Displayed);
+                //driver.FindElement(brandListBy).Click();
+
+                //Thread.Sleep(7000);
+
+                //for (int i = 0; i < AddBrandData.Brands.GetLength(0); i++)
+                //{
+                //    string searchName = AddBrandData.Brands[i, 0];
+
+                //    By searchBoxBy = By.Name("searchText");
+                //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+                //    IWebElement searchText = driver.FindElement(searchBoxBy);
+                //    searchText.Clear();
+                //    searchText.SendKeys(searchName + Keys.Enter);
+
+                //    Thread.Sleep(3000);
+
+                //    var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+
+                //    if (rows.Count == 0)
+                //    {
+                //        Console.WriteLine($"Brand '{searchName}' not found. Adding brand");
+
+                //        By addBrandBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
+                //        wait.Until(d => d.FindElement(addBrandBtnBy).Displayed);
+                //        driver.FindElement(addBrandBtnBy).Click();
+
+                //        Thread.Sleep(2000);
+
+                //        IWebElement brandName =
+                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
+                //        brandName.SendKeys(AddBrandData.Brands[i, 1]);
+
+                //        driver.FindElement(By.Name("branch")).Click();
+                //        string branchName = AddBrandData.Brands[i, 2];
+                //        string dynamicXPath = $"//span[text()=' {branchName} ']";
+                //        driver.FindElement(By.XPath(dynamicXPath)).Click();
+
+                //        // Upload Brand Image
+                //        IWebElement imageUploadBtn =
+                //            wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+                //        imageUploadBtn.SendKeys(AddBrandData.Brands[i, 3]);
+
+                //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
+                //              .Click();
+
+                //        Thread.Sleep(3000);
+                //    }
+                //    else
+                //    {
+                //        Console.WriteLine($"Brand '{searchName}' already exists.");
+                //    }
             }
         }
+    }
 
 
 
 
-        public class AddCategory
+    public class AddCategory
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public AddCategory(IWebDriver driver)
         {
-            private IWebDriver driver;
-            private WebDriverWait wait;
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
+        }
 
-            public AddCategory(IWebDriver driver)
+        public void AddCategoryFlow()
+        {
+
+
+            Thread.Sleep(1000);
+            //Locate Product Module
+            IWebElement productModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Products')]")));
+            productModule.Click();
+
+            //Locate Category sub-module
+            IWebElement categorySubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Categories ')]")));
+            categorySubModule.Click();
+            Thread.Sleep(2000);
+
+
+            for (int i = 0; i < AddCategoryData.Categories.GetLength(0); i++)
             {
-                this.driver = driver;
-                wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
-            }
+                string searchName = AddCategoryData.Categories[i, 0];
+                IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
+                searchText.Clear();
+                searchText.SendKeys(searchName + Keys.Enter);
+                Thread.Sleep(3000);
 
-            public void AddCategoryFlow()
-            {
-
-
+                // Check if category exists
+                var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
                 Thread.Sleep(1000);
-                //Locate Product Module
-                IWebElement productModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Products')]")));
-                productModule.Click();
-
-                //Locate Category sub-module
-                IWebElement categorySubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Categories ')]")));
-                categorySubModule.Click();
-                Thread.Sleep(2000);
-
-
-                for (int i = 0; i < AddCategoryData.Categories.GetLength(0); i++)
+                if (rows.Count == 0)
                 {
-                    string searchName = AddCategoryData.Categories[i, 0];
-                    IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
-                    searchText.Clear();
-                    searchText.SendKeys(searchName + Keys.Enter);
+                    Console.WriteLine($"Category '{searchName}' not found. Adding category");
+
+
+                    // Navigate to add catgeory page
+                    IWebElement addCategoryButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
+                    addCategoryButton.Click();
+                    Thread.Sleep(2000);
+
+                    //Fill the input fields
+                    IWebElement categoryName = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
+                    categoryName.SendKeys(AddCategoryData.Categories[i, 1]);
+
+                    driver.FindElement(By.Name("branch")).Click();
+                    string branchName = AddCategoryData.Categories[i, 2];
+                    string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
+                    driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
+
+                    driver.FindElement(By.Name("brand")).Click();
+                    string brandName = AddCategoryData.Categories[i, 3];
+                    string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
+                    driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
+
+
+                    // Upload Category Image
+                    IWebElement imageUploadBtn = wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+                    imageUploadBtn.SendKeys(AddCategoryData.Categories[i, 4]);
+
+                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
                     Thread.Sleep(3000);
 
-                    // Check if category exists
-                    var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
-                    Thread.Sleep(1000);
-                    if (rows.Count == 0)
-                    {
-                        Console.WriteLine($"Category '{searchName}' not found. Adding category");
-
-
-                        // Navigate to add catgeory page
-                        IWebElement addCategoryButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
-                        addCategoryButton.Click();
-                        Thread.Sleep(2000);
-
-                        //Fill the input fields
-                        IWebElement categoryName = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
-                        categoryName.SendKeys(AddCategoryData.Categories[i, 1]);
-
-                        driver.FindElement(By.Name("branch")).Click();
-                        string branchName = AddCategoryData.Categories[i, 2];
-                        string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
-                        driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
-
-                        driver.FindElement(By.Name("brand")).Click();
-                        string brandName = AddCategoryData.Categories[i, 3];
-                        string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
-                        driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
-
-
-                        // Upload Category Image
-                        IWebElement imageUploadBtn = wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
-                        imageUploadBtn.SendKeys(AddCategoryData.Categories[i, 4]);
-
-                        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                        Thread.Sleep(3000);
-                        //Thread.Sleep(1000);
-
-                        //// Locate Product Module
-                        //By productModuleBy = By.XPath("//div[contains(text(),'Products')]");
-                        //wait.Until(d => d.FindElement(productModuleBy).Displayed);
-                        //driver.FindElement(productModuleBy).Click();
-
-                        //// Locate Category sub-module
-                        //By categorySubModuleBy = By.XPath("//div[contains(text(),' Categories ')]");
-                        //wait.Until(d => d.FindElement(categorySubModuleBy).Displayed);
-                        //driver.FindElement(categorySubModuleBy).Click();
-
-                        //Thread.Sleep(7000);
-
-                        //for (int i = 0; i < AddCategoryData.Categories.GetLength(0); i++)
-                        //{
-                        //    string searchName = AddCategoryData.Categories[i, 0];
-
-                        //    By searchBoxBy = By.Name("searchText");
-                        //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
-                        //    IWebElement searchText = driver.FindElement(searchBoxBy);
-                        //    searchText.Clear();
-                        //    searchText.SendKeys(searchName + Keys.Enter);
-
-                        //    Thread.Sleep(4000);
-
-                        //    var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
-                        //    Thread.Sleep(1000);
-
-                        //    if (rows.Count == 0)
-                        //    {
-                        //        Console.WriteLine($"Category '{searchName}' not found. Adding category");
-
-                        //        By addCategoryBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
-                        //        wait.Until(d => d.FindElement(addCategoryBtnBy).Displayed);
-                        //        driver.FindElement(addCategoryBtnBy).Click();
-
-                        //        Thread.Sleep(2000);
-
-                        //        IWebElement categoryName =
-                        //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
-                        //        categoryName.SendKeys(AddCategoryData.Categories[i, 1]);
-
-                        //        driver.FindElement(By.Name("branch")).Click();
-                        //        string branchName = AddCategoryData.Categories[i, 2];
-                        //        string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
-                        //        driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
-
-                        //        driver.FindElement(By.Name("brand")).Click();
-                        //        string brandName = AddCategoryData.Categories[i, 3];
-                        //        string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
-                        //        driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
-
-                        //        // Upload Category Image
-                        //        IWebElement imageUploadBtn =
-                        //            wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
-                        //        imageUploadBtn.SendKeys(AddCategoryData.Categories[i, 4]);
-
-                        //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
-                        //              .Click();
-
-                        //        Thread.Sleep(3000);
-                        //    }
-                        //    else
-                        //    {
-                        //        Console.WriteLine($"Category '{searchName}' already exists.");
-                        //    }
-                    }
                 }
-            }
-
-
-
-
-            public class AddSubCategory
-            {
-                private IWebDriver driver;
-                private WebDriverWait wait;
-
-                public AddSubCategory(IWebDriver driver)
+                else
                 {
-                    this.driver = driver;
-                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
-                }
-
-                public void AddSubCategoryFlow()
-                {
-
-                    Thread.Sleep(1000);
-                    //Locate Product Module
-                    IWebElement productModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Products')]")));
-                    productModule.Click();
-
-                    //Locate Subategory sub-module
-                    IWebElement subCategory = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Sub Categories ')]")));
-                    subCategory.Click();
-                    Thread.Sleep(3000);
-
-
-                    for (int i = 0; i < AddSubCategoryData.SubCategory.GetLength(0); i++)
-                    {
-                        string searchName = AddSubCategoryData.SubCategory[i, 0];
-                        IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
-                        searchText.Clear();
-                        searchText.SendKeys(searchName + Keys.Enter);
-                        Thread.Sleep(5000);
-                        var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
-                        if (rows.Count == 0)
-                        {
-                            Console.WriteLine($"Subcategory '{searchName}' not found. Adding Subcategory");
-
-
-                            // Navigate to add subcatgeory page
-                            IWebElement addSubCategoryButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
-                            addSubCategoryButton.Click();
-                            Thread.Sleep(2000);
-
-                            // Fill the input fields using 2D array
-                            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name"))).SendKeys(AddSubCategoryData.SubCategory[i, 1]);
-
-                            driver.FindElement(By.Name("branch")).Click();
-                            string branchName = AddSubCategoryData.SubCategory[i, 2];
-                            string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
-                            driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
-
-
-                            driver.FindElement(By.Name("brand")).Click();
-                            string brandName = AddSubCategoryData.SubCategory[i, 3];
-                            string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
-                            driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
-
-                            driver.FindElement(By.Name("category")).Click();
-                            string categoryName = AddSubCategoryData.SubCategory[i, 4];
-                            string dynamicCategoryXPath = $"//span[text()=' {categoryName} ']";
-                            driver.FindElement(By.XPath(dynamicCategoryXPath)).Click();
-
-                            // Upload Category Image
-                            IWebElement imageUploadBtn = wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
-                            imageUploadBtn.SendKeys(AddSubCategoryData.SubCategory[i, 5]);
-
-                            ////Fill the input fields
-                            //IWebElement brand = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("brand")));
-                            //brand.Click();
-                            //Thread.Sleep(1000);
-
-                            //IWebElement chooseBrandName = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[text() = ' Chro ']")));
-                            //chooseBrandName.Click();
-                            //Thread.Sleep(1000);
-
-                            driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                            Thread.Sleep(3000);
-
-
-
-
-
-
-                            //Thread.Sleep(1000);
-
-                            //// Locate Product Module
-                            //By productModuleBy = By.XPath("//div[contains(text(),'Products')]");
-                            //wait.Until(d => d.FindElement(productModuleBy).Displayed);
-                            //driver.FindElement(productModuleBy).Click();
-
-                            //// Locate SubCategory sub-module
-                            //By subCategoryBy = By.XPath("//div[contains(text(),' Sub Categories ')]");
-                            //wait.Until(d => d.FindElement(subCategoryBy).Displayed);
-                            //driver.FindElement(subCategoryBy).Click();
-
-                            //Thread.Sleep(5000);
-
-                            //for (int i = 0; i < AddSubCategoryData.SubCategory.GetLength(0); i++)
-                            //{
-                            //    string searchName = AddSubCategoryData.SubCategory[i, 0];
-
-                            //    By searchBoxBy = By.Name("searchText");
-                            //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
-                            //    IWebElement searchText = driver.FindElement(searchBoxBy);
-                            //    searchText.Clear();
-                            //    searchText.SendKeys(searchName + Keys.Enter);
-
-                            //    Thread.Sleep(7000);
-
-                            //    var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
-
-                            //    if (rows.Count == 0)
-                            //    {
-                            //        Console.WriteLine($"Subcategory '{searchName}' not found. Adding Subcategory");
-
-                            //        By addSubCategoryBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
-                            //        wait.Until(d => d.FindElement(addSubCategoryBtnBy).Displayed);
-                            //        driver.FindElement(addSubCategoryBtnBy).Click();
-
-                            //        Thread.Sleep(2000);
-
-                            //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")))
-                            //            .SendKeys(AddSubCategoryData.SubCategory[i, 1]);
-
-                            //        driver.FindElement(By.Name("branch")).Click();
-                            //        string branchName = AddSubCategoryData.SubCategory[i, 2];
-                            //        string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
-                            //        driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
-
-                            //        driver.FindElement(By.Name("brand")).Click();
-                            //        string brandName = AddSubCategoryData.SubCategory[i, 3];
-                            //        string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
-                            //        driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
-
-                            //        driver.FindElement(By.Name("category")).Click();
-                            //        string categoryName = AddSubCategoryData.SubCategory[i, 4];
-                            //        string dynamicCategoryXPath = $"//span[text()=' {categoryName} ']";
-                            //        driver.FindElement(By.XPath(dynamicCategoryXPath)).Click();
-
-                            //        // Upload SubCategory Image
-                            //        IWebElement imageUploadBtn =
-                            //            wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
-                            //        imageUploadBtn.SendKeys(AddSubCategoryData.SubCategory[i, 5]);
-
-                            //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
-                            //              .Click();
-
-                            //        Thread.Sleep(3000);
-                            //    }
-                            //    else
-                            //    {
-                            //        Console.WriteLine($"Subcategory '{searchName}' already exists.");
-                            //    }
-                        }
-                    }
-                }
-
-
-                public class AddProduct
-                {
-                    private IWebDriver driver;
-                    private WebDriverWait wait;
-
-                    public AddProduct(IWebDriver driver)
-                    {
-                        this.driver = driver;
-                        wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
-                    }
-
-                    public void AddProductFlow()
-                    {
-
-
-                        Thread.Sleep(1000);
-                        //Locate Product Module
-                        IWebElement productModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Products')]")));
-                        productModule.Click();
-
-                        //Locate ProductList sub-module
-                        IWebElement productList = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Product List ')]")));
-                        productList.Click();
-                        Thread.Sleep(2000);
-
-                        for (int i = 0; i < AddProductData.Products.GetLength(0); i++)
-                        {
-
-                            IWebElement branchFilter = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'branch']")));
-                            branchFilter.Click();
-                            Thread.Sleep(2000);
-
-                            IWebElement selectBranch = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains (text(), ' Pudukkottai Branch ')]")));
-                            selectBranch.Click();
-                            Thread.Sleep(2000);
-
-                            string searchName = AddProductData.Products[i, 0];
-                            IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
-                            searchText.Clear();
-                            searchText.SendKeys(searchName + Keys.Enter);
-                            Thread.Sleep(3000);
-
-                            // Check if product exists
-                            var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
-                            if (rows.Count == 0)
-                            {
-                                Console.WriteLine($"Product '{searchName}' not found. Adding Product");
-
-                                // Navigate to add product page
-                                IWebElement addProductButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
-                                addProductButton.Click();
-                                Thread.Sleep(2000);
-
-                                //Fill the input fields
-
-                                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name"))).SendKeys(AddProductData.Products[i, 1]);
-                                Thread.Sleep(2000);
-
-                                //wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@placeholder = 'Branch'])[2]"))).Click();
-                                //string branchName = AddProductData.Products[i, 2];
-                                //string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
-                                //driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
-
-                                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@placeholder = 'Branch'])[2]"))).Click();
-                                string branchName = AddProductData.Products[i, 2];
-                                driver.FindElement(By.XPath($"//span[text()=' {branchName} ']")).Click();
-
-                                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("brand"))).Click();
-                                string brandName = AddProductData.Products[i, 3];
-                                string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
-                                driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
-
-                                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("category"))).Click();
-                                string categoryName = AddProductData.Products[i, 4];
-                                string dynamicCategoryXPath = $"//span[text()=' {categoryName} ']";
-                                driver.FindElement(By.XPath(dynamicCategoryXPath)).Click();
-
-                                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("subcategory"))).Click();
-                                string subcategoryName = AddProductData.Products[i, 5];
-                                string dynamicSubcategoryXPath = $"//span[text()=' {subcategoryName} ']";
-                                driver.FindElement(By.XPath(dynamicSubcategoryXPath)).Click();
-
-                                IWebElement productId = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("customProductId")));
-                                productId.SendKeys(AddProductData.Products[i, 6]);
-                                Thread.Sleep(2000);
-
-                                IWebElement hsnCode = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("hsnCode")));
-                                hsnCode.SendKeys(AddProductData.Products[i, 7]);
-                                Thread.Sleep(2000);
-
-                                bool sp = true;
-                                if (AddProductData.Products[i, 10] == "1")
-                                {
-                                    IWebElement addGstCheckbox = wait.Until(ExpectedConditions.ElementExists(By.XPath("//input[@name='addGST']")));
-                                    IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-                                    js.ExecuteScript("arguments[0].click();", addGstCheckbox);
-                                    Thread.Sleep(1000);
-
-                                    sp = false;
-                                    IWebElement maximumRetailPrice = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("mrp")));
-                                    maximumRetailPrice.SendKeys(AddProductData.Products[i, 11]);
-                                    Thread.Sleep(2000);
-
-                                    IWebElement cgst = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cgst")));
-                                    cgst.SendKeys(AddProductData.Products[i, 12]);
-                                    Thread.Sleep(2000);
-
-                                    IWebElement sgst = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("sgst")));
-                                    sgst.SendKeys(AddProductData.Products[i, 13]);
-                                    Thread.Sleep(2000);
-
-                                    IWebElement utgst = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("utgst")));
-                                    utgst.SendKeys(AddProductData.Products[i, 14]);
-                                    Thread.Sleep(1000);
-
-                                    IWebElement cess = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cess")));
-                                    cess.SendKeys(AddProductData.Products[i, 15]);
-                                    Thread.Sleep(1000);
-
-                                    IWebElement costForState = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("sCost")));
-                                    costForState.SendKeys(AddProductData.Products[i, 16]);
-                                    Thread.Sleep(2000);
-
-                                    IWebElement costForUt = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("utCost")));
-                                    costForUt.SendKeys(AddProductData.Products[i, 17]);
-                                    Thread.Sleep(2000);
-
-                                    //Taxable price for state and ut will be automatically calculated 
-                                }
-                                if (sp)
-                                {
-                                    IWebElement sellingPrice = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cost")));
-                                    sellingPrice.SendKeys(AddProductData.Products[i, 8]);
-                                    Thread.Sleep(2000);
-                                }
-
-                                // Upload Product Image
-                                IWebElement imageUploadBtn = wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
-                                imageUploadBtn.SendKeys(AddProductData.Products[i, 9]);
-
-
-                                driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                                Thread.Sleep(3000);
-
-                                driver.FindElement(By.XPath("//button//span[contains(text(),'Cancel')]")).Click();
-                                Thread.Sleep(3000);
-
-                                //Thread.Sleep(1000);
-
-                                //// Locate Product Module
-                                //By productModuleBy = By.XPath("//div[contains(text(),'Products')]");
-                                //wait.Until(d => d.FindElement(productModuleBy).Displayed);
-                                //driver.FindElement(productModuleBy).Click();
-
-                                //// Locate ProductList sub-module
-                                //By productListBy = By.XPath("//div[contains(text(),' Product List ')]");
-                                //wait.Until(d => d.FindElement(productListBy).Displayed);
-                                //driver.FindElement(productListBy).Click();
-
-                                //Thread.Sleep(5000);
-
-                                //for (int i = 0; i < AddProductData.Products.GetLength(0); i++)
-                                //{
-                                //    IWebElement branchFilter =
-                                //        wait.Until(ExpectedConditions.ElementToBeClickable(
-                                //            By.XPath("//input[@name = 'branch']")));
-                                //    branchFilter.Click();
-                                //    Thread.Sleep(2000);
-
-                                //    IWebElement selectBranch =
-                                //        wait.Until(ExpectedConditions.ElementToBeClickable(
-                                //            By.XPath("//span[contains (text(), ' Pudukkottai Branch ')]")));
-                                //    selectBranch.Click();
-                                //    Thread.Sleep(2000);
-
-                                //    string searchName = AddProductData.Products[i, 0];
-
-                                //    By searchBoxBy = By.Name("searchText");
-                                //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
-                                //    IWebElement searchText = driver.FindElement(searchBoxBy);
-                                //    searchText.Clear();
-                                //    searchText.SendKeys(searchName + Keys.Enter);
-
-                                //    Thread.Sleep(3000);
-
-                                //    var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
-
-                                //    if (rows.Count == 0)
-                                //    {
-                                //        Console.WriteLine($"Product '{searchName}' not found. Adding Product");
-
-                                //        By addProductBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
-                                //        wait.Until(d => d.FindElement(addProductBtnBy).Displayed);
-                                //        driver.FindElement(addProductBtnBy).Click();
-
-                                //        Thread.Sleep(2000);
-
-                                //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")))
-                                //            .SendKeys(AddProductData.Products[i, 1]);
-
-                                //        Thread.Sleep(2000);
-
-                                //        wait.Until(ExpectedConditions.ElementIsVisible(
-                                //            By.XPath("(//input[@placeholder = 'Branch'])[2]"))).Click();
-                                //        string branchName = AddProductData.Products[i, 2];
-                                //        driver.FindElement(By.XPath($"//span[text()=' {branchName} ']")).Click();
-
-                                //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("brand"))).Click();
-                                //        string brandName = AddProductData.Products[i, 3];
-                                //        driver.FindElement(By.XPath($"//span[text()=' {brandName} ']")).Click();
-
-                                //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("category"))).Click();
-                                //        string categoryName = AddProductData.Products[i, 4];
-                                //        driver.FindElement(By.XPath($"//span[text()=' {categoryName} ']")).Click();
-
-                                //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("subcategory"))).Click();
-                                //        string subcategoryName = AddProductData.Products[i, 5];
-                                //        driver.FindElement(By.XPath($"//span[text()=' {subcategoryName} ']")).Click();
-
-                                //        IWebElement productId =
-                                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("customProductId")));
-                                //        productId.SendKeys(AddProductData.Products[i, 6]);
-                                //        Thread.Sleep(2000);
-
-                                //        IWebElement hsnCode =
-                                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("hsnCode")));
-                                //        hsnCode.SendKeys(AddProductData.Products[i, 7]);
-                                //        Thread.Sleep(2000);
-
-                                //        bool sp = true;
-                                //        if (AddProductData.Products[i, 10] == "1")
-                                //        {
-                                //            IWebElement addGstCheckbox =
-                                //                wait.Until(ExpectedConditions.ElementExists(
-                                //                    By.XPath("//input[@name='addGST']")));
-                                //            ((IJavaScriptExecutor)driver)
-                                //                .ExecuteScript("arguments[0].click();", addGstCheckbox);
-
-                                //            Thread.Sleep(1000);
-                                //            sp = false;
-
-                                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("mrp")))
-                                //                .SendKeys(AddProductData.Products[i, 11]);
-                                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cgst")))
-                                //                .SendKeys(AddProductData.Products[i, 12]);
-                                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("sgst")))
-                                //                .SendKeys(AddProductData.Products[i, 13]);
-                                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("utgst")))
-                                //                .SendKeys(AddProductData.Products[i, 14]);
-                                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cess")))
-                                //                .SendKeys(AddProductData.Products[i, 15]);
-                                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("sCost")))
-                                //                .SendKeys(AddProductData.Products[i, 16]);
-                                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("utCost")))
-                                //                .SendKeys(AddProductData.Products[i, 17]);
-                                //        }
-
-                                //        if (sp)
-                                //        {
-                                //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cost")))
-                                //                .SendKeys(AddProductData.Products[i, 8]);
-                                //        }
-
-                                //        IWebElement imageUploadBtn =
-                                //            wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
-                                //        imageUploadBtn.SendKeys(AddProductData.Products[i, 9]);
-
-                                //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
-                                //              .Click();
-                                //        Thread.Sleep(3000);
-
-                                //        driver.FindElement(By.XPath("//button//span[contains(text(),'Cancel')]"))
-                                //              .Click();
-                                //        Thread.Sleep(3000);
-                                //    }
-                                //    else
-                                //    {
-                                //        Console.WriteLine($"Product '{searchName}' already exists.");
-                                //    }
-                            }
-                        }
-                    }
-
-                    public class AddWarehouse
-                    {
-                        private IWebDriver driver;
-                        private WebDriverWait wait;
-
-                        public AddWarehouse(IWebDriver driver)
-                        {
-                            this.driver = driver;
-                            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
-                        }
-
-                        public void AddWarehouseFlow()
-                        {
-
-
-
-                            //Locate Warehouse Module
-                            IWebElement warehouseModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Warehouse")));
-                            warehouseModule.Click();
-
-                            // Fetching Warehouse List sub-menu
-                            IWebElement warehouseList = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Warehouse0")));
-                            warehouseList.Click();
-                            Thread.Sleep(2000);
-
-                            for (int i = 0; i < AddWarehouseData.Warehouses.GetLength(0); i++)
-                            {
-
-                                IWebElement searchTypeButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
-                                searchTypeButton.Click();
-                                Thread.Sleep(2000);
-
-                                IWebElement selectName = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains (text(), ' Name ')]")));
-                                selectName.Click();
-                                Thread.Sleep(2000);
-
-
-                                string searchName = AddWarehouseData.Warehouses[i, 0];
-                                IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
-                                searchText.Clear();
-                                searchText.SendKeys(searchName + Keys.Enter);
-                                Thread.Sleep(2000);
-
-                                var rowData = driver.FindElements(By.XPath("//table//tbody/tr"));    //fetching table data
-                                if (rowData.Count == 0)
-                                {
-                                    Console.WriteLine($"Warehouse '{searchName}' not found. Adding Warehouse");
-
-                                    // Navigate to add warehouse page
-                                    IWebElement addWarehouseButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
-                                    addWarehouseButton.Click();
-                                    Thread.Sleep(2000);
-
-                                    // Fill the input fields using 2D array
-                                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name"))).SendKeys(AddWarehouseData.Warehouses[i, 1]);
-
-                                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("lat"))).SendKeys(AddWarehouseData.Warehouses[i, 2]);
-
-                                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("lon"))).SendKeys(AddWarehouseData.Warehouses[i, 3]);
-
-
-                                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("city"))).SendKeys(AddWarehouseData.Warehouses[i, 4]);
-
-                                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("state"))).SendKeys(AddWarehouseData.Warehouses[i, 5]);
-
-                                    driver.FindElement(By.Name("branch")).Click();
-                                    string branchName = AddWarehouseData.Warehouses[i, 6];
-                                    string dynamicXPath = $"//span[text()=' {branchName} ']";
-                                    driver.FindElement(By.XPath(dynamicXPath)).Click();
-
-
-                                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("phoneNo"))).SendKeys(AddWarehouseData.Warehouses[i, 7]);
-                                    Thread.Sleep(1000);
-
-
-                                    wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span [contains(text(),'publish' )]"))).Click();
-                                    Thread.Sleep(1000);
-                                    var sim = new InputSimulator();
-                                    sim.Keyboard.TextEntry(AddWarehouseData.Warehouses[i, 8]);
-                                    sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-                                    Thread.Sleep(1000);
-
-
-                                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                                    Thread.Sleep(2000);
-
-                                    //// Locate Warehouse Module
-                                    //By warehouseModuleBy = By.Id("menuItem-Warehouse");
-                                    //wait.Until(d => d.FindElement(warehouseModuleBy).Displayed);
-                                    //driver.FindElement(warehouseModuleBy).Click();
-
-                                    //// Fetch Warehouse List sub-menu
-                                    //By warehouseListBy = By.Id("menuItem-Warehouse0");
-                                    //wait.Until(d => d.FindElement(warehouseListBy).Displayed);
-                                    //driver.FindElement(warehouseListBy).Click();
-
-                                    //Thread.Sleep(2000);
-
-                                    //for (int i = 0; i < AddWarehouseData.Warehouses.GetLength(0); i++)
-                                    //{
-                                    //    By searchTypeBtnBy = By.XPath("(//mat-select[@role = 'listbox'])[2]");
-                                    //    wait.Until(d => d.FindElement(searchTypeBtnBy).Displayed);
-                                    //    driver.FindElement(searchTypeBtnBy).Click();
-                                    //    Thread.Sleep(2000);
-
-                                    //    By selectNameBy = By.XPath("//span[contains (text(), ' Name ')]");
-                                    //    wait.Until(d => d.FindElement(selectNameBy).Displayed);
-                                    //    driver.FindElement(selectNameBy).Click();
-                                    //    Thread.Sleep(2000);
-
-                                    //    string searchName = AddWarehouseData.Warehouses[i, 0];
-
-                                    //    By searchBoxBy = By.Name("searchText");
-                                    //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
-                                    //    IWebElement searchText = driver.FindElement(searchBoxBy);
-                                    //    searchText.Clear();
-                                    //    searchText.SendKeys(searchName + Keys.Enter);
-
-                                    //    Thread.Sleep(2000);
-
-                                    //    var rowData = driver.FindElements(By.XPath("//table//tbody/tr"));
-
-                                    //    if (rowData.Count == 0)
-                                    //    {
-                                    //        Console.WriteLine($"Warehouse '{searchName}' not found. Adding Warehouse");
-
-                                    //        By addWarehouseBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
-                                    //        wait.Until(d => d.FindElement(addWarehouseBtnBy).Displayed);
-                                    //        driver.FindElement(addWarehouseBtnBy).Click();
-
-                                    //        Thread.Sleep(2000);
-
-                                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")))
-                                    //            .SendKeys(AddWarehouseData.Warehouses[i, 1]);
-
-                                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("lat")))
-                                    //            .SendKeys(AddWarehouseData.Warehouses[i, 2]);
-
-                                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("lon")))
-                                    //            .SendKeys(AddWarehouseData.Warehouses[i, 3]);
-
-                                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("city")))
-                                    //            .SendKeys(AddWarehouseData.Warehouses[i, 4]);
-
-                                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("state")))
-                                    //            .SendKeys(AddWarehouseData.Warehouses[i, 5]);
-
-                                    //        driver.FindElement(By.Name("branch")).Click();
-                                    //        string branchName = AddWarehouseData.Warehouses[i, 6];
-                                    //        string dynamicXPath = $"//span[text()=' {branchName} ']";
-                                    //        driver.FindElement(By.XPath(dynamicXPath)).Click();
-
-                                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("phoneNo")))
-                                    //            .SendKeys(AddWarehouseData.Warehouses[i, 7]);
-
-                                    //        Thread.Sleep(1000);
-
-                                    //        // Upload / publish file
-                                    //        wait.Until(ExpectedConditions.ElementIsVisible(
-                                    //            By.XPath("//span [contains(text(),'publish' )]"))).Click();
-
-                                    //        Thread.Sleep(1000);
-                                    //        var sim = new InputSimulator();
-                                    //        sim.Keyboard.TextEntry(AddWarehouseData.Warehouses[i, 8]);
-                                    //        sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-
-                                    //        Thread.Sleep(1000);
-
-                                    //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
-                                    //              .Click();
-
-                                    //        Thread.Sleep(2000);
-                                    //    }
-                                    //    else
-                                    //    {
-                                    //        Console.WriteLine($"Warehouse '{searchName}' already exists.");
-                                    //    }
-                                }
-                            }
-                        }
-
-                        public class AddVendor
-                        {
-                            private IWebDriver driver;
-                            private WebDriverWait wait;
-
-                            public AddVendor(IWebDriver driver)
-                            {
-                                this.driver = driver;
-                                wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
-                            }
-
-                            public void AddVendorFlow()
-                            {
-
-
-                                //Locate Warehouse Module
-                                IWebElement warehouseModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Warehouse")));
-                                warehouseModule.Click();
-
-                                // Fetching Vendor List sub-menu
-                                IWebElement vendorList = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Warehouse1")));
-                                vendorList.Click();
-                                Thread.Sleep(2000);
-
-                                for (int i = 0; i < AddWarehouseData.Vendors.GetLength(0); i++)
-                                {
-                                    IWebElement searchTypeButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
-                                    searchTypeButton.Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement selectName = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains (text(), ' Name ')]")));
-                                    selectName.Click();
-                                    Thread.Sleep(2000);
-
-                                    string searchName = AddWarehouseData.Vendors[i, 0];
-                                    IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
-                                    searchText.Clear();
-                                    searchText.SendKeys(searchName + Keys.Enter);
-                                    Thread.Sleep(2000);
-
-                                    var rowData = driver.FindElements(By.XPath("//table//tbody/tr"));    //fetching table data
-                                    if (rowData.Count == 0)
-                                    {
-                                        Console.WriteLine($"Warehouse '{searchName}' not found. Adding Warehouse");
-
-                                        // Navigate to add warehouse page
-                                        IWebElement addVendorButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
-                                        addVendorButton.Click();
-                                        Thread.Sleep(2000);
-
-                                        // Fill the input fields using 2D array
-                                        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name"))).SendKeys(AddWarehouseData.Vendors[i, 1]);
-
-                                        driver.FindElement(By.Name("branch")).Click();
-                                        string branchName = AddWarehouseData.Vendors[i, 2];
-                                        string dynamicXPath = $"//span[text()=' {branchName} ']";
-                                        driver.FindElement(By.XPath(dynamicXPath)).Click();
-
-                                        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("email"))).SendKeys(AddWarehouseData.Vendors[i, 3]);
-
-
-                                        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("mobile"))).SendKeys(AddWarehouseData.Vendors[i, 4]);
-
-                                        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonName"))).SendKeys(AddWarehouseData.Vendors[i, 5]);
-
-                                        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonEmail"))).SendKeys(AddWarehouseData.Vendors[i, 6]);
-
-
-                                        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonMobile"))).SendKeys(AddWarehouseData.Vendors[i, 7]);
-                                        Thread.Sleep(1000);
-
-                                        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                                        Thread.Sleep(2000);
-
-                                        //// Locate Warehouse Module
-                                        //By warehouseModuleBy = By.Id("menuItem-Warehouse");
-                                        //wait.Until(d => d.FindElement(warehouseModuleBy).Displayed);
-                                        //driver.FindElement(warehouseModuleBy).Click();
-
-                                        //// Fetch Vendor List sub-menu
-                                        //By vendorListBy = By.Id("menuItem-Warehouse1");
-                                        //wait.Until(d => d.FindElement(vendorListBy).Displayed);
-                                        //driver.FindElement(vendorListBy).Click();
-
-                                        //Thread.Sleep(2000);
-
-                                        //for (int i = 0; i < AddWarehouseData.Vendors.GetLength(0); i++)
-                                        //{
-                                        //    By searchTypeBtnBy = By.XPath("(//mat-select[@role = 'listbox'])[2]");
-                                        //    wait.Until(d => d.FindElement(searchTypeBtnBy).Displayed);
-                                        //    driver.FindElement(searchTypeBtnBy).Click();
-                                        //    Thread.Sleep(2000);
-
-                                        //    By selectNameBy = By.XPath("//span[contains (text(), ' Name ')]");
-                                        //    wait.Until(d => d.FindElement(selectNameBy).Displayed);
-                                        //    driver.FindElement(selectNameBy).Click();
-                                        //    Thread.Sleep(2000);
-
-                                        //    string searchName = AddWarehouseData.Vendors[i, 0];
-
-                                        //    By searchBoxBy = By.Name("searchText");
-                                        //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
-                                        //    IWebElement searchText = driver.FindElement(searchBoxBy);
-                                        //    searchText.Clear();
-                                        //    searchText.SendKeys(searchName + Keys.Enter);
-
-                                        //    Thread.Sleep(2000);
-
-                                        //    var rowData = driver.FindElements(By.XPath("//table//tbody/tr"));
-
-                                        //    if (rowData.Count == 0)
-                                        //    {
-                                        //        Console.WriteLine($"Vendor '{searchName}' not found. Adding Vendor");
-
-                                        //        By addVendorBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
-                                        //        wait.Until(d => d.FindElement(addVendorBtnBy).Displayed);
-                                        //        driver.FindElement(addVendorBtnBy).Click();
-
-                                        //        Thread.Sleep(2000);
-
-                                        //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")))
-                                        //            .SendKeys(AddWarehouseData.Vendors[i, 1]);
-
-                                        //        driver.FindElement(By.Name("branch")).Click();
-                                        //        string branchName = AddWarehouseData.Vendors[i, 2];
-                                        //        string dynamicXPath = $"//span[text()=' {branchName} ']";
-                                        //        driver.FindElement(By.XPath(dynamicXPath)).Click();
-
-                                        //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("email")))
-                                        //            .SendKeys(AddWarehouseData.Vendors[i, 3]);
-
-                                        //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("mobile")))
-                                        //            .SendKeys(AddWarehouseData.Vendors[i, 4]);
-
-                                        //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonName")))
-                                        //            .SendKeys(AddWarehouseData.Vendors[i, 5]);
-
-                                        //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonEmail")))
-                                        //            .SendKeys(AddWarehouseData.Vendors[i, 6]);
-
-                                        //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonMobile")))
-                                        //            .SendKeys(AddWarehouseData.Vendors[i, 7]);
-
-                                        //        Thread.Sleep(1000);
-
-                                        //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
-                                        //              .Click();
-
-                                        //        Thread.Sleep(2000);
-                                        //    }
-                                        //    else
-                                        //    {
-                                        //        Console.WriteLine($"Vendor '{searchName}' already exists.");
-                                        //    }
-                                    }
-                                }
-                            }
-
-
-
-                            public class Productmapping
-                            {
-                                private IWebDriver driver;
-                                private WebDriverWait wait;
-                                static ITakesScreenshot screenshotDriver;
-
-                                public Productmapping(IWebDriver driver)
-                                {
-                                    this.driver = driver;
-                                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
-                                }
-
-                                public void ProductMappingFlow()
-                                {
-                                    try
-                                    {
-
-
-
-                                        //Fetching Machine menu
-                                        IWebElement machineMenu = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines")));
-                                        machineMenu.Click();
-
-                                        // Fetching Machine List
-                                        IWebElement machineList = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines0")));
-                                        machineList.Click();
-                                        Thread.Sleep(1000);
-
-                                        string machineId = MachineMapping.unmappedMachineForMapping;
-                                        Console.WriteLine("Selecting machine: " + machineId);
-
-                                        IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
-                                        searchText.Clear();
-                                        searchText.SendKeys(machineId + Keys.Enter);
-                                        Thread.Sleep(3000);
-
-                                        // Action Button 
-                                        IWebElement actionButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
-                                        actionButton.Click();
-                                        Thread.Sleep(1000);
-
-                                        //Fetching the details of the machine 
-                                        IWebElement machineDetails = wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
-                                        machineDetails.Click();
-                                        Thread.Sleep(3000);
-
-                                        //Edit Planogram
-                                        Thread.Sleep(3000);
-                                        IWebElement editSlot = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
-                                        editSlot.Click();
-                                        Thread.Sleep(1000);
-
-                                        IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
-                                        slotRowCount.Clear();
-                                        slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
-
-
-                                        IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
-                                        slotColumnCount.Clear();
-                                        slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
-
-                                        IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
-                                        endingRowCount.Clear();
-                                        endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
-
-
-                                        IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
-                                        endingColumnCount.Clear();
-                                        endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
-                                        Thread.Sleep(1000);
-                                        IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-                                        saveSlots.Click();
-                                        Console.WriteLine("Product Matrix Changed again");
-
-                                        ///* wait for Angular overlay/backdrop to disappear */
-                                        //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-                                        //    By.ClassName("cdk-overlay-backdrop")));
-
-
-                                        IWebElement editInfo = wait.Until(
-                                            ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
-                                        editInfo.Click();
-                                        Thread.Sleep(3000);
-
-                                        IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
-                                        clientLocation.Clear();
-                                        clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
-                                        Thread.Sleep(2000);
-
-                                        IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
-                                        routeIdentifier.Clear();
-                                        routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
-                                        Thread.Sleep(2000);
-
-                                        // Direct Refill checkbox
-                                        IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
-
-                                        if (directRefillCheckbox.Selected)
-                                        {
-                                            Console.WriteLine("Direct Refill is checked. Unchecking now..");
-                                            IWebElement directRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Direct Refill Option')]")));
-                                            directRefillLabel.Click();
-                                            Thread.Sleep(1000); // allow Auto Refill to enable
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("Direct Refill is already unchecked. Moving to check the status of Auto Refill...");
-                                        }
-
-                                        // Auto Refill checkbox
-                                        IWebElement autoRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name ='disabledAutoRefill']")));
-
-                                        if (autoRefillCheckbox.Selected)
-                                        {
-                                            Console.WriteLine("Disable Auto Refill is checked. Unchecking now..");
-                                            IWebElement autoRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Disable Auto Refill')]")));
-                                            autoRefillLabel.Click();
-                                            Thread.Sleep(1000);
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("Disable Auto Refill is already unchecked. Saving..");
-                                        }
-                                        Thread.Sleep(2000);
-
-                                        //Save
-                                        IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
-                                        saveButton.Click();
-                                        Thread.Sleep(3000);
-
-
-                                        //// Edit Single Slot 
-                                        Console.WriteLine("Product Mapping in to slots...");
-                                        Thread.Sleep(3000);
-                                        Actions a = new Actions(driver);
-
-                                        //Product Assigning Matrix 
-                                        for (int i = 0; i < ProductMappingData.products.GetLength(0); i++)
-                                        {
-                                            Thread.Sleep(2000);
-                                            IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
-
-                                            a.MoveToElement(product).Pause(TimeSpan.FromSeconds(2)).Perform();
-
-                                            // String dynamicXPath1 = $"(//mat-card)[{slotIndex}]//button//mat-icon";
-                                            IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
-                                            editSlot2.Click();
-                                            Thread.Sleep(2000);
-
-                                            // Locate the toggle button input
-                                            IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
-
-                                            foreach (IWebElement toggleButton in toggleButtons)
-                                            {
-                                                // Check current state of toggle button
-                                                bool isToggleEnabled = toggleButton.Selected;
-                                                if (!isToggleEnabled)
-                                                {
-                                                    Console.WriteLine("Toggle is OFF. Enabling now...");
-                                                    IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-                                                    js.ExecuteScript("arguments[0].click();", toggleButton);
-                                                    Thread.Sleep(1000);
-                                                    Console.WriteLine("Toggled Enabled.");
-                                                }
-                                            }
-
-                                            IWebElement selectProduct = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("product")));
-                                            selectProduct.Click();
-
-                                            //String name = ProductMappingData.products[i, 1];
-                                            IWebElement choosingProduct = wait.Until(ExpectedConditions.ElementToBeClickable(
-                                                By.XPath($"//div[@role='listbox']//div[contains(text(), ' {ProductMappingData.products[i, 1]} ')]")));
-                                            choosingProduct.Click();
-
-
-                                            IWebElement purchaseLimitPerUser = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")));
-                                            purchaseLimitPerUser.Clear();
-                                            purchaseLimitPerUser.SendKeys(ProductMappingData.products[i, 2]);
-
-                                            IWebElement purchaseLimitPerTransaction = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerTransaction")));
-                                            purchaseLimitPerTransaction.Clear();
-                                            purchaseLimitPerTransaction.SendKeys(ProductMappingData.products[i, 3]);
-
-
-                                            IWebElement purchaseLimitResetPerUser = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("purchaseLimitResetPerUser")));
-                                            purchaseLimitResetPerUser.Click();
-                                            IWebElement resetTime = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 4]} ')]")));
-                                            resetTime.Click();
-
-                                            IWebElement stockLimitInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("stockLimit")));
-                                            stockLimitInput.Click();
-                                            //String stockLimit = ProductMappingData.products[i, 5];
-                                            //String stockLimitXPath = $"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]";
-                                            IWebElement chooseStockLimit = wait.Until(ExpectedConditions.ElementToBeClickable(
-                                                By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]")));
-                                            chooseStockLimit.Click();
-
-                                            IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-                                            save.Click();
-                                        }
-
-                                        //Modify Planogram after Product Mapping
-                                        IWebElement editSlot1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
-                                        editSlot.Click();
-                                        Thread.Sleep(1000);
-
-                                        IWebElement slotRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
-                                        slotRowCount1.Clear();
-                                        slotRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
-
-
-                                        IWebElement slotColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
-                                        slotColumnCount1.Clear();
-                                        slotColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
-
-                                        IWebElement endingRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
-                                        endingRowCount1.Clear();
-                                        endingRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
-
-
-                                        IWebElement endingColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
-                                        endingColumnCount1.Clear();
-                                        endingColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
-                                        Thread.Sleep(2000);
-                                        IWebElement saveSlots1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-                                        saveSlots1.Click();
-                                        Console.WriteLine("Product Matrix Changed again");
-                                        Thread.Sleep(2000);
-
-
-
-
-
-
-                                        //  // Fetching Machine menu
-                                        //  By machineMenuBy = By.Id("menuItem-Machines");
-                                        //  wait.Until(d => d.FindElement(machineMenuBy).Displayed);
-                                        //  driver.FindElement(machineMenuBy).Click();
-
-                                        //  // Fetching Machine List
-                                        //  By machineListBy = By.Id("menuItem-Machines0");
-                                        //  wait.Until(d => d.FindElement(machineListBy).Displayed);
-                                        //  driver.FindElement(machineListBy).Click();
-                                        //  Thread.Sleep(1000);
-
-                                        //  string machineId = MachineMapping.unmappedMachineForMapping;
-                                        //  Console.WriteLine("Selecting machine: " + machineId);
-
-                                        //  By searchBoxBy = By.Name("searchText");
-                                        //  wait.Until(d => d.FindElement(searchBoxBy).Displayed);
-                                        //  IWebElement searchText = driver.FindElement(searchBoxBy);
-                                        //  searchText.Clear();
-                                        //  searchText.SendKeys(machineId + Keys.Enter);
-                                        //  Thread.Sleep(3000);
-
-                                        //  // Action Button
-                                        //  IWebElement actionButton = wait.Until(
-                                        //      ExpectedConditions.ElementToBeClickable(
-                                        //          By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
-                                        //  actionButton.Click();
-                                        //  Thread.Sleep(1000);
-
-                                        //  // Machine details
-                                        //  IWebElement machineDetails = wait.Until(
-                                        //      ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
-                                        //  machineDetails.Click();
-
-                                        //  // Edit Slot
-                                        //  IWebElement editSlot = wait.Until(
-                                        //      ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
-                                        //  editSlot.Click();
-
-                                        //  IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
-                                        //  slotRowCount.Clear();
-                                        //  slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
-
-                                        //  IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
-                                        //  slotColumnCount.Clear();
-                                        //  slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
-
-                                        //  IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
-                                        //  endingRowCount.Clear();
-                                        //  endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
-
-                                        //  IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
-                                        //  endingColumnCount.Clear();
-                                        //  endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
-
-                                        //  IWebElement saveSlots = wait.Until(
-                                        //ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-                                        //  saveSlots.Click();
-                                        //  Console.WriteLine("Product Matrix Changed again");
-
-
-
-                                        //  Thread.Sleep(3000);
-                                        //  IWebElement editInfo = driver.FindElement(By.XPath("//button[@mattooltip='Edit Info']"));
-
-                                        //  // scroll into view
-                                        //  ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
-                                        //  ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", editInfo);
-
-
-                                        //  //wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("clientLocation")));
-                                        //  //IWebElement clientLocation = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("clientLocation")));
-                                        //  //clientLocation.Clear();
-                                        //  //clientLocation.SendKeys(machineInfoData.machineDetails[0, 0] + new Random().Next(1,9));
-
-                                        //  //IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("routeIdentifier")));
-                                        //  //routeIdentifier.Clear();
-                                        //  //routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1] + new Random().Next(1, 9));
-
-                                        //  // Direct Refill checkbox
-                                        //  IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
-
-                                        //  if (directRefillCheckbox.Selected)
-                                        //  {
-                                        //      Console.WriteLine("Direct Refill is checked. Unchecking now..");
-                                        //      IWebElement directRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Direct Refill Option')]")));
-                                        //      directRefillLabel.Click();
-                                        //      Thread.Sleep(1000); // allow Auto Refill to enable
-                                        //  }
-                                        //  else
-                                        //  {
-                                        //      Console.WriteLine("Direct Refill is already unchecked. Moving to check the status of Auto Refill...");
-                                        //  }
-
-                                        //  // Auto Refill checkbox
-                                        //  IWebElement autoRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name ='disabledAutoRefill']")));
-
-                                        //  if (autoRefillCheckbox.Selected)
-                                        //  {
-                                        //      Console.WriteLine("Disable Auto Refill is checked. Unchecking now..");
-                                        //      IWebElement autoRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Disable Auto Refill')]")));
-                                        //      autoRefillLabel.Click();
-                                        //      Thread.Sleep(1000);
-                                        //  }
-                                        //  else
-                                        //  {
-                                        //      Console.WriteLine("Disable Auto Refill is already unchecked. Saving..");
-                                        //  }
-                                        //  Thread.Sleep(2000);
-
-
-                                        //  SafeClick(By.XPath("//span[contains(text(),'Save')]"));
-
-                                        //  //IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
-                                        //  //saveButton.Click();
-                                        //  //Thread.Sleep(2000);
-
-                                        //  // Edit Single Slot 
-                                        //  Console.WriteLine("Product Mapping in to slots...");
-                                        //  Thread.Sleep(3000);
-                                        //  Actions a = new Actions(driver);
-
-                                        //  for (int i = 0; i < ProductMappingData.products.GetLength(0); i++)
-                                        //  {
-                                        //      IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(
-                                        //          By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
-
-                                        //      a.MoveToElement(product).Pause(TimeSpan.FromSeconds(3)).Perform();
-
-                                        //      IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(
-                                        //          By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
-                                        //      editSlot2.Click();
-                                        //      Thread.Sleep(2000);
-
-                                        //      IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
-                                        //      foreach (IWebElement toggleButton in toggleButtons)
-                                        //      {
-                                        //          // Check current state of toggle button
-                                        //          bool isToggleEnabled = toggleButton.Selected;
-                                        //          if (!isToggleEnabled)
-                                        //          {
-                                        //              Console.WriteLine("Toggle is OFF. Enabling now...");
-                                        //              IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-                                        //              js.ExecuteScript("arguments[0].click();", toggleButton);
-                                        //              Thread.Sleep(1000);
-                                        //              Console.WriteLine("Toggled Enabled.");
-                                        //          }
-                                        //      }
-
-                                        //      IWebElement selectProduct = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("product")));
-                                        //      selectProduct.Click();
-
-                                        //      //String name = ProductMappingData.products[i, 1];
-                                        //      IWebElement choosingProduct = wait.Until(ExpectedConditions.ElementToBeClickable(
-                                        //          By.XPath($"//div[@role='listbox']//div[contains(text(), ' {ProductMappingData.products[i, 1]} ')]")));
-                                        //      choosingProduct.Click();
-
-
-                                        //      IWebElement purchaseLimitPerUser = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")));
-                                        //      purchaseLimitPerUser.Clear();
-                                        //      purchaseLimitPerUser.SendKeys(ProductMappingData.products[i, 2]);
-
-                                        //      IWebElement purchaseLimitPerTransaction = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerTransaction")));
-                                        //      purchaseLimitPerTransaction.Clear();
-                                        //      purchaseLimitPerTransaction.SendKeys(ProductMappingData.products[i, 3]);
-
-
-                                        //      IWebElement purchaseLimitResetPerUser = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("purchaseLimitResetPerUser")));
-                                        //      purchaseLimitResetPerUser.Click();
-                                        //      IWebElement resetTime = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 4]} ')]")));
-                                        //      resetTime.Click();
-
-                                        //      IWebElement stockLimitInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("stockLimit")));
-                                        //      stockLimitInput.Click();
-                                        //      //String stockLimit = ProductMappingData.products[i, 5];
-                                        //      //String stockLimitXPath = $"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]";
-                                        //      IWebElement chooseStockLimit = wait.Until(ExpectedConditions.ElementToBeClickable(
-                                        //          By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]")));
-                                        //      chooseStockLimit.Click();
-
-                                        //      IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-                                        //      save.Click();
-                                        //  }
-
-                                        //  //Modify Planogram after Product Mapping
-                                        //  IWebElement editSlot1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
-                                        //  editSlot.Click();
-                                        //  Thread.Sleep(1000);
-
-                                        //  IWebElement slotRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
-                                        //  slotRowCount1.Clear();
-                                        //  slotRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
-
-
-                                        //  IWebElement slotColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
-                                        //  slotColumnCount1.Clear();
-                                        //  slotColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
-
-                                        //  IWebElement endingRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
-                                        //  endingRowCount1.Clear();
-                                        //  endingRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
-
-
-                                        //  IWebElement endingColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
-                                        //  endingColumnCount1.Clear();
-                                        //  endingColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
-                                        //  Thread.Sleep(2000);
-                                        //  IWebElement saveSlots1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-                                        //  saveSlots1.Click();
-                                        //  Console.WriteLine("Product Matrix Changed again");
-                                        //  Thread.Sleep(2000);
-
-                                        //  wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[normalize-space(text())='W. Transactions']")));
-
-
-                                    }
-                                    catch
-                                    {
-                                        // Take screenshot
-                                        screenshotDriver = (ITakesScreenshot)driver;
-                                        Screenshot screenshot = screenshotDriver.GetScreenshot();
-
-                                        // Jenkins workspace / project root
-                                        string projectPath3 = Directory.GetCurrentDirectory();
-
-                                        // Create Screenshots folder
-                                        string screenshotDir3 = Path.Combine(projectPath3, "Screenshots");
-                                        Directory.CreateDirectory(screenshotDir3);
-
-                                        // FIX: remove invalid characters from filename
-                                        string filePath2 = Path.Combine(
-                                            screenshotDir3,
-                                            $"Screenshot_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.png"
-                                        );
-
-                                        // Save screenshot
-                                        screenshot.SaveAsFile(filePath2);
-
-                                        Console.WriteLine($"Screenshot saved at: {filePath2}");
-                                    }
-                                }
-
-                                public void SafeClick(By locator)
-                                {
-                                    WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-
-                                    // Wait for element to exist in DOM
-                                    IWebElement element = wait.Until(
-                                        SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator)
-                                    );
-
-                                    // Wait until element is visible
-                                    element = wait.Until(
-                                        SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator)
-                                    );
-
-                                    // Scroll into view
-                                    ((IJavaScriptExecutor)driver)
-                                        .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", element);
-
-                                    try
-                                    {
-                                        // Try normal click first
-                                        element.Click();
-                                    }
-                                    catch (ElementClickInterceptedException)
-                                    {
-                                        // If intercepted, use JS click
-                                        ((IJavaScriptExecutor)driver)
-                                            .ExecuteScript("arguments[0].click();", element);
-                                    }
-                                }
-
-
-                            }
-
-
-                            public class AddPurchase
-                            {
-                                private IWebDriver driver;
-                                private WebDriverWait wait;
-
-                                public AddPurchase(IWebDriver driver)
-                                {
-                                    this.driver = driver;
-                                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
-                                }
-
-                                public void AddPurchaseFlow()
-                                {
-
-                                    //locate Warehouse Module
-                                    IWebElement warehouseTransactionsButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[normalize-space(text())='W. Transactions']")));
-                                    warehouseTransactionsButton.Click();
-                                    Thread.Sleep(2000);
-
-                                    //Go to Purchase module
-                                    IWebElement purchaseMenu = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-W. Transactions0")));
-                                    purchaseMenu.Click();
-                                    Thread.Sleep(2000);
-
-
-                                    IWebElement AddWarehousePurchase = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains (@mattooltip, 'Add Warehouse Purchase')]")));
-                                    AddWarehousePurchase.Click();
-                                    Thread.Sleep(1000);
-                                    driver.FindElement(By.Name("warehouse")).Click();
-                                    string warehouseName = AddPurchaseData.Purchases[0, 0];
-                                    string dynamicWarehouseXPath = $"//span[text()=' {warehouseName} ']";
-                                    driver.FindElement(By.XPath(dynamicWarehouseXPath)).Click();
-
-                                    for (int i = 0; i < AddPurchaseData.Purchases.GetLength(0); i++)
-                                    {
-
-                                        ////Filter by product
-                                        //IWebElement productFilter = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
-                                        //productFilter.Click();
-                                        //Thread.Sleep(2000);
-
-                                        //IWebElement selectProductName = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains (text(), ' Product Name ')]")));
-                                        //selectProductName.Click();
-                                        //Thread.Sleep(2000);
-
-
-                                        //string chooseProductName = AddPurchaseData.Purchases[i, 5];
-                                        //IWebElement enterProductName = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
-                                        //enterProductName.Click();
-                                        //enterProductName.Clear();
-                                        //enterProductName.SendKeys(chooseProductName + Keys.Enter);
-
-                                        //var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
-                                        //if (rows.Count == 0)
-                                        //{
-                                        //Console.WriteLine($"Product not found. Adding Purchase of the product");
-                                        //IWebElement AddWarehousePurchase = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains (@mattooltip, 'Add Warehouse Purchase')]")));
-                                        //AddWarehousePurchase.Click();
-                                        //Thread.Sleep(1000);
-
-                                        //driver.FindElement(By.Name("warehouse")).Click();
-                                        //string warehouseName = AddPurchaseData.Purchases[0, 0];
-                                        //string dynamicWarehouseXPath = $"//span[text()=' {warehouseName} ']";
-                                        //driver.FindElement(By.XPath(dynamicWarehouseXPath)).Click();
-
-
-
-                                        // Add Purchase Page
-
-                                        driver.FindElement(By.Name("vendor")).Click();
-                                        string vendorName = AddPurchaseData.Purchases[i, 1];
-                                        string dynamicVendorXPath = $"//span[text()=' {vendorName} ']";
-                                        driver.FindElement(By.XPath(dynamicVendorXPath)).Click();
-
-                                        driver.FindElement(By.Name("productId")).Click();
-                                        string productName = AddPurchaseData.Purchases[i, 2];
-                                        string dynamicProductXPath = $"//span[contains(text(), ' {productName} ')]";
-                                        driver.FindElement(By.XPath(dynamicProductXPath)).Click();
-
-                                        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("qty"))).SendKeys(AddPurchaseData.Purchases[i, 3]);
-
-                                        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("batchId"))).SendKeys(AddPurchaseData.Purchases[i, 4]);
-
-                                        // Expiry Date selection
-                                        IWebElement expiryCalendarIcon = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("drange")));
-                                        expiryCalendarIcon.Click();
-                                        Thread.Sleep(1000);
-
-                                        IWebElement yearControl = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='owl-dt-calendar-control']")));
-                                        yearControl.Click();
-                                        Thread.Sleep(1000);
-
-                                        IWebElement yearToSelect = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 6]}']]")));
-                                        yearToSelect.Click();
-                                        Thread.Sleep(1000);
-
-                                        IWebElement monthToSelect = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 7]}']]")));
-                                        monthToSelect.Click();
-                                        Thread.Sleep(1000);
-
-                                        IWebElement dayToSelect = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 8]}']]")));
-                                        dayToSelect.Click();
-                                        Thread.Sleep(1000);
-
-                                        // Bill Date selection
-                                        IWebElement billDateCalendarIcon = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("drange2")));
-                                        billDateCalendarIcon.Click();
-                                        Thread.Sleep(1000);
-
-
-                                        IWebElement yearControl1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='owl-dt-calendar-control']")));
-                                        yearControl1.Click();
-                                        Thread.Sleep(1000);
-
-                                        IWebElement yearToSelect1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 9]}']]")));
-                                        yearToSelect1.Click();
-                                        Thread.Sleep(1000);
-
-                                        IWebElement monthToSelect1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 10]}']]")));
-                                        monthToSelect1.Click();
-                                        Thread.Sleep(1000);
-
-                                        IWebElement dayToSelect1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 11]}']]")));
-                                        dayToSelect1.Click();
-                                        Thread.Sleep(3000);
-
-                                        IWebElement addButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Add ']")));
-                                        addButton.Click();
-                                        Thread.Sleep(2000);
-                                        //}
-
-
-                                    }
-                                    IWebElement saveButton1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Save ']")));
-                                    saveButton1.Click();
-                                    Thread.Sleep(2000);
-
-
-
-
-
-
-
-                                    // // Locate Warehouse Transactions Module
-                                    // By warehouseTransactionsBy = By.XPath("//div[normalize-space(text())='W. Transactions']");
-                                    //// wait.Until(d => d.FindElement(warehouseTransactionsBy).Displayed);
-                                    // driver.FindElement(warehouseTransactionsBy).Click();
-                                    // Thread.Sleep(2000);
-
-                                    // // Go to Purchase module
-                                    // By purchaseMenuBy = By.Id("menuItem-W. Transactions0");
-                                    // wait.Until(d => d.FindElement(purchaseMenuBy).Displayed);
-                                    // driver.FindElement(purchaseMenuBy).Click();
-                                    // Thread.Sleep(2000);
-
-                                    // IWebElement addWarehousePurchase =
-                                    //     wait.Until(ExpectedConditions.ElementToBeClickable(
-                                    //         By.XPath("//button[contains (@mattooltip, 'Add Warehouse Purchase')]")));
-                                    // addWarehousePurchase.Click();
-                                    // Thread.Sleep(1000);
-
-                                    // driver.FindElement(By.Name("warehouse")).Click();
-                                    // string warehouseName = AddPurchaseData.Purchases[0, 0];
-                                    // driver.FindElement(By.XPath($"//span[text()=' {warehouseName} ']")).Click();
-
-                                    // for (int i = 0; i < AddPurchaseData.Purchases.GetLength(0); i++)
-                                    // {
-                                    //     driver.FindElement(By.Name("vendor")).Click();
-                                    //     string vendorName = AddPurchaseData.Purchases[i, 1];
-                                    //     driver.FindElement(By.XPath($"//span[text()=' {vendorName} ']")).Click();
-
-                                    //     driver.FindElement(By.Name("productId")).Click();
-                                    //     string productName = AddPurchaseData.Purchases[i, 2];
-                                    //     driver.FindElement(By.XPath($"//span[contains(text(), ' {productName} ')]")).Click();
-
-                                    //     wait.Until(ExpectedConditions.ElementIsVisible(By.Name("qty")))
-                                    //         .SendKeys(AddPurchaseData.Purchases[i, 3]);
-
-                                    //     wait.Until(ExpectedConditions.ElementIsVisible(By.Name("batchId")))
-                                    //         .SendKeys(AddPurchaseData.Purchases[i, 4]);
-
-                                    //     // Expiry Date
-                                    //     IWebElement expiryCalendarIcon =
-                                    //         wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("drange")));
-                                    //     expiryCalendarIcon.Click();
-                                    //     Thread.Sleep(1000);
-
-                                    //     IWebElement yearControl =
-                                    //         wait.Until(ExpectedConditions.ElementToBeClickable(
-                                    //             By.XPath("//div[@class='owl-dt-calendar-control']")));
-                                    //     yearControl.Click();
-
-                                    //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 6]}']]")).Click();
-                                    //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 7]}']]")).Click();
-                                    //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 8]}']]")).Click();
-
-                                    //     // Bill Date
-                                    //     IWebElement billDateCalendarIcon =
-                                    //         wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("drange2")));
-                                    //     billDateCalendarIcon.Click();
-                                    //     Thread.Sleep(1000);
-
-                                    //     IWebElement yearControl1 =
-                                    //         wait.Until(ExpectedConditions.ElementToBeClickable(
-                                    //             By.XPath("//div[@class='owl-dt-calendar-control']")));
-                                    //     yearControl1.Click();
-
-                                    //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 9]}']]")).Click();
-                                    //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 10]}']]")).Click();
-                                    //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 11]}']]")).Click();
-
-                                    //     IWebElement addButton =
-                                    //         wait.Until(ExpectedConditions.ElementToBeClickable(
-                                    //             By.XPath("//button//span[text()= ' Add ']")));
-                                    //     addButton.Click();
-                                    //     Thread.Sleep(2000);
-                                    // }
-
-                                    // IWebElement saveButton1 =
-                                    //     wait.Until(ExpectedConditions.ElementToBeClickable(
-                                    //         By.XPath("//button//span[text()= ' Save ']")));
-                                    // saveButton1.Click();
-                                    // Thread.Sleep(2000);
-                                }
-
-                                public void SafeClick(By locator)
-                                {
-                                    WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-
-                                    // Wait for element to exist in DOM
-                                    IWebElement element = wait.Until(
-                                        SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator)
-                                    );
-
-                                    // Wait until element is visible
-                                    element = wait.Until(
-                                        SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator)
-                                    );
-
-                                    // Scroll into view
-                                    ((IJavaScriptExecutor)driver)
-                                        .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", element);
-
-                                    try
-                                    {
-                                        // Try normal click first
-                                        element.Click();
-                                    }
-                                    catch (ElementClickInterceptedException)
-                                    {
-                                        // If intercepted, use JS click
-                                        ((IJavaScriptExecutor)driver)
-                                            .ExecuteScript("arguments[0].click();", element);
-                                    }
-                                }
-
-                            }
-
-
-
-                            public class RaiseRefillRequest
-                            {
-                                private IWebDriver driver;
-                                private WebDriverWait wait;
-
-                                public RaiseRefillRequest(IWebDriver driver)
-                                {
-                                    this.driver = driver;
-                                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
-                                }
-
-                                public void RaiseRefillRequestFlow()
-                                {
-                                    // Fetching Machine List
-                                    By machineMenuBy = By.Id("menuItem-Machines");
-                                    wait.Until(d => d.FindElement(machineMenuBy).Displayed);
-                                    driver.FindElement(machineMenuBy).Click();
-                                    Thread.Sleep(1000);
-
-                                    By machineListBy = By.Id("menuItem-Machines0");
-                                    wait.Until(d => d.FindElement(machineListBy).Displayed);
-                                    driver.FindElement(machineListBy).Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement machineFilter = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
-                                    machineFilter.Clear();
-                                    machineFilter.SendKeys(MachineMapping.unmappedMachineForMapping + Keys.Enter);
-                                    Thread.Sleep(3000);
-
-                                    // Action Button
-                                    IWebElement actionBtn = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(
-                                            By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
-                                    actionBtn.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement machineDetails = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
-                                    machineDetails.Click();
-                                    Thread.Sleep(3000);
-
-                                    // Set Operation Status = Down Planned
-                                    IWebElement selectStatus = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Operation Status')]/following::a[1]")));
-                                    selectStatus.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement statusDropdown = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("status")));
-                                    statusDropdown.Click();
-
-                                    IWebElement downPlannedOption = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(
-                                            By.XPath("//mat-option//span[contains(normalize-space(),'Down (Planned)')]")));
-                                    downPlannedOption.Click();
-
-                                    IWebElement saveStatus = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Save ']")));
-                                    saveStatus.Click();
-                                    Thread.Sleep(2000);
-
-                                    driver.Navigate().Back();
-                                    Thread.Sleep(2000);
-
-                                    // Filter again
-                                    IWebElement machineFilter1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
-                                    machineFilter1.Clear();
-                                    machineFilter1.SendKeys(MachineMapping.unmappedMachineForMapping + Keys.Enter);
-                                    Thread.Sleep(3000);
-
-                                    // Raise refill request
-                                    IWebElement actionButton = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[10]")));
-                                    actionButton.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement raiseRefillRequest = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),'Raise Refill Request')]")));
-                                    raiseRefillRequest.Click();
-                                    Thread.Sleep(3000);
-
-                                    IWebElement saveRequest = wait.Until(
-                                        ExpectedConditions.ElementIsVisible(By.XPath("//button[.//span[text()=' Save ']]")));
-                                    saveRequest.Click();
-                                    Thread.Sleep(1000);
-
-                                    driver.Navigate().Back();
-                                    Thread.Sleep(3000);
-
-                                    // Warehouse Assigning
-                                    IWebElement warTransactionsButton = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Id("menuItem-W. Transactions")));
-                                    warTransactionsButton.Click();
-                                    Thread.Sleep(3000);
-
-                                    IWebElement refillRequestMenu = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Id("menuItem-W. Transactions2")));
-                                    refillRequestMenu.Click();
-                                    Thread.Sleep(3000);
-
-                                    IWebElement actionButton1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
-                                    actionButton1.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement assignWarehouseButton = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Assign Warehouse ')]")));
-                                    assignWarehouseButton.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement warehouseDropdown = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Name("providorWarehouseId")));
-                                    warehouseDropdown.Click();
-
-                                    string chooseWarehouse = RaiseRefillRequestData.refillDatas["warehouseName"];
-                                    driver.FindElement(By.XPath($"//span[contains(text(), ' {chooseWarehouse} ')]")).Click();
-
-                                    IWebElement saveWarehouse = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Save ']")));
-                                    saveWarehouse.Click();
-                                    Thread.Sleep(3000);
-
-                                    // Stock Selection
-                                    IWebElement actionButton2 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
-                                    actionButton2.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement selectStock = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Select Stock ')]")));
-                                    selectStock.Click();
-                                    Thread.Sleep(2000);
-
-                                    // Save stock selection
-                                    driver.FindElement(By.XPath("//button//span[text()=' Save ']")).Click();
-                                    Thread.Sleep(4000);
-
-                                    // Complete Refill
-                                    IWebElement actionButton3 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
-                                    actionButton3.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement completeRefill = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Complete Refill ')]")));
-                                    completeRefill.Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement checkAllButton = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[normalize-space()='Check All']")));
-                                    checkAllButton.Click();
-                                    Thread.Sleep(2000);
-
-                                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                                    Thread.Sleep(4000);
-
-                                    // Set Machine Status = ONLINE
-                                    IWebElement machineMenu1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines")));
-                                    machineMenu1.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement machineList1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines0")));
-                                    machineList1.Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement machineFilter2 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
-                                    machineFilter2.Clear();
-                                    machineFilter2.SendKeys(MachineMapping.unmappedMachineForMapping + Keys.Enter);
-                                    Thread.Sleep(2000);
-
-                                    IWebElement actionBtn1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(
-                                            By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
-                                    actionBtn1.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement machineDetails1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
-                                    machineDetails1.Click();
-                                    Thread.Sleep(3000);
-
-                                    IWebElement selectStatus1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Operation Status')]/following::a[1]")));
-                                    selectStatus1.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement statusDropdown1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("status")));
-                                    statusDropdown1.Click();
-
-                                    IWebElement onlineOption = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(
-                                            By.XPath("//mat-option//span[contains(normalize-space(),'Online')]")));
-                                    onlineOption.Click();
-
-                                    IWebElement saveStatus1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Save ']")));
-                                    saveStatus1.Click();
-                                    Thread.Sleep(2000);
-                                }
-                            }
-
-
-
-                            public class ReturnRequest
-                            {
-                                private IWebDriver driver;
-                                private WebDriverWait wait;
-
-                                public ReturnRequest(IWebDriver driver)
-                                {
-                                    this.driver = driver;
-                                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
-                                }
-
-                                public void ReturnRequestFlow()
-                                {
-                                    Thread.Sleep(2000);
-
-                                    // Machines → Requests → Return
-                                    By machineMenuBy = By.Id("menuItem-Machines");
-                                    wait.Until(d => d.FindElement(machineMenuBy).Displayed);
-                                    driver.FindElement(machineMenuBy).Click();
-
-                                    By requestsBy = By.Id("menuItem-Machines2");
-                                    wait.Until(d => d.FindElement(requestsBy).Displayed);
-                                    driver.FindElement(requestsBy).Click();
-
-                                    IWebElement returnTab = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//div[@role='tab']//div[text()='Return']")));
-                                    returnTab.Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement addReturnRequest = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(
-                                            By.XPath("//button[contains (@mattooltip, 'Add Return request')]")));
-                                    addReturnRequest.Click();
-                                    Thread.Sleep(2000);
-
-                                    string machineId = MachineMapping.unmappedMachineForMapping;
-                                    Console.WriteLine("Selected machine for return: " + machineId);
-
-                                    IWebElement machineDropdown = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Name("machineIds")));
-                                    machineDropdown.Click();
-                                    Thread.Sleep(2000);
-
-                                    var machineOptions = wait.Until(
-                                        ExpectedConditions.PresenceOfAllElementsLocatedBy(By.CssSelector("mat-option span")));
-
-                                    foreach (var option in machineOptions)
-                                    {
-                                        if (option.Text.Trim().Equals(machineId, StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            option.Click();
-                                            break;
-                                        }
-                                    }
-
-                                    IWebElement checkAllButton = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[normalize-space()='Check All']")));
-                                    checkAllButton.Click();
-
-                                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                                    Thread.Sleep(3000);
-
-                                    // W. Transactions → Return Requests
-                                    IWebElement warTransactionsButton = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Id("menuItem-W. Transactions")));
-                                    warTransactionsButton.Click();
-                                    Thread.Sleep(3000);
-
-                                    IWebElement returnRequestMenu = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Id("menuItem-W. Transactions3")));
-                                    returnRequestMenu.Click();
-                                    Thread.Sleep(3000);
-
-                                    IWebElement searchTypeButton = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
-                                    searchTypeButton.Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement selectMachineId = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(normalize-space(),'Machine Id')]")));
-                                    selectMachineId.Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement searchRequest = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
-                                    searchRequest.Clear();
-                                    searchRequest.SendKeys(machineId + Keys.Enter);
-                                    Thread.Sleep(2000);
-
-                                    IWebElement actionButton = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[11]")));
-                                    actionButton.Click();
-                                    Thread.Sleep(1000);
-
-                                    IWebElement assignWarehouseButton = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Assign Warehouse ')]")));
-                                    assignWarehouseButton.Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement warehouseDropdown = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Name("providorWarehouseId")));
-                                    warehouseDropdown.Click();
-                                    Thread.Sleep(2000);
-
-                                    string chooseWarehouse = ReturnRequestData.refillDatas["warehouseName"];
-                                    driver.FindElement(By.XPath($"//span[contains(text(), ' {chooseWarehouse} ')]")).Click();
-
-                                    IWebElement saveWarehouse = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Save ']")));
-                                    saveWarehouse.Click();
-                                    Thread.Sleep(3000);
-
-                                    IWebElement actionButton1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[11]")));
-                                    actionButton1.Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement pickupStock = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Pick Up Stock ')]")));
-                                    pickupStock.Click();
-                                    Thread.Sleep(3000);
-
-                                    IWebElement confirmPickup = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Pick Up ']")));
-                                    confirmPickup.Click();
-                                    Thread.Sleep(3000);
-
-                                    IWebElement actionButton2 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[11]")));
-                                    actionButton2.Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement completeReturn = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Complete Return ')]")));
-                                    completeReturn.Click();
-                                    Thread.Sleep(2000);
-
-                                    IWebElement checkAllButton1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[normalize-space()='Check All']")));
-                                    checkAllButton1.Click();
-                                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                                    Thread.Sleep(4000);
-
-                                    // Update Location
-                                    IWebElement machineMenu1 = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines")));
-                                    machineMenu1.Click();
-
-                                    IWebElement machineList = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines0")));
-                                    machineList.Click();
-
-                                    IWebElement searchText = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
-                                    searchText.Clear();
-                                    searchText.SendKeys(machineId + Keys.Enter);
-                                    Thread.Sleep(3000);
-
-                                    IWebElement actionBtn = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(
-                                            By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
-                                    actionBtn.Click();
-
-                                    IWebElement machineDetails = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
-                                    machineDetails.Click();
-                                    Thread.Sleep(3000);
-
-                                    IWebElement selectLocation = wait.Until(
-                                        ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='cityText']")));
-                                    selectLocation.Click();
-
-                                    wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("City")))
-                                        .SendKeys(LocationData.location[0, 0]);
-                                    wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("State")))
-                                        .SendKeys(LocationData.location[0, 1]);
-                                    wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("pluscode")))
-                                        .SendKeys(LocationData.location[0, 2]);
-
-                                    wait.Until(ExpectedConditions.ElementToBeClickable(
-                                        By.XPath("//button//span[contains(text(),' Validate Plus Code ')]"))).Click();
-
-                                    wait.Until(ExpectedConditions.ElementToBeClickable(
-                                        By.XPath("//span[contains(text(), ' Save ')]"))).Click();
-                                }
-                            }
-
-
-                            public class MachineScrapping
-                            {
-                                private IWebDriver driver;
-                                private WebDriverWait wait;
-
-                                public MachineScrapping(IWebDriver driver)
-                                {
-                                    this.driver = driver;
-                                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
-                                }
-
-                                public void MachineScrappingFlow()
-                                {
-                                    Thread.Sleep(2000);
-
-                                    // Navigate to Current Purchase Order
-                                    IWebElement currentPurchaseOrderMenu = wait.Until(
-                                        ExpectedConditions.ElementExists(By.XPath("//div[contains(text(),'Current Purchase Order')]")));
-                                    ((IJavaScriptExecutor)driver)
-                                        .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", currentPurchaseOrderMenu);
-                                    Thread.Sleep(300);
-                                    ((IJavaScriptExecutor)driver)
-                                        .ExecuteScript("arguments[0].click();", currentPurchaseOrderMenu);
-                                    Thread.Sleep(2000);
-
-                                    //Search Machine to Scrap
-                                    //IWebElement searchTypeButton = wait.Until(
-                                    //    ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
-                                    //searchTypeButton.Click();
-                                    //Thread.Sleep(2000);
-
-                                    //IWebElement selectMachineId = wait.Until(
-                                    //    ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(normalize-space(),'Machine Id')]")));
-                                    //selectMachineId.Click();
-                                    //Thread.Sleep(2000);
-
-                                    //string machineId = MachineMapping.unmappedMachineForMapping;
-                                    //Console.WriteLine("Selecting machine for scrap: " + machineId);
-
-                                    //IWebElement searchMachine = wait.Until(
-                                    //    ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
-                                    //searchMachine.Clear();
-                                    //searchMachine.SendKeys(machineId + Keys.Enter);
-                                    //Thread.Sleep(2000);
-
-                                    //IWebElement actionButton = wait.Until(
-                                    //    ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
-                                    //actionButton.Click();
-                                    //Thread.Sleep(1000);
-
-                                    //IWebElement scrapButton = wait.Until(
-                                    //    ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Move to scrap ')]")));
-                                    //scrapButton.Click();
-                                    //Thread.Sleep(2000);
-
-                                    //IWebElement confirmScrapping = wait.Until(
-                                    //    ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[contains(text(),' Confirm ')]")));
-                                    //confirmScrapping.Click();
-                                    //Thread.Sleep(2000);
-
-                                    ////Console.WriteLine("Machine scrapped successfully: " + machineId);
-                                    //Console.WriteLine("Machine scrapped successfully: ");
-
-
-                                    // ---------- Click Action button safely ----------
-
-                                    // Wait until overlay backdrop disappears
-                                    wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-                                        By.ClassName("cdk-overlay-backdrop")
-                                    ));
-
-                                    // Locate Action cell
-                                    IWebElement actionButton = wait.Until(
-                                        ExpectedConditions.ElementIsVisible(By.XPath("(//td)[13]"))
-                                    );
-
-                                    // Scroll into view
-                                    ((IJavaScriptExecutor)driver)
-                                        .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", actionButton);
-
-                                    // Click using JS (avoids interception)
-                                    ((IJavaScriptExecutor)driver)
-                                        .ExecuteScript("arguments[0].click();", actionButton);
-
-
-                                    // ---------- Click Move to scrap ----------
-
-                                    IWebElement scrapButton = wait.Until(
-                                        ExpectedConditions.ElementIsVisible(
-                                            By.XPath("//button[normalize-space()='Move to scrap']"))
-                                    );
-
-                                    ((IJavaScriptExecutor)driver)
-                                        .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", scrapButton);
-
-                                    ((IJavaScriptExecutor)driver)
-                                        .ExecuteScript("arguments[0].click();", scrapButton);
-
-
-                                    // ---------- Click Confirm ----------
-
-                                    IWebElement confirmScrapping = wait.Until(
-                                        ExpectedConditions.ElementIsVisible(
-                                            By.XPath("//span[normalize-space()='Confirm']"))
-                                    );
-
-                                    ((IJavaScriptExecutor)driver)
-                                        .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", confirmScrapping);
-
-                                    ((IJavaScriptExecutor)driver)
-                                        .ExecuteScript("arguments[0].click();", confirmScrapping);
-
-                                    Console.WriteLine("Machine scrapped successfully");
-
-                                }
-                            }
-                        }
-                    }
+                    Console.WriteLine($"Category '{searchName}' already exists.");
                 }
             }
         }
     }
+
+    //Thread.Sleep(1000);
+
+    //// Locate Product Module
+    //By productModuleBy = By.XPath("//div[contains(text(),'Products')]");
+    //wait.Until(d => d.FindElement(productModuleBy).Displayed);
+    //driver.FindElement(productModuleBy).Click();
+
+    //// Locate Category sub-module
+    //By categorySubModuleBy = By.XPath("//div[contains(text(),' Categories ')]");
+    //wait.Until(d => d.FindElement(categorySubModuleBy).Displayed);
+    //driver.FindElement(categorySubModuleBy).Click();
+
+    //Thread.Sleep(7000);
+
+    //for (int i = 0; i < AddCategoryData.Categories.GetLength(0); i++)
+    //{
+    //    string searchName = AddCategoryData.Categories[i, 0];
+
+    //    By searchBoxBy = By.Name("searchText");
+    //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+    //    IWebElement searchText = driver.FindElement(searchBoxBy);
+    //    searchText.Clear();
+    //    searchText.SendKeys(searchName + Keys.Enter);
+
+    //    Thread.Sleep(4000);
+
+    //    var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+    //    Thread.Sleep(1000);
+
+    //    if (rows.Count == 0)
+    //    {
+    //        Console.WriteLine($"Category '{searchName}' not found. Adding category");
+
+    //        By addCategoryBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
+    //        wait.Until(d => d.FindElement(addCategoryBtnBy).Displayed);
+    //        driver.FindElement(addCategoryBtnBy).Click();
+
+    //        Thread.Sleep(2000);
+
+    //        IWebElement categoryName =
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
+    //        categoryName.SendKeys(AddCategoryData.Categories[i, 1]);
+
+    //        driver.FindElement(By.Name("branch")).Click();
+    //        string branchName = AddCategoryData.Categories[i, 2];
+    //        string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
+    //        driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
+
+    //        driver.FindElement(By.Name("brand")).Click();
+    //        string brandName = AddCategoryData.Categories[i, 3];
+    //        string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
+    //        driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
+
+    //        // Upload Category Image
+    //        IWebElement imageUploadBtn =
+    //            wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+    //        imageUploadBtn.SendKeys(AddCategoryData.Categories[i, 4]);
+
+    //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
+    //              .Click();
+
+    //        Thread.Sleep(3000);
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine($"Category '{searchName}' already exists.");
+    //    }
+
+
+
+    public class AddSubCategory
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public AddSubCategory(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
+        }
+
+        public void AddSubCategoryFlow()
+        {
+
+            Thread.Sleep(1000);
+            //Locate Product Module
+            IWebElement productModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Products')]")));
+            productModule.Click();
+
+            //Locate Subategory sub-module
+            IWebElement subCategory = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Sub Categories ')]")));
+            subCategory.Click();
+            Thread.Sleep(3000);
+
+
+            for (int i = 0; i < AddSubCategoryData.SubCategory.GetLength(0); i++)
+            {
+                string searchName = AddSubCategoryData.SubCategory[i, 0];
+                IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
+                searchText.Clear();
+                searchText.SendKeys(searchName + Keys.Enter);
+                Thread.Sleep(5000);
+                var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+                if (rows.Count == 0)
+                {
+                    Console.WriteLine($"Subcategory '{searchName}' not found. Adding Subcategory");
+
+
+                    // Navigate to add subcatgeory page
+                    IWebElement addSubCategoryButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
+                    addSubCategoryButton.Click();
+                    Thread.Sleep(2000);
+
+                    // Fill the input fields using 2D array
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name"))).SendKeys(AddSubCategoryData.SubCategory[i, 1]);
+
+                    driver.FindElement(By.Name("branch")).Click();
+                    string branchName = AddSubCategoryData.SubCategory[i, 2];
+                    string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
+                    driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
+
+
+                    driver.FindElement(By.Name("brand")).Click();
+                    string brandName = AddSubCategoryData.SubCategory[i, 3];
+                    string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
+                    driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
+
+                    driver.FindElement(By.Name("category")).Click();
+                    string categoryName = AddSubCategoryData.SubCategory[i, 4];
+                    string dynamicCategoryXPath = $"//span[text()=' {categoryName} ']";
+                    driver.FindElement(By.XPath(dynamicCategoryXPath)).Click();
+
+                    // Upload Category Image
+                    IWebElement imageUploadBtn = wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+                    imageUploadBtn.SendKeys(AddSubCategoryData.SubCategory[i, 5]);
+
+                    ////Fill the input fields
+                    //IWebElement brand = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("brand")));
+                    //brand.Click();
+                    //Thread.Sleep(1000);
+
+                    //IWebElement chooseBrandName = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[text() = ' Chro ']")));
+                    //chooseBrandName.Click();
+                    //Thread.Sleep(1000);
+
+                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+                    Thread.Sleep(3000);
+                }
+                else
+                {
+                    Console.WriteLine($"Subcategory '{searchName}' already exists.");
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+    //Thread.Sleep(1000);
+
+    //// Locate Product Module
+    //By productModuleBy = By.XPath("//div[contains(text(),'Products')]");
+    //wait.Until(d => d.FindElement(productModuleBy).Displayed);
+    //driver.FindElement(productModuleBy).Click();
+
+    //// Locate SubCategory sub-module
+    //By subCategoryBy = By.XPath("//div[contains(text(),' Sub Categories ')]");
+    //wait.Until(d => d.FindElement(subCategoryBy).Displayed);
+    //driver.FindElement(subCategoryBy).Click();
+
+    //Thread.Sleep(5000);
+
+    //for (int i = 0; i < AddSubCategoryData.SubCategory.GetLength(0); i++)
+    //{
+    //    string searchName = AddSubCategoryData.SubCategory[i, 0];
+
+    //    By searchBoxBy = By.Name("searchText");
+    //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+    //    IWebElement searchText = driver.FindElement(searchBoxBy);
+    //    searchText.Clear();
+    //    searchText.SendKeys(searchName + Keys.Enter);
+
+    //    Thread.Sleep(7000);
+
+    //    var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+
+    //    if (rows.Count == 0)
+    //    {
+    //        Console.WriteLine($"Subcategory '{searchName}' not found. Adding Subcategory");
+
+    //        By addSubCategoryBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
+    //        wait.Until(d => d.FindElement(addSubCategoryBtnBy).Displayed);
+    //        driver.FindElement(addSubCategoryBtnBy).Click();
+
+    //        Thread.Sleep(2000);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")))
+    //            .SendKeys(AddSubCategoryData.SubCategory[i, 1]);
+
+    //        driver.FindElement(By.Name("branch")).Click();
+    //        string branchName = AddSubCategoryData.SubCategory[i, 2];
+    //        string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
+    //        driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
+
+    //        driver.FindElement(By.Name("brand")).Click();
+    //        string brandName = AddSubCategoryData.SubCategory[i, 3];
+    //        string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
+    //        driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
+
+    //        driver.FindElement(By.Name("category")).Click();
+    //        string categoryName = AddSubCategoryData.SubCategory[i, 4];
+    //        string dynamicCategoryXPath = $"//span[text()=' {categoryName} ']";
+    //        driver.FindElement(By.XPath(dynamicCategoryXPath)).Click();
+
+    //        // Upload SubCategory Image
+    //        IWebElement imageUploadBtn =
+    //            wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+    //        imageUploadBtn.SendKeys(AddSubCategoryData.SubCategory[i, 5]);
+
+    //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
+    //              .Click();
+
+    //        Thread.Sleep(3000);
+
+
+    public class AddProduct
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public AddProduct(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
+        }
+
+        public void AddProductFlow()
+        {
+
+
+            Thread.Sleep(1000);
+            //Locate Product Module
+            IWebElement productModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Products')]")));
+            productModule.Click();
+
+            //Locate ProductList sub-module
+            IWebElement productList = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),' Product List ')]")));
+            productList.Click();
+            Thread.Sleep(2000);
+
+            for (int i = 0; i < AddProductData.Products.GetLength(0); i++)
+            {
+
+                IWebElement branchFilter = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'branch']")));
+                branchFilter.Click();
+                Thread.Sleep(2000);
+
+                IWebElement selectBranch = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains (text(), ' Pudukkottai Branch ')]")));
+                selectBranch.Click();
+                Thread.Sleep(2000);
+
+                string searchName = AddProductData.Products[i, 0];
+                IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
+                searchText.Clear();
+                searchText.SendKeys(searchName + Keys.Enter);
+                Thread.Sleep(3000);
+
+                // Check if product exists
+                var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+                if (rows.Count == 0)
+                {
+                    Console.WriteLine($"Product '{searchName}' not found. Adding Product");
+
+                    // Navigate to add product page
+                    IWebElement addProductButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
+                    addProductButton.Click();
+                    Thread.Sleep(2000);
+
+                    //Fill the input fields
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name"))).SendKeys(AddProductData.Products[i, 1]);
+                    Thread.Sleep(2000);
+
+                    //wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@placeholder = 'Branch'])[2]"))).Click();
+                    //string branchName = AddProductData.Products[i, 2];
+                    //string dynamicBranchXPath = $"//span[text()=' {branchName} ']";
+                    //driver.FindElement(By.XPath(dynamicBranchXPath)).Click();
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@placeholder = 'Branch'])[2]"))).Click();
+                    string branchName = AddProductData.Products[i, 2];
+                    driver.FindElement(By.XPath($"//span[text()=' {branchName} ']")).Click();
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("brand"))).Click();
+                    string brandName = AddProductData.Products[i, 3];
+                    string dynamicBrandXPath = $"//span[text()=' {brandName} ']";
+                    driver.FindElement(By.XPath(dynamicBrandXPath)).Click();
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("category"))).Click();
+                    string categoryName = AddProductData.Products[i, 4];
+                    string dynamicCategoryXPath = $"//span[text()=' {categoryName} ']";
+                    driver.FindElement(By.XPath(dynamicCategoryXPath)).Click();
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("subcategory"))).Click();
+                    string subcategoryName = AddProductData.Products[i, 5];
+                    string dynamicSubcategoryXPath = $"//span[text()=' {subcategoryName} ']";
+                    driver.FindElement(By.XPath(dynamicSubcategoryXPath)).Click();
+
+                    IWebElement productId = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("customProductId")));
+                    productId.SendKeys(AddProductData.Products[i, 6]);
+                    Thread.Sleep(2000);
+
+                    IWebElement hsnCode = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("hsnCode")));
+                    hsnCode.SendKeys(AddProductData.Products[i, 7]);
+                    Thread.Sleep(2000);
+
+                    bool sp = true;
+                    if (AddProductData.Products[i, 10] == "1")
+                    {
+                        IWebElement addGstCheckbox = wait.Until(ExpectedConditions.ElementExists(By.XPath("//input[@name='addGST']")));
+                        IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                        js.ExecuteScript("arguments[0].click();", addGstCheckbox);
+                        Thread.Sleep(1000);
+
+                        sp = false;
+                        IWebElement maximumRetailPrice = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("mrp")));
+                        maximumRetailPrice.SendKeys(AddProductData.Products[i, 11]);
+                        Thread.Sleep(2000);
+
+                        IWebElement cgst = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cgst")));
+                        cgst.SendKeys(AddProductData.Products[i, 12]);
+                        Thread.Sleep(2000);
+
+                        IWebElement sgst = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("sgst")));
+                        sgst.SendKeys(AddProductData.Products[i, 13]);
+                        Thread.Sleep(2000);
+
+                        IWebElement utgst = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("utgst")));
+                        utgst.SendKeys(AddProductData.Products[i, 14]);
+                        Thread.Sleep(1000);
+
+                        IWebElement cess = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cess")));
+                        cess.SendKeys(AddProductData.Products[i, 15]);
+                        Thread.Sleep(1000);
+
+                        IWebElement costForState = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("sCost")));
+                        costForState.SendKeys(AddProductData.Products[i, 16]);
+                        Thread.Sleep(2000);
+
+                        IWebElement costForUt = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("utCost")));
+                        costForUt.SendKeys(AddProductData.Products[i, 17]);
+                        Thread.Sleep(2000);
+
+                        //Taxable price for state and ut will be automatically calculated 
+                    }
+                    if (sp)
+                    {
+                        IWebElement sellingPrice = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cost")));
+                        sellingPrice.SendKeys(AddProductData.Products[i, 8]);
+                        Thread.Sleep(2000);
+                    }
+
+                    // Upload Product Image
+                    IWebElement imageUploadBtn = wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+                    imageUploadBtn.SendKeys(AddProductData.Products[i, 9]);
+
+
+                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+                    Thread.Sleep(3000);
+
+                    driver.FindElement(By.XPath("//button//span[contains(text(),'Cancel')]")).Click();
+                    Thread.Sleep(3000);
+
+                }
+                else
+                {
+                    Console.WriteLine($"Product '{searchName}' already exists.");
+                }
+            }
+        }
+    }
+
+    //Thread.Sleep(1000);
+
+    //// Locate Product Module
+    //By productModuleBy = By.XPath("//div[contains(text(),'Products')]");
+    //wait.Until(d => d.FindElement(productModuleBy).Displayed);
+    //driver.FindElement(productModuleBy).Click();
+
+    //// Locate ProductList sub-module
+    //By productListBy = By.XPath("//div[contains(text(),' Product List ')]");
+    //wait.Until(d => d.FindElement(productListBy).Displayed);
+    //driver.FindElement(productListBy).Click();
+
+    //Thread.Sleep(5000);
+
+    //for (int i = 0; i < AddProductData.Products.GetLength(0); i++)
+    //{
+    //    IWebElement branchFilter =
+    //        wait.Until(ExpectedConditions.ElementToBeClickable(
+    //            By.XPath("//input[@name = 'branch']")));
+    //    branchFilter.Click();
+    //    Thread.Sleep(2000);
+
+    //    IWebElement selectBranch =
+    //        wait.Until(ExpectedConditions.ElementToBeClickable(
+    //            By.XPath("//span[contains (text(), ' Pudukkottai Branch ')]")));
+    //    selectBranch.Click();
+    //    Thread.Sleep(2000);
+
+    //    string searchName = AddProductData.Products[i, 0];
+
+    //    By searchBoxBy = By.Name("searchText");
+    //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+    //    IWebElement searchText = driver.FindElement(searchBoxBy);
+    //    searchText.Clear();
+    //    searchText.SendKeys(searchName + Keys.Enter);
+
+    //    Thread.Sleep(3000);
+
+    //    var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+
+    //    if (rows.Count == 0)
+    //    {
+    //        Console.WriteLine($"Product '{searchName}' not found. Adding Product");
+
+    //        By addProductBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
+    //        wait.Until(d => d.FindElement(addProductBtnBy).Displayed);
+    //        driver.FindElement(addProductBtnBy).Click();
+
+    //        Thread.Sleep(2000);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")))
+    //            .SendKeys(AddProductData.Products[i, 1]);
+
+    //        Thread.Sleep(2000);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(
+    //            By.XPath("(//input[@placeholder = 'Branch'])[2]"))).Click();
+    //        string branchName = AddProductData.Products[i, 2];
+    //        driver.FindElement(By.XPath($"//span[text()=' {branchName} ']")).Click();
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("brand"))).Click();
+    //        string brandName = AddProductData.Products[i, 3];
+    //        driver.FindElement(By.XPath($"//span[text()=' {brandName} ']")).Click();
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("category"))).Click();
+    //        string categoryName = AddProductData.Products[i, 4];
+    //        driver.FindElement(By.XPath($"//span[text()=' {categoryName} ']")).Click();
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("subcategory"))).Click();
+    //        string subcategoryName = AddProductData.Products[i, 5];
+    //        driver.FindElement(By.XPath($"//span[text()=' {subcategoryName} ']")).Click();
+
+    //        IWebElement productId =
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("customProductId")));
+    //        productId.SendKeys(AddProductData.Products[i, 6]);
+    //        Thread.Sleep(2000);
+
+    //        IWebElement hsnCode =
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("hsnCode")));
+    //        hsnCode.SendKeys(AddProductData.Products[i, 7]);
+    //        Thread.Sleep(2000);
+
+    //        bool sp = true;
+    //        if (AddProductData.Products[i, 10] == "1")
+    //        {
+    //            IWebElement addGstCheckbox =
+    //                wait.Until(ExpectedConditions.ElementExists(
+    //                    By.XPath("//input[@name='addGST']")));
+    //            ((IJavaScriptExecutor)driver)
+    //                .ExecuteScript("arguments[0].click();", addGstCheckbox);
+
+    //            Thread.Sleep(1000);
+    //            sp = false;
+
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("mrp")))
+    //                .SendKeys(AddProductData.Products[i, 11]);
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cgst")))
+    //                .SendKeys(AddProductData.Products[i, 12]);
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("sgst")))
+    //                .SendKeys(AddProductData.Products[i, 13]);
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("utgst")))
+    //                .SendKeys(AddProductData.Products[i, 14]);
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cess")))
+    //                .SendKeys(AddProductData.Products[i, 15]);
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("sCost")))
+    //                .SendKeys(AddProductData.Products[i, 16]);
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("utCost")))
+    //                .SendKeys(AddProductData.Products[i, 17]);
+    //        }
+
+    //        if (sp)
+    //        {
+    //            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("cost")))
+    //                .SendKeys(AddProductData.Products[i, 8]);
+    //        }
+
+    //        IWebElement imageUploadBtn =
+    //            wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+    //        imageUploadBtn.SendKeys(AddProductData.Products[i, 9]);
+
+    //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
+    //              .Click();
+    //        Thread.Sleep(3000);
+
+    //        driver.FindElement(By.XPath("//button//span[contains(text(),'Cancel')]"))
+    //              .Click();
+    //        Thread.Sleep(3000);
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine($"Product '{searchName}' already exists.");
+    //    }
+
+
+
+
+    //ADD WAREHOUSE========================================================================//
+    public class AddWarehouse
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public AddWarehouse(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+        }
+
+        public void AddWarehouseFlow()
+        {
+
+
+
+            //Locate Warehouse Module
+            IWebElement warehouseModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Warehouse")));
+            warehouseModule.Click();
+
+            // Fetching Warehouse List sub-menu
+            IWebElement warehouseList = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Warehouse0")));
+            warehouseList.Click();
+            Thread.Sleep(2000);
+
+            for (int i = 0; i < AddWarehouseData.Warehouses.GetLength(0); i++)
+            {
+
+                IWebElement searchTypeButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
+                searchTypeButton.Click();
+                Thread.Sleep(2000);
+
+                IWebElement selectName = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains (text(), ' Name ')]")));
+                selectName.Click();
+                Thread.Sleep(2000);
+
+
+                string searchName = AddWarehouseData.Warehouses[i, 0];
+                IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
+                searchText.Clear();
+                searchText.SendKeys(searchName + Keys.Enter);
+                Thread.Sleep(2000);
+
+                var rowData = driver.FindElements(By.XPath("//table//tbody/tr"));    //fetching table data
+                if (rowData.Count == 0)
+                {
+                    Console.WriteLine($"Warehouse '{searchName}' not found. Adding Warehouse");
+
+                    // Navigate to add warehouse page
+                    IWebElement addWarehouseButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
+                    addWarehouseButton.Click();
+                    Thread.Sleep(2000);
+
+                    // Fill the input fields using 2D array
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name"))).SendKeys(AddWarehouseData.Warehouses[i, 1]);
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("lat"))).SendKeys(AddWarehouseData.Warehouses[i, 2]);
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("lon"))).SendKeys(AddWarehouseData.Warehouses[i, 3]);
+
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("city"))).SendKeys(AddWarehouseData.Warehouses[i, 4]);
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("state"))).SendKeys(AddWarehouseData.Warehouses[i, 5]);
+
+                    driver.FindElement(By.Name("branch")).Click();
+                    string branchName = AddWarehouseData.Warehouses[i, 6];
+                    string dynamicXPath = $"//span[text()=' {branchName} ']";
+                    driver.FindElement(By.XPath(dynamicXPath)).Click();
+
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("phoneNo"))).SendKeys(AddWarehouseData.Warehouses[i, 7]);
+                    Thread.Sleep(1000);
+
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span [contains(text(),'publish' )]"))).Click();
+                    Thread.Sleep(1000);
+                    var sim = new InputSimulator();
+                    sim.Keyboard.TextEntry(AddWarehouseData.Warehouses[i, 8]);
+                    sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+                    Thread.Sleep(1000);
+
+
+                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    Console.WriteLine($"Warehouse '{searchName}' already exists.");
+                }
+
+            }
+        }
+    }
+
+
+    //// Locate Warehouse Module
+    //By warehouseModuleBy = By.Id("menuItem-Warehouse");
+    //wait.Until(d => d.FindElement(warehouseModuleBy).Displayed);
+    //driver.FindElement(warehouseModuleBy).Click();
+
+    //// Fetch Warehouse List sub-menu
+    //By warehouseListBy = By.Id("menuItem-Warehouse0");
+    //wait.Until(d => d.FindElement(warehouseListBy).Displayed);
+    //driver.FindElement(warehouseListBy).Click();
+
+    //Thread.Sleep(2000);
+
+    //for (int i = 0; i < AddWarehouseData.Warehouses.GetLength(0); i++)
+    //{
+    //    By searchTypeBtnBy = By.XPath("(//mat-select[@role = 'listbox'])[2]");
+    //    wait.Until(d => d.FindElement(searchTypeBtnBy).Displayed);
+    //    driver.FindElement(searchTypeBtnBy).Click();
+    //    Thread.Sleep(2000);
+
+    //    By selectNameBy = By.XPath("//span[contains (text(), ' Name ')]");
+    //    wait.Until(d => d.FindElement(selectNameBy).Displayed);
+    //    driver.FindElement(selectNameBy).Click();
+    //    Thread.Sleep(2000);
+
+    //    string searchName = AddWarehouseData.Warehouses[i, 0];
+
+    //    By searchBoxBy = By.Name("searchText");
+    //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+    //    IWebElement searchText = driver.FindElement(searchBoxBy);
+    //    searchText.Clear();
+    //    searchText.SendKeys(searchName + Keys.Enter);
+
+    //    Thread.Sleep(2000);
+
+    //    var rowData = driver.FindElements(By.XPath("//table//tbody/tr"));
+
+    //    if (rowData.Count == 0)
+    //    {
+    //        Console.WriteLine($"Warehouse '{searchName}' not found. Adding Warehouse");
+
+    //        By addWarehouseBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
+    //        wait.Until(d => d.FindElement(addWarehouseBtnBy).Displayed);
+    //        driver.FindElement(addWarehouseBtnBy).Click();
+
+    //        Thread.Sleep(2000);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")))
+    //            .SendKeys(AddWarehouseData.Warehouses[i, 1]);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("lat")))
+    //            .SendKeys(AddWarehouseData.Warehouses[i, 2]);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("lon")))
+    //            .SendKeys(AddWarehouseData.Warehouses[i, 3]);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("city")))
+    //            .SendKeys(AddWarehouseData.Warehouses[i, 4]);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("state")))
+    //            .SendKeys(AddWarehouseData.Warehouses[i, 5]);
+
+    //        driver.FindElement(By.Name("branch")).Click();
+    //        string branchName = AddWarehouseData.Warehouses[i, 6];
+    //        string dynamicXPath = $"//span[text()=' {branchName} ']";
+    //        driver.FindElement(By.XPath(dynamicXPath)).Click();
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("phoneNo")))
+    //            .SendKeys(AddWarehouseData.Warehouses[i, 7]);
+
+    //        Thread.Sleep(1000);
+
+    //        // Upload / publish file
+    //        wait.Until(ExpectedConditions.ElementIsVisible(
+    //            By.XPath("//span [contains(text(),'publish' )]"))).Click();
+
+    //        Thread.Sleep(1000);
+    //        var sim = new InputSimulator();
+    //        sim.Keyboard.TextEntry(AddWarehouseData.Warehouses[i, 8]);
+    //        sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+
+    //        Thread.Sleep(1000);
+
+    //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
+    //              .Click();
+
+    //        Thread.Sleep(2000);
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine($"Warehouse '{searchName}' already exists.");
+    //    }
+
+
+
+
+
+    public class AddVendor
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public AddVendor(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+        }
+
+        public void AddVendorFlow()
+        {
+
+
+            //Locate Warehouse Module
+            IWebElement warehouseModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Warehouse")));
+            warehouseModule.Click();
+
+            // Fetching Vendor List sub-menu
+            IWebElement vendorList = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Warehouse1")));
+            vendorList.Click();
+            Thread.Sleep(2000);
+
+            for (int i = 0; i < AddWarehouseData.Vendors.GetLength(0); i++)
+            {
+                IWebElement searchTypeButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
+                searchTypeButton.Click();
+                Thread.Sleep(2000);
+
+                IWebElement selectName = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains (text(), ' Name ')]")));
+                selectName.Click();
+                Thread.Sleep(2000);
+
+                string searchName = AddWarehouseData.Vendors[i, 0];
+                IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
+                searchText.Clear();
+                searchText.SendKeys(searchName + Keys.Enter);
+                Thread.Sleep(2000);
+
+                var rowData = driver.FindElements(By.XPath("//table//tbody/tr"));    //fetching table data
+                if (rowData.Count == 0)
+                {
+                    Console.WriteLine($"Warehouse '{searchName}' not found. Adding Warehouse");
+
+                    // Navigate to add warehouse page
+                    IWebElement addVendorButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
+                    addVendorButton.Click();
+                    Thread.Sleep(2000);
+
+                    // Fill the input fields using 2D array
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name"))).SendKeys(AddWarehouseData.Vendors[i, 1]);
+
+                    driver.FindElement(By.Name("branch")).Click();
+                    string branchName = AddWarehouseData.Vendors[i, 2];
+                    string dynamicXPath = $"//span[text()=' {branchName} ']";
+                    driver.FindElement(By.XPath(dynamicXPath)).Click();
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("email"))).SendKeys(AddWarehouseData.Vendors[i, 3]);
+
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("mobile"))).SendKeys(AddWarehouseData.Vendors[i, 4]);
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonName"))).SendKeys(AddWarehouseData.Vendors[i, 5]);
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonEmail"))).SendKeys(AddWarehouseData.Vendors[i, 6]);
+
+
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonMobile"))).SendKeys(AddWarehouseData.Vendors[i, 7]);
+                    Thread.Sleep(1000);
+
+                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+                    Thread.Sleep(2000);
+
+                }
+                else
+                {
+                    Console.WriteLine($"Vendor '{searchName}' already exists.");
+                }
+            }
+        }
+    }
+
+
+    //// Locate Warehouse Module
+    //By warehouseModuleBy = By.Id("menuItem-Warehouse");
+    //wait.Until(d => d.FindElement(warehouseModuleBy).Displayed);
+    //driver.FindElement(warehouseModuleBy).Click();
+
+    //// Fetch Vendor List sub-menu
+    //By vendorListBy = By.Id("menuItem-Warehouse1");
+    //wait.Until(d => d.FindElement(vendorListBy).Displayed);
+    //driver.FindElement(vendorListBy).Click();
+
+    //Thread.Sleep(2000);
+
+    //for (int i = 0; i < AddWarehouseData.Vendors.GetLength(0); i++)
+    //{
+    //    By searchTypeBtnBy = By.XPath("(//mat-select[@role = 'listbox'])[2]");
+    //    wait.Until(d => d.FindElement(searchTypeBtnBy).Displayed);
+    //    driver.FindElement(searchTypeBtnBy).Click();
+    //    Thread.Sleep(2000);
+
+    //    By selectNameBy = By.XPath("//span[contains (text(), ' Name ')]");
+    //    wait.Until(d => d.FindElement(selectNameBy).Displayed);
+    //    driver.FindElement(selectNameBy).Click();
+    //    Thread.Sleep(2000);
+
+    //    string searchName = AddWarehouseData.Vendors[i, 0];
+
+    //    By searchBoxBy = By.Name("searchText");
+    //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+    //    IWebElement searchText = driver.FindElement(searchBoxBy);
+    //    searchText.Clear();
+    //    searchText.SendKeys(searchName + Keys.Enter);
+
+    //    Thread.Sleep(2000);
+
+    //    var rowData = driver.FindElements(By.XPath("//table//tbody/tr"));
+
+    //    if (rowData.Count == 0)
+    //    {
+    //        Console.WriteLine($"Vendor '{searchName}' not found. Adding Vendor");
+
+    //        By addVendorBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
+    //        wait.Until(d => d.FindElement(addVendorBtnBy).Displayed);
+    //        driver.FindElement(addVendorBtnBy).Click();
+
+    //        Thread.Sleep(2000);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")))
+    //            .SendKeys(AddWarehouseData.Vendors[i, 1]);
+
+    //        driver.FindElement(By.Name("branch")).Click();
+    //        string branchName = AddWarehouseData.Vendors[i, 2];
+    //        string dynamicXPath = $"//span[text()=' {branchName} ']";
+    //        driver.FindElement(By.XPath(dynamicXPath)).Click();
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("email")))
+    //            .SendKeys(AddWarehouseData.Vendors[i, 3]);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("mobile")))
+    //            .SendKeys(AddWarehouseData.Vendors[i, 4]);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonName")))
+    //            .SendKeys(AddWarehouseData.Vendors[i, 5]);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonEmail")))
+    //            .SendKeys(AddWarehouseData.Vendors[i, 6]);
+
+    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactPersonMobile")))
+    //            .SendKeys(AddWarehouseData.Vendors[i, 7]);
+
+    //        Thread.Sleep(1000);
+
+    //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]"))
+    //              .Click();
+
+    //        Thread.Sleep(2000);
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine($"Vendor '{searchName}' already exists.");
+    //    }
+
+
+
+
+    /// ///////////////////////////////////////PRODUCT MAPPING ///////////////////////////////////////////////////////
+
+
+    public class Productmapping
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+        static ITakesScreenshot screenshotDriver;
+
+        public Productmapping(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+        }
+
+        public void ProductMappingFlow()
+        {
+            try
+            {
+
+
+
+                //Fetching Machine menu
+                IWebElement machineMenu = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines")));
+                machineMenu.Click();
+
+                // Fetching Machine List
+                IWebElement machineList = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines0")));
+                machineList.Click();
+                Thread.Sleep(1000);
+
+                string machineId = MachineMapping.unmappedMachineForMapping;
+                Console.WriteLine("Selecting machine: " + machineId);
+
+                IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
+                searchText.Clear();
+                searchText.SendKeys(machineId + Keys.Enter);
+                Thread.Sleep(3000);
+
+                // Action Button 
+                IWebElement actionButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
+                actionButton.Click();
+                Thread.Sleep(1000);
+
+                //Fetching the details of the machine 
+                IWebElement machineDetails = wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
+                machineDetails.Click();
+                Thread.Sleep(3000);
+
+                //Edit Planogram
+                Thread.Sleep(3000);
+                IWebElement editSlot = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
+                editSlot.Click();
+                Thread.Sleep(1000);
+
+                IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
+                slotRowCount.Clear();
+                slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+
+
+                IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
+                slotColumnCount.Clear();
+                slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+
+                IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
+                endingRowCount.Clear();
+                endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+
+
+                IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
+                endingColumnCount.Clear();
+                endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+                Thread.Sleep(1000);
+                IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                saveSlots.Click();
+                Console.WriteLine("Product Matrix Changed again");
+
+                ///* wait for Angular overlay/backdrop to disappear */
+                //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                //    By.ClassName("cdk-overlay-backdrop")));
+
+
+                IWebElement editInfo = wait.Until(
+                    ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
+                editInfo.Click();
+                Thread.Sleep(3000);
+
+                IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
+                clientLocation.Clear();
+                clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
+                Thread.Sleep(2000);
+
+                IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
+                routeIdentifier.Clear();
+                routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
+                Thread.Sleep(2000);
+
+                // Direct Refill checkbox
+                IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
+
+                if (directRefillCheckbox.Selected)
+                {
+                    Console.WriteLine("Direct Refill is checked. Unchecking now..");
+                    IWebElement directRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Direct Refill Option')]")));
+                    directRefillLabel.Click();
+                    Thread.Sleep(1000); // allow Auto Refill to enable
+                }
+                else
+                {
+                    Console.WriteLine("Direct Refill is already unchecked. Moving to check the status of Auto Refill...");
+                }
+
+                // Auto Refill checkbox
+                IWebElement autoRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name ='disabledAutoRefill']")));
+
+                if (autoRefillCheckbox.Selected)
+                {
+                    Console.WriteLine("Disable Auto Refill is checked. Unchecking now..");
+                    IWebElement autoRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Disable Auto Refill')]")));
+                    autoRefillLabel.Click();
+                    Thread.Sleep(1000);
+                }
+                else
+                {
+                    Console.WriteLine("Disable Auto Refill is already unchecked. Saving..");
+                }
+                Thread.Sleep(2000);
+
+                //Save
+                IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
+                saveButton.Click();
+                Thread.Sleep(3000);
+
+
+                //// Edit Single Slot 
+                Console.WriteLine("Product Mapping in to slots...");
+                Thread.Sleep(3000);
+                Actions a = new Actions(driver);
+
+                //Product Assigning Matrix 
+                for (int i = 0; i < ProductMappingData.products.GetLength(0); i++)
+                {
+                    Thread.Sleep(2000);
+                    IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
+
+                    a.MoveToElement(product).Pause(TimeSpan.FromSeconds(2)).Perform();
+
+                    // String dynamicXPath1 = $"(//mat-card)[{slotIndex}]//button//mat-icon";
+                    IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
+                    editSlot2.Click();
+                    Thread.Sleep(2000);
+
+                    // Locate the toggle button input
+                    IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
+
+                    foreach (IWebElement toggleButton in toggleButtons)
+                    {
+                        // Check current state of toggle button
+                        bool isToggleEnabled = toggleButton.Selected;
+                        if (!isToggleEnabled)
+                        {
+                            Console.WriteLine("Toggle is OFF. Enabling now...");
+                            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                            js.ExecuteScript("arguments[0].click();", toggleButton);
+                            Thread.Sleep(1000);
+                            Console.WriteLine("Toggled Enabled.");
+                        }
+                    }
+
+                    IWebElement selectProduct = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("product")));
+                    selectProduct.Click();
+
+                    //String name = ProductMappingData.products[i, 1];
+                    IWebElement choosingProduct = wait.Until(ExpectedConditions.ElementToBeClickable(
+                        By.XPath($"//div[@role='listbox']//div[contains(text(), ' {ProductMappingData.products[i, 1]} ')]")));
+                    choosingProduct.Click();
+
+
+                    IWebElement purchaseLimitPerUser = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")));
+                    purchaseLimitPerUser.Clear();
+                    purchaseLimitPerUser.SendKeys(ProductMappingData.products[i, 2]);
+
+                    IWebElement purchaseLimitPerTransaction = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerTransaction")));
+                    purchaseLimitPerTransaction.Clear();
+                    purchaseLimitPerTransaction.SendKeys(ProductMappingData.products[i, 3]);
+
+
+                    IWebElement purchaseLimitResetPerUser = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("purchaseLimitResetPerUser")));
+                    purchaseLimitResetPerUser.Click();
+                    IWebElement resetTime = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 4]} ')]")));
+                    resetTime.Click();
+
+                    IWebElement stockLimitInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("stockLimit")));
+                    stockLimitInput.Click();
+                    //String stockLimit = ProductMappingData.products[i, 5];
+                    //String stockLimitXPath = $"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]";
+                    IWebElement chooseStockLimit = wait.Until(ExpectedConditions.ElementToBeClickable(
+                        By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]")));
+                    chooseStockLimit.Click();
+
+                    IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                    save.Click();
+                }
+
+                //Modify Planogram after Product Mapping
+                IWebElement editSlot1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
+                editSlot.Click();
+                Thread.Sleep(1000);
+
+                IWebElement slotRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
+                slotRowCount1.Clear();
+                slotRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
+
+
+                IWebElement slotColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
+                slotColumnCount1.Clear();
+                slotColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
+
+                IWebElement endingRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
+                endingRowCount1.Clear();
+                endingRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
+
+
+                IWebElement endingColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
+                endingColumnCount1.Clear();
+                endingColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
+                Thread.Sleep(2000);
+                IWebElement saveSlots1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                saveSlots1.Click();
+                Console.WriteLine("Product Matrix Changed again");
+                Thread.Sleep(2000);
+
+
+
+
+
+
+                //  // Fetching Machine menu
+                //  By machineMenuBy = By.Id("menuItem-Machines");
+                //  wait.Until(d => d.FindElement(machineMenuBy).Displayed);
+                //  driver.FindElement(machineMenuBy).Click();
+
+                //  // Fetching Machine List
+                //  By machineListBy = By.Id("menuItem-Machines0");
+                //  wait.Until(d => d.FindElement(machineListBy).Displayed);
+                //  driver.FindElement(machineListBy).Click();
+                //  Thread.Sleep(1000);
+
+                //  string machineId = MachineMapping.unmappedMachineForMapping;
+                //  Console.WriteLine("Selecting machine: " + machineId);
+
+                //  By searchBoxBy = By.Name("searchText");
+                //  wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+                //  IWebElement searchText = driver.FindElement(searchBoxBy);
+                //  searchText.Clear();
+                //  searchText.SendKeys(machineId + Keys.Enter);
+                //  Thread.Sleep(3000);
+
+                //  // Action Button
+                //  IWebElement actionButton = wait.Until(
+                //      ExpectedConditions.ElementToBeClickable(
+                //          By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
+                //  actionButton.Click();
+                //  Thread.Sleep(1000);
+
+                //  // Machine details
+                //  IWebElement machineDetails = wait.Until(
+                //      ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
+                //  machineDetails.Click();
+
+                //  // Edit Slot
+                //  IWebElement editSlot = wait.Until(
+                //      ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
+                //  editSlot.Click();
+
+                //  IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
+                //  slotRowCount.Clear();
+                //  slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+
+                //  IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
+                //  slotColumnCount.Clear();
+                //  slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+
+                //  IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
+                //  endingRowCount.Clear();
+                //  endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+
+                //  IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
+                //  endingColumnCount.Clear();
+                //  endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+
+                //  IWebElement saveSlots = wait.Until(
+                //ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                //  saveSlots.Click();
+                //  Console.WriteLine("Product Matrix Changed again");
+
+
+
+                //  Thread.Sleep(3000);
+                //  IWebElement editInfo = driver.FindElement(By.XPath("//button[@mattooltip='Edit Info']"));
+
+                //  // scroll into view
+                //  ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
+                //  ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", editInfo);
+
+
+                //  //wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("clientLocation")));
+                //  //IWebElement clientLocation = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("clientLocation")));
+                //  //clientLocation.Clear();
+                //  //clientLocation.SendKeys(machineInfoData.machineDetails[0, 0] + new Random().Next(1,9));
+
+                //  //IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("routeIdentifier")));
+                //  //routeIdentifier.Clear();
+                //  //routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1] + new Random().Next(1, 9));
+
+                //  // Direct Refill checkbox
+                //  IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
+
+                //  if (directRefillCheckbox.Selected)
+                //  {
+                //      Console.WriteLine("Direct Refill is checked. Unchecking now..");
+                //      IWebElement directRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Direct Refill Option')]")));
+                //      directRefillLabel.Click();
+                //      Thread.Sleep(1000); // allow Auto Refill to enable
+                //  }
+                //  else
+                //  {
+                //      Console.WriteLine("Direct Refill is already unchecked. Moving to check the status of Auto Refill...");
+                //  }
+
+                //  // Auto Refill checkbox
+                //  IWebElement autoRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name ='disabledAutoRefill']")));
+
+                //  if (autoRefillCheckbox.Selected)
+                //  {
+                //      Console.WriteLine("Disable Auto Refill is checked. Unchecking now..");
+                //      IWebElement autoRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Disable Auto Refill')]")));
+                //      autoRefillLabel.Click();
+                //      Thread.Sleep(1000);
+                //  }
+                //  else
+                //  {
+                //      Console.WriteLine("Disable Auto Refill is already unchecked. Saving..");
+                //  }
+                //  Thread.Sleep(2000);
+
+
+                //  SafeClick(By.XPath("//span[contains(text(),'Save')]"));
+
+                //  //IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
+                //  //saveButton.Click();
+                //  //Thread.Sleep(2000);
+
+                //  // Edit Single Slot 
+                //  Console.WriteLine("Product Mapping in to slots...");
+                //  Thread.Sleep(3000);
+                //  Actions a = new Actions(driver);
+
+                //  for (int i = 0; i < ProductMappingData.products.GetLength(0); i++)
+                //  {
+                //      IWebElement product = wait.Until(ExpectedConditions.ElementIsVisible(
+                //          By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]")));
+
+                //      a.MoveToElement(product).Pause(TimeSpan.FromSeconds(3)).Perform();
+
+                //      IWebElement editSlot2 = wait.Until(ExpectedConditions.ElementIsVisible(
+                //          By.XPath($"(//mat-card)[{ProductMappingData.products[i, 0]}]//button//mat-icon")));
+                //      editSlot2.Click();
+                //      Thread.Sleep(2000);
+
+                //      IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
+                //      foreach (IWebElement toggleButton in toggleButtons)
+                //      {
+                //          // Check current state of toggle button
+                //          bool isToggleEnabled = toggleButton.Selected;
+                //          if (!isToggleEnabled)
+                //          {
+                //              Console.WriteLine("Toggle is OFF. Enabling now...");
+                //              IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                //              js.ExecuteScript("arguments[0].click();", toggleButton);
+                //              Thread.Sleep(1000);
+                //              Console.WriteLine("Toggled Enabled.");
+                //          }
+                //      }
+
+                //      IWebElement selectProduct = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("product")));
+                //      selectProduct.Click();
+
+                //      //String name = ProductMappingData.products[i, 1];
+                //      IWebElement choosingProduct = wait.Until(ExpectedConditions.ElementToBeClickable(
+                //          By.XPath($"//div[@role='listbox']//div[contains(text(), ' {ProductMappingData.products[i, 1]} ')]")));
+                //      choosingProduct.Click();
+
+
+                //      IWebElement purchaseLimitPerUser = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")));
+                //      purchaseLimitPerUser.Clear();
+                //      purchaseLimitPerUser.SendKeys(ProductMappingData.products[i, 2]);
+
+                //      IWebElement purchaseLimitPerTransaction = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerTransaction")));
+                //      purchaseLimitPerTransaction.Clear();
+                //      purchaseLimitPerTransaction.SendKeys(ProductMappingData.products[i, 3]);
+
+
+                //      IWebElement purchaseLimitResetPerUser = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("purchaseLimitResetPerUser")));
+                //      purchaseLimitResetPerUser.Click();
+                //      IWebElement resetTime = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 4]} ')]")));
+                //      resetTime.Click();
+
+                //      IWebElement stockLimitInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("stockLimit")));
+                //      stockLimitInput.Click();
+                //      //String stockLimit = ProductMappingData.products[i, 5];
+                //      //String stockLimitXPath = $"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]";
+                //      IWebElement chooseStockLimit = wait.Until(ExpectedConditions.ElementToBeClickable(
+                //          By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]")));
+                //      chooseStockLimit.Click();
+
+                //      IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                //      save.Click();
+                //  }
+
+                //  //Modify Planogram after Product Mapping
+                //  IWebElement editSlot1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
+                //  editSlot.Click();
+                //  Thread.Sleep(1000);
+
+                //  IWebElement slotRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
+                //  slotRowCount1.Clear();
+                //  slotRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
+
+
+                //  IWebElement slotColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
+                //  slotColumnCount1.Clear();
+                //  slotColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
+
+                //  IWebElement endingRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
+                //  endingRowCount1.Clear();
+                //  endingRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
+
+
+                //  IWebElement endingColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
+                //  endingColumnCount1.Clear();
+                //  endingColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
+                //  Thread.Sleep(2000);
+                //  IWebElement saveSlots1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                //  saveSlots1.Click();
+                //  Console.WriteLine("Product Matrix Changed again");
+                //  Thread.Sleep(2000);
+
+                //  wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[normalize-space(text())='W. Transactions']")));
+
+
+            }
+            catch
+            {
+                // Take screenshot
+                screenshotDriver = (ITakesScreenshot)driver;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+
+                // Jenkins workspace / project root
+                string projectPath3 = Directory.GetCurrentDirectory();
+
+                // Create Screenshots folder
+                string screenshotDir3 = Path.Combine(projectPath3, "Screenshots");
+                Directory.CreateDirectory(screenshotDir3);
+
+                // FIX: remove invalid characters from filename
+                string filePath2 = Path.Combine(
+                    screenshotDir3,
+                    $"Screenshot_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.png"
+                );
+
+                // Save screenshot
+                screenshot.SaveAsFile(filePath2);
+
+                Console.WriteLine($"Screenshot saved at: {filePath2}");
+            }
+        }
+
+        public void SafeClick(By locator)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+
+            // Wait for element to exist in DOM
+            IWebElement element = wait.Until(
+                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator)
+            );
+
+            // Wait until element is visible
+            element = wait.Until(
+                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator)
+            );
+
+            // Scroll into view
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", element);
+
+            try
+            {
+                // Try normal click first
+                element.Click();
+            }
+            catch (ElementClickInterceptedException)
+            {
+                // If intercepted, use JS click
+                ((IJavaScriptExecutor)driver)
+                    .ExecuteScript("arguments[0].click();", element);
+            }
+        }
+
+
+    }
+
+
+
+    /// <summary>
+    /// ////////////////////////////////// ADD PURCHASE /////////////////////////////////////////
+    /// </summary>
+
+    public class AddPurchase
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public AddPurchase(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+        }
+
+        public void AddPurchaseFlow()
+        {
+
+            //locate Warehouse Module
+            IWebElement warehouseTransactionsButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[normalize-space(text())='W. Transactions']")));
+            warehouseTransactionsButton.Click();
+            Thread.Sleep(2000);
+
+            //Go to Purchase module
+            IWebElement purchaseMenu = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-W. Transactions0")));
+            purchaseMenu.Click();
+            Thread.Sleep(2000);
+
+
+            IWebElement AddWarehousePurchase = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains (@mattooltip, 'Add Warehouse Purchase')]")));
+            AddWarehousePurchase.Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.Name("warehouse")).Click();
+            string warehouseName = AddPurchaseData.Purchases[0, 0];
+            string dynamicWarehouseXPath = $"//span[text()=' {warehouseName} ']";
+            driver.FindElement(By.XPath(dynamicWarehouseXPath)).Click();
+
+            for (int i = 0; i < AddPurchaseData.Purchases.GetLength(0); i++)
+            {
+
+                ////Filter by product
+                //IWebElement productFilter = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
+                //productFilter.Click();
+                //Thread.Sleep(2000);
+
+                //IWebElement selectProductName = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains (text(), ' Product Name ')]")));
+                //selectProductName.Click();
+                //Thread.Sleep(2000);
+
+
+                //string chooseProductName = AddPurchaseData.Purchases[i, 5];
+                //IWebElement enterProductName = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
+                //enterProductName.Click();
+                //enterProductName.Clear();
+                //enterProductName.SendKeys(chooseProductName + Keys.Enter);
+
+                //var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+                //if (rows.Count == 0)
+                //{
+                //Console.WriteLine($"Product not found. Adding Purchase of the product");
+                //IWebElement AddWarehousePurchase = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains (@mattooltip, 'Add Warehouse Purchase')]")));
+                //AddWarehousePurchase.Click();
+                //Thread.Sleep(1000);
+
+                //driver.FindElement(By.Name("warehouse")).Click();
+                //string warehouseName = AddPurchaseData.Purchases[0, 0];
+                //string dynamicWarehouseXPath = $"//span[text()=' {warehouseName} ']";
+                //driver.FindElement(By.XPath(dynamicWarehouseXPath)).Click();
+
+
+
+                // Add Purchase Page
+
+                driver.FindElement(By.Name("vendor")).Click();
+                string vendorName = AddPurchaseData.Purchases[i, 1];
+                string dynamicVendorXPath = $"//span[text()=' {vendorName} ']";
+                driver.FindElement(By.XPath(dynamicVendorXPath)).Click();
+
+                driver.FindElement(By.Name("productId")).Click();
+                string productName = AddPurchaseData.Purchases[i, 2];
+                string dynamicProductXPath = $"//span[contains(text(), ' {productName} ')]";
+                driver.FindElement(By.XPath(dynamicProductXPath)).Click();
+
+                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("qty"))).SendKeys(AddPurchaseData.Purchases[i, 3]);
+
+                wait.Until(ExpectedConditions.ElementIsVisible(By.Name("batchId"))).SendKeys(AddPurchaseData.Purchases[i, 4]);
+
+                // Expiry Date selection
+                IWebElement expiryCalendarIcon = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("drange")));
+                expiryCalendarIcon.Click();
+                Thread.Sleep(1000);
+
+                IWebElement yearControl = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='owl-dt-calendar-control']")));
+                yearControl.Click();
+                Thread.Sleep(1000);
+
+                IWebElement yearToSelect = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 6]}']]")));
+                yearToSelect.Click();
+                Thread.Sleep(1000);
+
+                IWebElement monthToSelect = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 7]}']]")));
+                monthToSelect.Click();
+                Thread.Sleep(1000);
+
+                IWebElement dayToSelect = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 8]}']]")));
+                dayToSelect.Click();
+                Thread.Sleep(1000);
+
+                // Bill Date selection
+                IWebElement billDateCalendarIcon = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("drange2")));
+                billDateCalendarIcon.Click();
+                Thread.Sleep(1000);
+
+
+                IWebElement yearControl1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='owl-dt-calendar-control']")));
+                yearControl1.Click();
+                Thread.Sleep(1000);
+
+                IWebElement yearToSelect1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 9]}']]")));
+                yearToSelect1.Click();
+                Thread.Sleep(1000);
+
+                IWebElement monthToSelect1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 10]}']]")));
+                monthToSelect1.Click();
+                Thread.Sleep(1000);
+
+                IWebElement dayToSelect1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 11]}']]")));
+                dayToSelect1.Click();
+                Thread.Sleep(3000);
+
+                IWebElement addButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Add ']")));
+                addButton.Click();
+                Thread.Sleep(2000);
+
+
+
+            }
+            IWebElement saveButton1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Save ']")));
+            saveButton1.Click();
+            Thread.Sleep(2000);
+
+
+
+
+
+
+
+            // // Locate Warehouse Transactions Module
+            // By warehouseTransactionsBy = By.XPath("//div[normalize-space(text())='W. Transactions']");
+            //// wait.Until(d => d.FindElement(warehouseTransactionsBy).Displayed);
+            // driver.FindElement(warehouseTransactionsBy).Click();
+            // Thread.Sleep(2000);
+
+            // // Go to Purchase module
+            // By purchaseMenuBy = By.Id("menuItem-W. Transactions0");
+            // wait.Until(d => d.FindElement(purchaseMenuBy).Displayed);
+            // driver.FindElement(purchaseMenuBy).Click();
+            // Thread.Sleep(2000);
+
+            // IWebElement addWarehousePurchase =
+            //     wait.Until(ExpectedConditions.ElementToBeClickable(
+            //         By.XPath("//button[contains (@mattooltip, 'Add Warehouse Purchase')]")));
+            // addWarehousePurchase.Click();
+            // Thread.Sleep(1000);
+
+            // driver.FindElement(By.Name("warehouse")).Click();
+            // string warehouseName = AddPurchaseData.Purchases[0, 0];
+            // driver.FindElement(By.XPath($"//span[text()=' {warehouseName} ']")).Click();
+
+            // for (int i = 0; i < AddPurchaseData.Purchases.GetLength(0); i++)
+            // {
+            //     driver.FindElement(By.Name("vendor")).Click();
+            //     string vendorName = AddPurchaseData.Purchases[i, 1];
+            //     driver.FindElement(By.XPath($"//span[text()=' {vendorName} ']")).Click();
+
+            //     driver.FindElement(By.Name("productId")).Click();
+            //     string productName = AddPurchaseData.Purchases[i, 2];
+            //     driver.FindElement(By.XPath($"//span[contains(text(), ' {productName} ')]")).Click();
+
+            //     wait.Until(ExpectedConditions.ElementIsVisible(By.Name("qty")))
+            //         .SendKeys(AddPurchaseData.Purchases[i, 3]);
+
+            //     wait.Until(ExpectedConditions.ElementIsVisible(By.Name("batchId")))
+            //         .SendKeys(AddPurchaseData.Purchases[i, 4]);
+
+            //     // Expiry Date
+            //     IWebElement expiryCalendarIcon =
+            //         wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("drange")));
+            //     expiryCalendarIcon.Click();
+            //     Thread.Sleep(1000);
+
+            //     IWebElement yearControl =
+            //         wait.Until(ExpectedConditions.ElementToBeClickable(
+            //             By.XPath("//div[@class='owl-dt-calendar-control']")));
+            //     yearControl.Click();
+
+            //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 6]}']]")).Click();
+            //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 7]}']]")).Click();
+            //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 8]}']]")).Click();
+
+            //     // Bill Date
+            //     IWebElement billDateCalendarIcon =
+            //         wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("drange2")));
+            //     billDateCalendarIcon.Click();
+            //     Thread.Sleep(1000);
+
+            //     IWebElement yearControl1 =
+            //         wait.Until(ExpectedConditions.ElementToBeClickable(
+            //             By.XPath("//div[@class='owl-dt-calendar-control']")));
+            //     yearControl1.Click();
+
+            //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 9]}']]")).Click();
+            //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 10]}']]")).Click();
+            //     driver.FindElement(By.XPath($"//td[.//span[text()='{AddPurchaseData.Purchases[i, 11]}']]")).Click();
+
+            //     IWebElement addButton =
+            //         wait.Until(ExpectedConditions.ElementToBeClickable(
+            //             By.XPath("//button//span[text()= ' Add ']")));
+            //     addButton.Click();
+            //     Thread.Sleep(2000);
+            // }
+
+            // IWebElement saveButton1 =
+            //     wait.Until(ExpectedConditions.ElementToBeClickable(
+            //         By.XPath("//button//span[text()= ' Save ']")));
+            // saveButton1.Click();
+            // Thread.Sleep(2000);
+        }
+
+        public void SafeClick(By locator)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+
+            // Wait for element to exist in DOM
+            IWebElement element = wait.Until(
+                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator)
+            );
+
+            // Wait until element is visible
+            element = wait.Until(
+                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator)
+            );
+
+            // Scroll into view
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", element);
+
+            try
+            {
+                // Try normal click first
+                element.Click();
+            }
+            catch (ElementClickInterceptedException)
+            {
+                // If intercepted, use JS click
+                ((IJavaScriptExecutor)driver)
+                    .ExecuteScript("arguments[0].click();", element);
+            }
+        }
+
+    }
+
+
+
+    /// <summary>
+    /// ///////////////////////////////////////////////////////// RAISE REFILL REQUEST /////////////////////////////////////////////////////
+    /// </summary>
+    public class RaiseRefillRequest
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public RaiseRefillRequest(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
+        }
+
+        public void RaiseRefillRequestFlow()
+        {
+            // Fetching Machine List
+            By machineMenuBy = By.Id("menuItem-Machines");
+            wait.Until(d => d.FindElement(machineMenuBy).Displayed);
+            driver.FindElement(machineMenuBy).Click();
+            Thread.Sleep(1000);
+
+            By machineListBy = By.Id("menuItem-Machines0");
+            wait.Until(d => d.FindElement(machineListBy).Displayed);
+            driver.FindElement(machineListBy).Click();
+            Thread.Sleep(2000);
+
+            IWebElement machineFilter = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
+            machineFilter.Clear();
+            machineFilter.SendKeys(MachineMapping.unmappedMachineForMapping + Keys.Enter);
+            Thread.Sleep(3000);
+
+            // Action Button
+            IWebElement actionBtn = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
+            actionBtn.Click();
+            Thread.Sleep(1000);
+
+            IWebElement machineDetails = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
+            machineDetails.Click();
+            Thread.Sleep(3000);
+
+            // Set Operation Status = Down Planned
+            IWebElement selectStatus = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Operation Status')]/following::a[1]")));
+            selectStatus.Click();
+            Thread.Sleep(1000);
+
+            IWebElement statusDropdown = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("status")));
+            statusDropdown.Click();
+
+            IWebElement downPlannedOption = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.XPath("//mat-option//span[contains(normalize-space(),'Down (Planned)')]")));
+            downPlannedOption.Click();
+
+            IWebElement saveStatus = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Save ']")));
+            saveStatus.Click();
+            Thread.Sleep(2000);
+
+            driver.Navigate().Back();
+            Thread.Sleep(2000);
+
+            // Filter again
+            IWebElement machineFilter1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
+            machineFilter1.Clear();
+            machineFilter1.SendKeys(MachineMapping.unmappedMachineForMapping + Keys.Enter);
+            Thread.Sleep(3000);
+
+            // Raise refill request
+            IWebElement actionButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[10]")));
+            actionButton.Click();
+            Thread.Sleep(1000);
+
+            IWebElement raiseRefillRequest = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),'Raise Refill Request')]")));
+            raiseRefillRequest.Click();
+            Thread.Sleep(3000);
+
+            IWebElement saveRequest = wait.Until(
+                ExpectedConditions.ElementIsVisible(By.XPath("//button[.//span[text()=' Save ']]")));
+            saveRequest.Click();
+            Thread.Sleep(1000);
+
+            driver.Navigate().Back();
+            Thread.Sleep(3000);
+
+            // Warehouse Assigning
+            IWebElement warTransactionsButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Id("menuItem-W. Transactions")));
+            warTransactionsButton.Click();
+            Thread.Sleep(3000);
+
+            IWebElement refillRequestMenu = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Id("menuItem-W. Transactions2")));
+            refillRequestMenu.Click();
+            Thread.Sleep(3000);
+
+            IWebElement actionButton1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
+            actionButton1.Click();
+            Thread.Sleep(1000);
+
+            IWebElement assignWarehouseButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Assign Warehouse ')]")));
+            assignWarehouseButton.Click();
+            Thread.Sleep(1000);
+
+            IWebElement warehouseDropdown = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Name("providorWarehouseId")));
+            warehouseDropdown.Click();
+
+            string chooseWarehouse = RaiseRefillRequestData.refillDatas["warehouseName"];
+            driver.FindElement(By.XPath($"//span[contains(text(), ' {chooseWarehouse} ')]")).Click();
+
+            IWebElement saveWarehouse = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Save ']")));
+            saveWarehouse.Click();
+            Thread.Sleep(3000);
+
+            // Stock Selection
+            IWebElement actionButton2 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
+            actionButton2.Click();
+            Thread.Sleep(1000);
+
+            IWebElement selectStock = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Select Stock ')]")));
+            selectStock.Click();
+            Thread.Sleep(2000);
+
+            // Save stock selection
+            driver.FindElement(By.XPath("//button//span[text()=' Save ']")).Click();
+            Thread.Sleep(4000);
+
+            // Complete Refill
+            IWebElement actionButton3 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
+            actionButton3.Click();
+            Thread.Sleep(1000);
+
+            IWebElement completeRefill = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Complete Refill ')]")));
+            completeRefill.Click();
+            Thread.Sleep(2000);
+
+            IWebElement checkAllButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[normalize-space()='Check All']")));
+            checkAllButton.Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+            Thread.Sleep(4000);
+
+            // Set Machine Status = ONLINE
+            IWebElement machineMenu1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines")));
+            machineMenu1.Click();
+            Thread.Sleep(1000);
+
+            IWebElement machineList1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines0")));
+            machineList1.Click();
+            Thread.Sleep(2000);
+
+            IWebElement machineFilter2 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
+            machineFilter2.Clear();
+            machineFilter2.SendKeys(MachineMapping.unmappedMachineForMapping + Keys.Enter);
+            Thread.Sleep(2000);
+
+            IWebElement actionBtn1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
+            actionBtn1.Click();
+            Thread.Sleep(1000);
+
+            IWebElement machineDetails1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
+            machineDetails1.Click();
+            Thread.Sleep(3000);
+
+            IWebElement selectStatus1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Operation Status')]/following::a[1]")));
+            selectStatus1.Click();
+            Thread.Sleep(1000);
+
+            IWebElement statusDropdown1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("status")));
+            statusDropdown1.Click();
+
+            IWebElement onlineOption = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.XPath("//mat-option//span[contains(normalize-space(),'Online')]")));
+            onlineOption.Click();
+
+            IWebElement saveStatus1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Save ']")));
+            saveStatus1.Click();
+            Thread.Sleep(2000);
+        }
+    }
+
+
+
+    public class ReturnRequest
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public ReturnRequest(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
+        }
+
+        public void ReturnRequestFlow()
+        {
+            Thread.Sleep(2000);
+
+            // Machines → Requests → Return
+            By machineMenuBy = By.Id("menuItem-Machines");
+            wait.Until(d => d.FindElement(machineMenuBy).Displayed);
+            driver.FindElement(machineMenuBy).Click();
+
+            By requestsBy = By.Id("menuItem-Machines2");
+            wait.Until(d => d.FindElement(requestsBy).Displayed);
+            driver.FindElement(requestsBy).Click();
+
+            IWebElement returnTab = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//div[@role='tab']//div[text()='Return']")));
+            returnTab.Click();
+            Thread.Sleep(2000);
+
+            IWebElement addReturnRequest = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.XPath("//button[contains (@mattooltip, 'Add Return request')]")));
+            addReturnRequest.Click();
+            Thread.Sleep(2000);
+
+            string machineId = MachineMapping.unmappedMachineForMapping;
+            Console.WriteLine("Selected machine for return: " + machineId);
+
+            IWebElement machineDropdown = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Name("machineIds")));
+            machineDropdown.Click();
+            Thread.Sleep(2000);
+
+            var machineOptions = wait.Until(
+                ExpectedConditions.PresenceOfAllElementsLocatedBy(By.CssSelector("mat-option span")));
+
+            foreach (var option in machineOptions)
+            {
+                if (option.Text.Trim().Equals(machineId, StringComparison.OrdinalIgnoreCase))
+                {
+                    option.Click();
+                    break;
+                }
+            }
+
+            IWebElement checkAllButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[normalize-space()='Check All']")));
+            checkAllButton.Click();
+
+            driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+            Thread.Sleep(3000);
+
+            // W. Transactions → Return Requests
+            IWebElement warTransactionsButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Id("menuItem-W. Transactions")));
+            warTransactionsButton.Click();
+            Thread.Sleep(3000);
+
+            IWebElement returnRequestMenu = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Id("menuItem-W. Transactions3")));
+            returnRequestMenu.Click();
+            Thread.Sleep(3000);
+
+            IWebElement searchTypeButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
+            searchTypeButton.Click();
+            Thread.Sleep(2000);
+
+            IWebElement selectMachineId = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(normalize-space(),'Machine Id')]")));
+            selectMachineId.Click();
+            Thread.Sleep(2000);
+
+            IWebElement searchRequest = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
+            searchRequest.Clear();
+            searchRequest.SendKeys(machineId + Keys.Enter);
+            Thread.Sleep(2000);
+
+            IWebElement actionButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[11]")));
+            actionButton.Click();
+            Thread.Sleep(1000);
+
+            IWebElement assignWarehouseButton = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Assign Warehouse ')]")));
+            assignWarehouseButton.Click();
+            Thread.Sleep(2000);
+
+            IWebElement warehouseDropdown = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Name("providorWarehouseId")));
+            warehouseDropdown.Click();
+            Thread.Sleep(2000);
+
+            string chooseWarehouse = ReturnRequestData.refillDatas["warehouseName"];
+            driver.FindElement(By.XPath($"//span[contains(text(), ' {chooseWarehouse} ')]")).Click();
+
+            IWebElement saveWarehouse = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Save ']")));
+            saveWarehouse.Click();
+            Thread.Sleep(3000);
+
+            IWebElement actionButton1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[11]")));
+            actionButton1.Click();
+            Thread.Sleep(2000);
+
+            IWebElement pickupStock = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Pick Up Stock ')]")));
+            pickupStock.Click();
+            Thread.Sleep(3000);
+
+            IWebElement confirmPickup = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[text()= ' Pick Up ']")));
+            confirmPickup.Click();
+            Thread.Sleep(3000);
+
+            IWebElement actionButton2 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[11]")));
+            actionButton2.Click();
+            Thread.Sleep(2000);
+
+            IWebElement completeReturn = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Complete Return ')]")));
+            completeReturn.Click();
+            Thread.Sleep(2000);
+
+            IWebElement checkAllButton1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[normalize-space()='Check All']")));
+            checkAllButton1.Click();
+            driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+            Thread.Sleep(4000);
+
+            // Update Location
+            IWebElement machineMenu1 = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines")));
+            machineMenu1.Click();
+
+            IWebElement machineList = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Machines0")));
+            machineList.Click();
+
+            IWebElement searchText = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
+            searchText.Clear();
+            searchText.SendKeys(machineId + Keys.Enter);
+            Thread.Sleep(3000);
+
+            IWebElement actionBtn = wait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.CssSelector(".mat-focus-indicator.mat-menu-trigger.mat-icon-button.mat-button-base")));
+            actionBtn.Click();
+
+            IWebElement machineDetails = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.ClassName("mat-menu-item")));
+            machineDetails.Click();
+            Thread.Sleep(3000);
+
+            IWebElement selectLocation = wait.Until(
+                ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='cityText']")));
+            selectLocation.Click();
+
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("City")))
+                .SendKeys(LocationData.location[0, 0]);
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("State")))
+                .SendKeys(LocationData.location[0, 1]);
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("pluscode")))
+                .SendKeys(LocationData.location[0, 2]);
+
+            wait.Until(ExpectedConditions.ElementToBeClickable(
+                By.XPath("//button//span[contains(text(),' Validate Plus Code ')]"))).Click();
+
+            wait.Until(ExpectedConditions.ElementToBeClickable(
+                By.XPath("//span[contains(text(), ' Save ')]"))).Click();
+        }
+    }
+
+
+    public class MachineScrapping
+    {
+        private IWebDriver driver;
+        private WebDriverWait wait;
+
+        public MachineScrapping(IWebDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(70));
+        }
+
+        public void MachineScrappingFlow()
+        {
+            Thread.Sleep(2000);
+
+            // Navigate to Current Purchase Order
+            IWebElement currentPurchaseOrderMenu = wait.Until(
+                ExpectedConditions.ElementExists(By.XPath("//div[contains(text(),'Current Purchase Order')]")));
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", currentPurchaseOrderMenu);
+            Thread.Sleep(300);
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", currentPurchaseOrderMenu);
+            Thread.Sleep(2000);
+
+            //Search Machine to Scrap
+            //IWebElement searchTypeButton = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("(//mat-select[@role = 'listbox'])[2]")));
+            //searchTypeButton.Click();
+            //Thread.Sleep(2000);
+
+            //IWebElement selectMachineId = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(normalize-space(),'Machine Id')]")));
+            //selectMachineId.Click();
+            //Thread.Sleep(2000);
+
+            //string machineId = MachineMapping.unmappedMachineForMapping;
+            //Console.WriteLine("Selecting machine for scrap: " + machineId);
+
+            //IWebElement searchMachine = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//input[@name = 'searchText']")));
+            //searchMachine.Clear();
+            //searchMachine.SendKeys(machineId + Keys.Enter);
+            //Thread.Sleep(2000);
+
+            //IWebElement actionButton = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("(//td)[13]")));
+            //actionButton.Click();
+            //Thread.Sleep(1000);
+
+            //IWebElement scrapButton = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(text(),' Move to scrap ')]")));
+            //scrapButton.Click();
+            //Thread.Sleep(2000);
+
+            //IWebElement confirmScrapping = wait.Until(
+            //    ExpectedConditions.ElementToBeClickable(By.XPath("//button//span[contains(text(),' Confirm ')]")));
+            //confirmScrapping.Click();
+            //Thread.Sleep(2000);
+
+            ////Console.WriteLine("Machine scrapped successfully: " + machineId);
+            //Console.WriteLine("Machine scrapped successfully: ");
+
+
+            // ---------- Click Action button safely ----------
+
+            // Wait until overlay backdrop disappears
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                By.ClassName("cdk-overlay-backdrop")
+            ));
+
+            // Locate Action cell
+            IWebElement actionButton = wait.Until(
+                ExpectedConditions.ElementIsVisible(By.XPath("(//td)[13]"))
+            );
+
+            // Scroll into view
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", actionButton);
+
+            // Click using JS (avoids interception)
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", actionButton);
+
+
+            // ---------- Click Move to scrap ----------
+
+            IWebElement scrapButton = wait.Until(
+                ExpectedConditions.ElementIsVisible(
+                    By.XPath("//button[normalize-space()='Move to scrap']"))
+            );
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", scrapButton);
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", scrapButton);
+
+
+            // ---------- Click Confirm ----------
+
+            IWebElement confirmScrapping = wait.Until(
+                ExpectedConditions.ElementIsVisible(
+                    By.XPath("//span[normalize-space()='Confirm']"))
+            );
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", confirmScrapping);
+
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].click();", confirmScrapping);
+
+            Console.WriteLine("Machine scrapped successfully");
+
+        }
+    }
 }
+                    
 
 
 
