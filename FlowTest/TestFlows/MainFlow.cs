@@ -2182,89 +2182,89 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 machineDetails.Click();
                 Thread.Sleep(3000);
 
-                //Edit Planogram
-                Thread.Sleep(3000);
-                IWebElement editSlot = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
-                editSlot.Click();
-                Thread.Sleep(1000);
+                ////Edit Planogram
+                //Thread.Sleep(3000);
+                //IWebElement editSlot = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
+                //editSlot.Click();
+                //Thread.Sleep(1000);
 
-                IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
-                slotRowCount.Clear();
-                slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
-
-
-                IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
-                slotColumnCount.Clear();
-                slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
-
-                IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
-                endingRowCount.Clear();
-                endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
+                //IWebElement slotRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
+                //slotRowCount.Clear();
+                //slotRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
 
 
-                IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
-                endingColumnCount.Clear();
-                endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
-                Thread.Sleep(1000);
-                IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-                saveSlots.Click();
-                Console.WriteLine("Product Matrix Changed again");
+                //IWebElement slotColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
+                //slotColumnCount.Clear();
+                //slotColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
 
-                ///* wait for Angular overlay/backdrop to disappear */
-                //wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
-                //    By.ClassName("cdk-overlay-backdrop")));
+                //IWebElement endingRowCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
+                //endingRowCount.Clear();
+                //endingRowCount.SendKeys(PlanogramData.slotCounts[0, 0]);
 
 
-                IWebElement editInfo = wait.Until(
-                    ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
-                editInfo.Click();
-                Thread.Sleep(3000);
+                //IWebElement endingColumnCount = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
+                //endingColumnCount.Clear();
+                //endingColumnCount.SendKeys(PlanogramData.slotCounts[0, 1]);
+                //Thread.Sleep(1000);
+                //IWebElement saveSlots = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                //saveSlots.Click();
+                //Console.WriteLine("Product Matrix Changed again");
 
-                IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
-                clientLocation.Clear();
-                clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
-                Thread.Sleep(2000);
+                /////* wait for Angular overlay/backdrop to disappear */
+                ////wait.Until(ExpectedConditions.InvisibilityOfElementLocated(
+                ////    By.ClassName("cdk-overlay-backdrop")));
 
-                IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
-                routeIdentifier.Clear();
-                routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
-                Thread.Sleep(2000);
 
-                // Direct Refill checkbox
-                IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
+                //IWebElement editInfo = wait.Until(
+                //    ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Info']")));
+                //editInfo.Click();
+                //Thread.Sleep(3000);
 
-                if (directRefillCheckbox.Selected)
-                {
-                    Console.WriteLine("Direct Refill is checked. Unchecking now..");
-                    IWebElement directRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Direct Refill Option')]")));
-                    directRefillLabel.Click();
-                    Thread.Sleep(1000); // allow Auto Refill to enable
-                }
-                else
-                {
-                    Console.WriteLine("Direct Refill is already unchecked. Moving to check the status of Auto Refill...");
-                }
+                //IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
+                //clientLocation.Clear();
+                //clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
+                //Thread.Sleep(2000);
 
-                // Auto Refill checkbox
-                IWebElement autoRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name ='disabledAutoRefill']")));
+                //IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
+                //routeIdentifier.Clear();
+                //routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
+                //Thread.Sleep(2000);
 
-                if (autoRefillCheckbox.Selected)
-                {
-                    Console.WriteLine("Disable Auto Refill is checked. Unchecking now..");
-                    IWebElement autoRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Disable Auto Refill')]")));
-                    autoRefillLabel.Click();
-                    Thread.Sleep(1000);
-                }
-                else
-                {
-                    Console.WriteLine("Disable Auto Refill is already unchecked. Saving..");
-                }
-                Thread.Sleep(2000);
+                //// Direct Refill checkbox
+                //IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
 
-                //Save
-                IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
-                saveButton.Click();
-                Thread.Sleep(3000);
+                //if (directRefillCheckbox.Selected)
+                //{
+                //    Console.WriteLine("Direct Refill is checked. Unchecking now..");
+                //    IWebElement directRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Direct Refill Option')]")));
+                //    directRefillLabel.Click();
+                //    Thread.Sleep(1000); // allow Auto Refill to enable
+                //}
+                //else
+                //{
+                //    Console.WriteLine("Direct Refill is already unchecked. Moving to check the status of Auto Refill...");
+                //}
+
+                //// Auto Refill checkbox
+                //IWebElement autoRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name ='disabledAutoRefill']")));
+
+                //if (autoRefillCheckbox.Selected)
+                //{
+                //    Console.WriteLine("Disable Auto Refill is checked. Unchecking now..");
+                //    IWebElement autoRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Disable Auto Refill')]")));
+                //    autoRefillLabel.Click();
+                //    Thread.Sleep(1000);
+                //}
+                //else
+                //{
+                //    Console.WriteLine("Disable Auto Refill is already unchecked. Saving..");
+                //}
+                //Thread.Sleep(2000);
+
+                ////Save
+                //IWebElement saveButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Save')]")));
+                //saveButton.Click();
+                //Thread.Sleep(3000);
 
 
                 //// Edit Single Slot 
@@ -2337,33 +2337,33 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                     save.Click();
                 }
 
-                //Modify Planogram after Product Mapping
-                IWebElement editSlot1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
-                editSlot.Click();
-                Thread.Sleep(1000);
+                ////Modify Planogram after Product Mapping
+                //IWebElement editSlot1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
+                //editSlot1.Click();
+                //Thread.Sleep(1000);
 
-                IWebElement slotRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
-                slotRowCount1.Clear();
-                slotRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
-
-
-                IWebElement slotColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
-                slotColumnCount1.Clear();
-                slotColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
-
-                IWebElement endingRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
-                endingRowCount1.Clear();
-                endingRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
+                //IWebElement slotRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
+                //slotRowCount1.Clear();
+                //slotRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
 
 
-                IWebElement endingColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
-                endingColumnCount1.Clear();
-                endingColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
-                Thread.Sleep(2000);
-                IWebElement saveSlots1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
-                saveSlots1.Click();
-                Console.WriteLine("Product Matrix Changed again");
-                Thread.Sleep(2000);
+                //IWebElement slotColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
+                //slotColumnCount1.Clear();
+                //slotColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
+
+                //IWebElement endingRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
+                //endingRowCount1.Clear();
+                //endingRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
+
+
+                //IWebElement endingColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
+                //endingColumnCount1.Clear();
+                //endingColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
+                //Thread.Sleep(2000);
+                //IWebElement saveSlots1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                //saveSlots1.Click();
+                //Console.WriteLine("Product Matrix Changed again");
+                //Thread.Sleep(2000);
 
 
 
