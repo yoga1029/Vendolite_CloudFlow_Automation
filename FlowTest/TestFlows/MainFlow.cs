@@ -1447,14 +1447,14 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
                 ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", editInfo);
 
-
+                //wait.Until(ExpectedConditions.TextToBePresentInElement(By.Name("clientLocation"),);
                 IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
                 clientLocation.Clear();
-                clientLocation.SendKeys(machineInfoData.machineDetails[0, 0]);
+                clientLocation.SendKeys(machineInfoData.machineDetails[0, 0] + new Random().Next(1,9));
 
                 IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
                 routeIdentifier.Clear();
-                routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
+                routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1] + new Random().Next(1, 9));
 
                 // Direct Refill checkbox
                 IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
@@ -1746,6 +1746,38 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             saveButton1.Click();
             Thread.Sleep(2000);
         }
+
+        public void SafeClick(By locator)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+
+            // Wait for element to exist in DOM
+            IWebElement element = wait.Until(
+                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator)
+            );
+
+            // Wait until element is visible
+            element = wait.Until(
+                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator)
+            );
+
+            // Scroll into view
+            ((IJavaScriptExecutor)driver)
+                .ExecuteScript("arguments[0].scrollIntoView({block:'center'});", element);
+
+            try
+            {
+                // Try normal click first
+                element.Click();
+            }
+            catch (ElementClickInterceptedException)
+            {
+                // If intercepted, use JS click
+                ((IJavaScriptExecutor)driver)
+                    .ExecuteScript("arguments[0].click();", element);
+            }
+        }
+
     }
 
 
