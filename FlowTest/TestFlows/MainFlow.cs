@@ -1447,12 +1447,12 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", editInfo);
                 ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", editInfo);
 
-                //wait.Until(ExpectedConditions.TextToBePresentInElement(By.Name("clientLocation"),);
-                IWebElement clientLocation = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("clientLocation")));
+                wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("clientLocation")));
+                IWebElement clientLocation = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("clientLocation")));
                 clientLocation.Clear();
                 clientLocation.SendKeys(machineInfoData.machineDetails[0, 0] + new Random().Next(1,9));
 
-                IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("routeIdentifier")));
+                IWebElement routeIdentifier = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("routeIdentifier")));
                 routeIdentifier.Clear();
                 routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1] + new Random().Next(1, 9));
 
@@ -1589,6 +1589,8 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 Console.WriteLine("Product Matrix Changed again");
                 Thread.Sleep(2000);
 
+                wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[normalize-space(text())='W. Transactions']")));
+
 
             }
             catch
@@ -1667,7 +1669,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
         {
             // Locate Warehouse Transactions Module
             By warehouseTransactionsBy = By.XPath("//div[normalize-space(text())='W. Transactions']");
-            wait.Until(d => d.FindElement(warehouseTransactionsBy).Displayed);
+           // wait.Until(d => d.FindElement(warehouseTransactionsBy).Displayed);
             driver.FindElement(warehouseTransactionsBy).Click();
             Thread.Sleep(2000);
 
