@@ -1456,6 +1456,36 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 routeIdentifier.Clear();
                 routeIdentifier.SendKeys(machineInfoData.machineDetails[0, 1]);
 
+                // Direct Refill checkbox
+                IWebElement directRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name='directRefill']")));
+
+                if (directRefillCheckbox.Selected)
+                {
+                    Console.WriteLine("Direct Refill is checked. Unchecking now..");
+                    IWebElement directRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Direct Refill Option')]")));
+                    directRefillLabel.Click();
+                    Thread.Sleep(1000); // allow Auto Refill to enable
+                }
+                else
+                {
+                    Console.WriteLine("Direct Refill is already unchecked. Moving to check the status of Auto Refill...");
+                }
+
+                // Auto Refill checkbox
+                IWebElement autoRefillCheckbox = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@name ='disabledAutoRefill']")));
+
+                if (autoRefillCheckbox.Selected)
+                {
+                    Console.WriteLine("Disable Auto Refill is checked. Unchecking now..");
+                    IWebElement autoRefillLabel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Disable Auto Refill')]")));
+                    autoRefillLabel.Click();
+                    Thread.Sleep(1000);
+                }
+                else
+                {
+                    Console.WriteLine("Disable Auto Refill is already unchecked. Saving..");
+                }
+                Thread.Sleep(2000);
 
 
                 SafeClick(By.XPath("//span[contains(text(),'Save')]"));
@@ -1464,8 +1494,9 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                 //saveButton.Click();
                 //Thread.Sleep(2000);
 
-
+                // Edit Single Slot 
                 Console.WriteLine("Product Mapping in to slots...");
+                Thread.Sleep(3000);
                 Actions a = new Actions(driver);
 
                 for (int i = 0; i < ProductMappingData.products.GetLength(0); i++)
@@ -1483,37 +1514,82 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
                     IList<IWebElement> toggleButtons = driver.FindElements(By.XPath("//section[@class='full_width']//input"));
                     foreach (IWebElement toggleButton in toggleButtons)
                     {
-                        if (!toggleButton.Selected)
+                        // Check current state of toggle button
+                        bool isToggleEnabled = toggleButton.Selected;
+                        if (!isToggleEnabled)
                         {
-                            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", toggleButton);
+                            Console.WriteLine("Toggle is OFF. Enabling now...");
+                            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                            js.ExecuteScript("arguments[0].click();", toggleButton);
                             Thread.Sleep(1000);
+                            Console.WriteLine("Toggled Enabled.");
                         }
                     }
 
                     IWebElement selectProduct = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("product")));
                     selectProduct.Click();
 
+                    //String name = ProductMappingData.products[i, 1];
                     IWebElement choosingProduct = wait.Until(ExpectedConditions.ElementToBeClickable(
                         By.XPath($"//div[@role='listbox']//div[contains(text(), ' {ProductMappingData.products[i, 1]} ')]")));
                     choosingProduct.Click();
 
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")))
-                        .SendKeys(ProductMappingData.products[i, 2]);
 
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerTransaction")))
-                        .SendKeys(ProductMappingData.products[i, 3]);
+                    IWebElement purchaseLimitPerUser = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerUser")));
+                    purchaseLimitPerUser.Clear();
+                    purchaseLimitPerUser.SendKeys(ProductMappingData.products[i, 2]);
 
-                    IWebElement reset = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("purchaseLimitResetPerUser")));
-                    reset.Click();
-                    driver.FindElement(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 4]} ')]")).Click();
+                    IWebElement purchaseLimitPerTransaction = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("purchaseLimitPerTransaction")));
+                    purchaseLimitPerTransaction.Clear();
+                    purchaseLimitPerTransaction.SendKeys(ProductMappingData.products[i, 3]);
+
+
+                    IWebElement purchaseLimitResetPerUser = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("purchaseLimitResetPerUser")));
+                    purchaseLimitResetPerUser.Click();
+                    IWebElement resetTime = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 4]} ')]")));
+                    resetTime.Click();
 
                     IWebElement stockLimitInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("stockLimit")));
                     stockLimitInput.Click();
-                    driver.FindElement(By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]")).Click();
+                    //String stockLimit = ProductMappingData.products[i, 5];
+                    //String stockLimitXPath = $"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]";
+                    IWebElement chooseStockLimit = wait.Until(ExpectedConditions.ElementToBeClickable(
+                        By.XPath($"//span[contains(text(), ' {ProductMappingData.products[i, 5]} ')]")));
+                    chooseStockLimit.Click();
 
                     IWebElement save = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
                     save.Click();
                 }
+
+                //Modify Planogram after Product Mapping
+                IWebElement editSlot1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@mattooltip='Edit Slot']")));
+                editSlot.Click();
+                Thread.Sleep(1000);
+
+                IWebElement slotRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotRowCount")));
+                slotRowCount1.Clear();
+                slotRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
+
+
+                IWebElement slotColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("slotColumnCount")));
+                slotColumnCount1.Clear();
+                slotColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
+
+                IWebElement endingRowCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@name='slotColumnCount'])[2]")));
+                endingRowCount1.Clear();
+                endingRowCount1.SendKeys(PlanogramData.slotCounts[0, 2]);
+
+
+                IWebElement endingColumnCount1 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//input[@type='number'])[6]")));
+                endingColumnCount1.Clear();
+                endingColumnCount1.SendKeys(PlanogramData.slotCounts[0, 3]);
+                Thread.Sleep(2000);
+                IWebElement saveSlots1 = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), ' Save ')]")));
+                saveSlots1.Click();
+                Console.WriteLine("Product Matrix Changed again");
+                Thread.Sleep(2000);
+
+
             }
             catch
             {
