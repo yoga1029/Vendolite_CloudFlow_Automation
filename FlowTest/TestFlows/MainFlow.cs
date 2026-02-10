@@ -405,57 +405,129 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
         public void AddBranchFlow()
         {
-            Thread.Sleep(2000);
-
-            By companyModuleBy = By.Id("menuItem-Company");
-            wait.Until(d => d.FindElement(companyModuleBy).Displayed);
-            driver.FindElement(companyModuleBy).Click();
-
-            By branchListBy = By.XPath("//div[contains(text(),'Branch List')]");
-            wait.Until(d => d.FindElement(branchListBy).Displayed);
-            driver.FindElement(branchListBy).Click();
 
             Thread.Sleep(2000);
+            //Locate Company Module
+            IWebElement companyModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Company")));
+            companyModule.Click();
+
+            //Locate branch sub-module
+            IWebElement branchListSubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Branch List')]")));
+            branchListSubModule.Click();
+            Thread.Sleep(2000);
+
 
             string searchName = AddBranchData.addBranchSuccess["searchName"];
-
-            By searchBoxBy = By.Name("searchText");
-            wait.Until(d => d.FindElement(searchBoxBy).Displayed);
-            IWebElement searchText = driver.FindElement(searchBoxBy);
+            IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
             searchText.Clear();
             searchText.SendKeys(searchName + Keys.Enter);
-
             Thread.Sleep(3000);
 
+            // Check if branch exists
             var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
-
             if (rows.Count == 0)
             {
-                By addBranchBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
-                wait.Until(d => d.FindElement(addBranchBtnBy).Displayed);
-                driver.FindElement(addBranchBtnBy).Click();
+                Console.WriteLine($"Branch '{searchName}' not found. Adding Branch");
 
+                // Navigate to add branch page
+                IWebElement addBranchButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
+                addBranchButton.Click();
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.Name("name")).SendKeys(AddBranchData.addBranchSuccess["name"]);
-                driver.FindElement(By.Name("location")).SendKeys(AddBranchData.addBranchSuccess["location"]);
-                driver.FindElement(By.Name("code")).SendKeys(AddBranchData.addBranchSuccess["code"]);
-                driver.FindElement(By.Name("email")).SendKeys(AddBranchData.addBranchSuccess["email"]);
-                driver.FindElement(By.Name("contactDetails")).SendKeys(AddBranchData.addBranchSuccess["contactDetails"]);
-                driver.FindElement(By.Name("gstNo")).SendKeys(AddBranchData.addBranchSuccess["gstNo"]);
-                driver.FindElement(By.Name("address")).SendKeys(AddBranchData.addBranchSuccess["address"]);
-                driver.FindElement(By.Name("companyName")).SendKeys(AddBranchData.addBranchSuccess["companyName"]);
-                driver.FindElement(By.Name("companyContactNo")).SendKeys(AddBranchData.addBranchSuccess["companyContactNo"]);
-                driver.FindElement(By.Name("companyEmail")).SendKeys(AddBranchData.addBranchSuccess["companyEmail"]);
-                driver.FindElement(By.Name("companyAddress")).SendKeys(AddBranchData.addBranchSuccess["companyAddress"]);
+                //Fill the input fields
+                IWebElement name = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
+                name.SendKeys(AddBranchData.addBranchSuccess["name"]);
 
+                IWebElement location = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("location")));
+                location.SendKeys(AddBranchData.addBranchSuccess["location"]);
+
+                IWebElement code = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("code")));
+                code.SendKeys(AddBranchData.addBranchSuccess["code"]);
+
+                IWebElement email = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("email")));
+                email.SendKeys(AddBranchData.addBranchSuccess["email"]);
+
+                IWebElement contactDetails = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactDetails")));
+                contactDetails.SendKeys(AddBranchData.addBranchSuccess["contactDetails"]);
+
+                IWebElement gstNo = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("gstNo")));
+                gstNo.SendKeys(AddBranchData.addBranchSuccess["gstNo"]);
+
+                IWebElement address = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("address")));
+                address.SendKeys(AddBranchData.addBranchSuccess["address"]);
+
+                IWebElement companyName = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyName")));
+                companyName.SendKeys(AddBranchData.addBranchSuccess["companyName"]);
+
+                IWebElement companyContactNo = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyContactNo")));
+                companyContactNo.SendKeys(AddBranchData.addBranchSuccess["companyContactNo"]);
+
+                IWebElement companyEmail = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyEmail")));
+                companyEmail.SendKeys(AddBranchData.addBranchSuccess["companyEmail"]);
+
+                IWebElement companyAddress = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyAddress")));
+                companyAddress.SendKeys(AddBranchData.addBranchSuccess["companyAddress"]);
                 Thread.Sleep(3000);
 
+
+                // Upload Branch Image
                 IWebElement branchLogo = wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
                 branchLogo.SendKeys(AddBranchData.addBranchSuccess["fileUpload"]);
 
                 driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                Thread.Sleep(4000);
+                Thread.Sleep(4000); //Save button
+
+            //    Thread.Sleep(2000);
+
+            //By companyModuleBy = By.Id("menuItem-Company");
+            //wait.Until(d => d.FindElement(companyModuleBy).Displayed);
+            //driver.FindElement(companyModuleBy).Click();
+
+            //By branchListBy = By.XPath("//div[contains(text(),'Branch List')]");
+            //wait.Until(d => d.FindElement(branchListBy).Displayed);
+            //driver.FindElement(branchListBy).Click();
+
+            //Thread.Sleep(2000);
+
+            //string searchName = AddBranchData.addBranchSuccess["searchName"];
+
+            //By searchBoxBy = By.Name("searchText");
+            //wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+            //IWebElement searchText = driver.FindElement(searchBoxBy);
+            //searchText.Clear();
+            //searchText.SendKeys(searchName + Keys.Enter);
+
+            //Thread.Sleep(3000);
+
+            //var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+
+            //if (rows.Count == 0)
+            //{
+            //    By addBranchBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
+            //    wait.Until(d => d.FindElement(addBranchBtnBy).Displayed);
+            //    driver.FindElement(addBranchBtnBy).Click();
+
+            //    Thread.Sleep(2000);
+
+            //    driver.FindElement(By.Name("name")).SendKeys(AddBranchData.addBranchSuccess["name"]);
+            //    driver.FindElement(By.Name("location")).SendKeys(AddBranchData.addBranchSuccess["location"]);
+            //    driver.FindElement(By.Name("code")).SendKeys(AddBranchData.addBranchSuccess["code"]);
+            //    driver.FindElement(By.Name("email")).SendKeys(AddBranchData.addBranchSuccess["email"]);
+            //    driver.FindElement(By.Name("contactDetails")).SendKeys(AddBranchData.addBranchSuccess["contactDetails"]);
+            //    driver.FindElement(By.Name("gstNo")).SendKeys(AddBranchData.addBranchSuccess["gstNo"]);
+            //    driver.FindElement(By.Name("address")).SendKeys(AddBranchData.addBranchSuccess["address"]);
+            //    driver.FindElement(By.Name("companyName")).SendKeys(AddBranchData.addBranchSuccess["companyName"]);
+            //    driver.FindElement(By.Name("companyContactNo")).SendKeys(AddBranchData.addBranchSuccess["companyContactNo"]);
+            //    driver.FindElement(By.Name("companyEmail")).SendKeys(AddBranchData.addBranchSuccess["companyEmail"]);
+            //    driver.FindElement(By.Name("companyAddress")).SendKeys(AddBranchData.addBranchSuccess["companyAddress"]);
+
+            //    Thread.Sleep(3000);
+
+            //    IWebElement branchLogo = wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+            //    branchLogo.SendKeys(AddBranchData.addBranchSuccess["fileUpload"]);
+
+            //    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+            //    Thread.Sleep(4000);
             }
         }
     }
@@ -475,66 +547,118 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
         public void AddClientFlow()
         {
-            By companyModuleBy = By.Id("menuItem-Company");
-            wait.Until(d => d.FindElement(companyModuleBy).Displayed);
-            driver.FindElement(companyModuleBy).Click();
 
-            By clientMenuBy = By.Id("menuItem-Company1");
-            wait.Until(d => d.FindElement(clientMenuBy).Displayed);
-            driver.FindElement(clientMenuBy).Click();
+            // Locate Company Module
+            IWebElement companyModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Company")));
+            companyModule.Click();
 
+            // Fetching Client sub-menu
+            IWebElement clientButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Company1")));
+            clientButton.Click();
             Thread.Sleep(2000);
 
             for (int i = 0; i < AddClientData.Clients.GetLength(0); i++)
             {
                 string searchName = AddClientData.Clients[i, 0];
-
-                By searchBoxBy = By.Name("searchText");
-                wait.Until(d => d.FindElement(searchBoxBy).Displayed);
-                IWebElement searchText = driver.FindElement(searchBoxBy);
+                IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
                 searchText.Clear();
                 searchText.SendKeys(searchName + Keys.Enter);
-
                 Thread.Sleep(2000);
-
                 var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
 
+                // Check if client exists
                 if (rows.Count == 0)
                 {
-                    By addClientBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
-                    wait.Until(d => d.FindElement(addClientBtnBy).Displayed);
-                    driver.FindElement(addClientBtnBy).Click();
+                    Console.WriteLine($"Client '{searchName}' not found. Adding Client");
 
+                    // Navigate to add client page
+                    IWebElement addClientButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
+                    addClientButton.Click();
                     Thread.Sleep(2000);
 
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")))
-                        .SendKeys(AddClientData.Clients[i, 1]);
+                    // Fill the input fields using 2D array
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name"))).SendKeys(AddClientData.Clients[i, 1]);
 
                     driver.FindElement(By.Name("branch")).Click();
                     string branchName = AddClientData.Clients[i, 2];
                     string dynamicXPath = $"//span[text()=' {branchName} ']";
                     driver.FindElement(By.XPath(dynamicXPath)).Click();
-
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactno")))
-                        .SendKeys(AddClientData.Clients[i, 3]);
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("email")))
-                        .SendKeys(AddClientData.Clients[i, 4]);
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("address")))
-                        .SendKeys(AddClientData.Clients[i, 5]);
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("gstNo")))
-                        .SendKeys(AddClientData.Clients[i, 6]);
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyName")))
-                        .SendKeys(AddClientData.Clients[i, 7]);
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyContactNo")))
-                        .SendKeys(AddClientData.Clients[i, 8]);
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyEmail")))
-                        .SendKeys(AddClientData.Clients[i, 9]);
-                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyAddress")))
-                        .SendKeys(AddClientData.Clients[i, 10]);
-
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactno"))).SendKeys(AddClientData.Clients[i, 3]);
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("email"))).SendKeys(AddClientData.Clients[i, 4]);
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("address"))).SendKeys(AddClientData.Clients[i, 5]);
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("gstNo"))).SendKeys(AddClientData.Clients[i, 6]);
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyName"))).SendKeys(AddClientData.Clients[i, 7]);
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyContactNo"))).SendKeys(AddClientData.Clients[i, 8]);
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyEmail"))).SendKeys(AddClientData.Clients[i, 9]);
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyAddress"))).SendKeys(AddClientData.Clients[i, 10]);
                     Thread.Sleep(2000);
+
+                    // Save client
                     driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
                     Thread.Sleep(2000);
+
+
+
+                    //By companyModuleBy = By.Id("menuItem-Company");
+                    //wait.Until(d => d.FindElement(companyModuleBy).Displayed);
+                    //driver.FindElement(companyModuleBy).Click();
+
+                    //By clientMenuBy = By.Id("menuItem-Company1");
+                    //wait.Until(d => d.FindElement(clientMenuBy).Displayed);
+                    //driver.FindElement(clientMenuBy).Click();
+
+                    //Thread.Sleep(2000);
+
+                    //for (int i = 0; i < AddClientData.Clients.GetLength(0); i++)
+                    //{
+                    //    string searchName = AddClientData.Clients[i, 0];
+
+                    //    By searchBoxBy = By.Name("searchText");
+                    //    wait.Until(d => d.FindElement(searchBoxBy).Displayed);
+                    //    IWebElement searchText = driver.FindElement(searchBoxBy);
+                    //    searchText.Clear();
+                    //    searchText.SendKeys(searchName + Keys.Enter);
+
+                    //    Thread.Sleep(2000);
+
+                    //    var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+
+                    //    if (rows.Count == 0)
+                    //    {
+                    //        By addClientBtnBy = By.XPath("//button[contains(@class,'add_fab')]");
+                    //        wait.Until(d => d.FindElement(addClientBtnBy).Displayed);
+                    //        driver.FindElement(addClientBtnBy).Click();
+
+                    //        Thread.Sleep(2000);
+
+                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")))
+                    //            .SendKeys(AddClientData.Clients[i, 1]);
+
+                    //        driver.FindElement(By.Name("branch")).Click();
+                    //        string branchName = AddClientData.Clients[i, 2];
+                    //        string dynamicXPath = $"//span[text()=' {branchName} ']";
+                    //        driver.FindElement(By.XPath(dynamicXPath)).Click();
+
+                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactno")))
+                    //            .SendKeys(AddClientData.Clients[i, 3]);
+                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("email")))
+                    //            .SendKeys(AddClientData.Clients[i, 4]);
+                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("address")))
+                    //            .SendKeys(AddClientData.Clients[i, 5]);
+                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("gstNo")))
+                    //            .SendKeys(AddClientData.Clients[i, 6]);
+                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyName")))
+                    //            .SendKeys(AddClientData.Clients[i, 7]);
+                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyContactNo")))
+                    //            .SendKeys(AddClientData.Clients[i, 8]);
+                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyEmail")))
+                    //            .SendKeys(AddClientData.Clients[i, 9]);
+                    //        wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyAddress")))
+                    //            .SendKeys(AddClientData.Clients[i, 10]);
+
+                    //        Thread.Sleep(2000);
+                    //        driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+                    //        Thread.Sleep(2000);
                 }
             }
         }
