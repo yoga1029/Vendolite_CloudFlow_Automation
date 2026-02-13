@@ -7,6 +7,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
+using System.Linq.Expressions;
 using System.Reflection.PortableExecutable;
 using System.Threading;
 using VMS_Phase1PortalAT.FlowTest.Authentication;
@@ -87,7 +88,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
             }
         }
 
-        //[TestMethod]
+      
         //[Priority(3)]
         //public void Step3_AddClient()
         //{
@@ -109,7 +110,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
         //    }
         //}
 
-        //[TestMethod]
+       
         //[Priority(4)]
         //public void Step4_MachineMapping()
         //{
@@ -132,7 +133,6 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
         //}
 
 
-        //[TestMethod]
         //[Priority(5)]
         //public void Step5_AddBrand()
         //{
@@ -154,7 +154,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
         //    }
         //}
 
-        //[TestMethod]
+      
         //[Priority(6)]
         //public void Step6_AddCategory()
         //{
@@ -178,7 +178,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
 
 
-        //[TestMethod]
+       
         //[Priority(7)]
         //public void Step7_AddSubCategory()
         //{
@@ -438,91 +438,100 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
         public void AddBranchFlow()
         {
-
-            Thread.Sleep(2000);
-            //Locate Company Module
-            IWebElement companyModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Company")));
-            companyModule.Click();
-
-            //Locate branch sub-module
-            IWebElement branchListSubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Branch List')]")));
-            branchListSubModule.Click();
-            Thread.Sleep(2000);
-
-
-            string searchName = AddBranchData.addBranchSuccess["searchName"];
-            IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
-            searchText.Clear();
-            searchText.SendKeys(searchName + Keys.Enter);
-            Thread.Sleep(3000);
-
-            // Check if branch exists
-            var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
-            if (rows.Count == 0)
+            try
             {
-                Console.WriteLine($"Branch '{searchName}' not found. Adding Branch");
 
-                // Navigate to add branch page
-                IWebElement addBranchButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
-                addBranchButton.Click();
+                Thread.Sleep(2000);
+                //Locate Company Module
+                IWebElement companyModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("menuItem-Company")));
+                companyModule.Click();
+
+                //Locate branch sub-module
+                IWebElement branchListSubModule = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Branch List')]")));
+                branchListSubModule.Click();
                 Thread.Sleep(2000);
 
-                //Fill the input fields
-                IWebElement name = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
-                name.SendKeys(AddBranchData.addBranchSuccess["name"]);
 
-                IWebElement location = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("location")));
-                location.SendKeys(AddBranchData.addBranchSuccess["location"]);
-
-                IWebElement code = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("code")));
-                code.SendKeys(AddBranchData.addBranchSuccess["code"]);
-
-                IWebElement email = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("email")));
-                email.SendKeys(AddBranchData.addBranchSuccess["email"]);
-
-                IWebElement contactDetails = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactDetails")));
-                contactDetails.SendKeys(AddBranchData.addBranchSuccess["contactDetails"]);
-
-                IWebElement gstNo = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("gstNo")));
-                gstNo.SendKeys(AddBranchData.addBranchSuccess["gstNo"]);
-
-                IWebElement address = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("address")));
-                address.SendKeys(AddBranchData.addBranchSuccess["address"]);
-
-                IWebElement companyName = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyName")));
-                companyName.SendKeys(AddBranchData.addBranchSuccess["companyName"]);
-
-                IWebElement companyContactNo = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyContactNo")));
-                companyContactNo.SendKeys(AddBranchData.addBranchSuccess["companyContactNo"]);
-
-                IWebElement companyEmail = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyEmail")));
-                companyEmail.SendKeys(AddBranchData.addBranchSuccess["companyEmail"]);
-
-                IWebElement companyAddress = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyAddress")));
-                companyAddress.SendKeys(AddBranchData.addBranchSuccess["companyAddress"]);
+                string searchName = AddBranchData.addBranchSuccess["searchName"];
+                IWebElement searchText = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("searchText")));
+                searchText.Clear();
+                searchText.SendKeys(searchName + Keys.Enter);
                 Thread.Sleep(3000);
 
-                // Upload Branch Image
-                IWebElement branchLogo = wait.Until(
-                    ExpectedConditions.ElementExists(By.Id("fileUpload")));
+                // Check if branch exists
+                var rows = driver.FindElements(By.XPath("//table//tbody/tr"));
+                if (rows.Count == 0)
+                {
+                    Console.WriteLine($"Branch '{searchName}' not found. Adding Branch");
 
-                string projectRoot = Directory.GetCurrentDirectory();
-                string fileName = AddBranchData.addBranchSuccess["fileUpload"];
+                    // Navigate to add branch page
+                    IWebElement addBranchButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[contains(@class,'add_fab')]")));
+                    addBranchButton.Click();
+                    Thread.Sleep(2000);
 
-                string filePath = Path.Combine(projectRoot, "TestData", fileName);
+                    //Fill the input fields
+                    IWebElement name = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("name")));
+                    name.SendKeys(AddBranchData.addBranchSuccess["name"]);
 
-                branchLogo.SendKeys(filePath);
+                    IWebElement location = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("location")));
+                    location.SendKeys(AddBranchData.addBranchSuccess["location"]);
 
-                driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                Thread.Sleep(4000);
+                    IWebElement code = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("code")));
+                    code.SendKeys(AddBranchData.addBranchSuccess["code"]);
 
-                //// Upload Branch Image
-                //IWebElement branchLogo = wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
-                //branchLogo.SendKeys(AddBranchData.addBranchSuccess["fileUpload"]);
+                    IWebElement email = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("email")));
+                    email.SendKeys(AddBranchData.addBranchSuccess["email"]);
 
-                //driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
-                //Thread.Sleep(4000); //Save button
+                    IWebElement contactDetails = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("contactDetails")));
+                    contactDetails.SendKeys(AddBranchData.addBranchSuccess["contactDetails"]);
 
+                    IWebElement gstNo = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("gstNo")));
+                    gstNo.SendKeys(AddBranchData.addBranchSuccess["gstNo"]);
+
+                    IWebElement address = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("address")));
+                    address.SendKeys(AddBranchData.addBranchSuccess["address"]);
+
+                    IWebElement companyName = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyName")));
+                    companyName.SendKeys(AddBranchData.addBranchSuccess["companyName"]);
+
+                    IWebElement companyContactNo = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyContactNo")));
+                    companyContactNo.SendKeys(AddBranchData.addBranchSuccess["companyContactNo"]);
+
+                    IWebElement companyEmail = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyEmail")));
+                    companyEmail.SendKeys(AddBranchData.addBranchSuccess["companyEmail"]);
+
+                    IWebElement companyAddress = wait.Until(ExpectedConditions.ElementIsVisible(By.Name("companyAddress")));
+                    companyAddress.SendKeys(AddBranchData.addBranchSuccess["companyAddress"]);
+                    Thread.Sleep(3000);
+
+                    // Upload Branch Image
+                    IWebElement branchLogo = wait.Until(
+                        ExpectedConditions.ElementExists(By.Id("fileUpload")));
+
+                    string projectRoot = Directory.GetCurrentDirectory();
+                    string fileName = AddBranchData.addBranchSuccess["fileUpload"];
+
+                    string filePath = Path.Combine(projectRoot, "TestData", fileName);
+
+                    branchLogo.SendKeys(filePath);
+
+                    driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+                    Thread.Sleep(4000);
+                    Assert.Fail();
+                    //// Upload Branch Image
+                    //IWebElement branchLogo = wait.Until(ExpectedConditions.ElementExists(By.Id("fileUpload")));
+                    //branchLogo.SendKeys(AddBranchData.addBranchSuccess["fileUpload"]);
+
+                    //driver.FindElement(By.XPath("//button//span[contains(text(),'Save')]")).Click();
+                    //Thread.Sleep(4000); //Save button
+
+                    
+                }
+            }
+            catch
+            {
+                Assert.Fail();
+            }
             }
         }
     }
@@ -2410,7 +2419,7 @@ namespace VMS_Phase1PortalAT.FlowTest.TestFlows   //same namespace
 
 //        }
 //    }
-}
+
                     
 
 
