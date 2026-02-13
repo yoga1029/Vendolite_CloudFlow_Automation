@@ -22,7 +22,7 @@ namespace VMS_Phase1PortalAT.FlowTest.Utilities.Datas
             { "companyContactNo", "9081140521" },
             { "companyEmail", "noolmghhi@gmail.com" },
             { "companyAddress", "AMA Nagar, Nizam Colony, Pudukkottai, 612001" },
-            { "fileUpload", @"C:\Users\Yogeswari-PC\Pictures\F1.png" }
+            { "fileUpload", "images.jpg" }
         };
 
         //public static Dictionary<string, string> addBranchSuccess = new Dictionary<string, string>
